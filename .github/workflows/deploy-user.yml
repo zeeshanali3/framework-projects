@@ -1,4 +1,4 @@
-name: Deploy New User Terraform
+name: Deploy User Project Terraform
 
 on:
   push:
@@ -12,51 +12,67 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v4
+      # 1️⃣ Checkout repo (FULL history is REQUIRED)
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
 
-      # 1️⃣ Find all added folders in this commit
-      - name: Detect new user
+      # 2️⃣ Detect newly added user
+      - name: Detect user
         id: user
         run: |
-         echo "Before commit: ${{ github.event.before }}"
-         echo "Current commit: ${{ github.sha }}"
+          set -e
 
-         CHANGED_FILES=$(git diff --name-only ${{ github.event.before }} ${{ github.sha }})
-         echo "Changed files:"
-         echo "$CHANGED_FILES"
+          echo "Current commit: ${{ github.sha }}"
+          echo "Before commit:  ${{ github.event.before }}"
 
-         USER_ID=$(echo "$CHANGED_FILES" \
-          | grep '^projects/' \
-          | cut -d/ -f2 \
-          | sort -u \
-          | head -n 1)
+          # Git empty tree hash (for first commit / safety)
+          EMPTY_TREE="4b825dc642cb6eb9a060e54bf8d69288fbee4904"
 
-         if [ -z "$USER_ID" ]; then
-         echo "❌ No new user found"
-         exit 1
-         fi
+          # Check if 'before' commit exists locally
+          if git cat-file -e "${{ github.event.before }}" 2>/dev/null; then
+            echo "Using github.event.before"
+            BASE_SHA="${{ github.event.before }}"
+          else
+            echo "github.event.before not found, using EMPTY TREE"
+            BASE_SHA="$EMPTY_TREE"
+          fi
+
+          # Get changed files
+          CHANGED_FILES=$(git diff --name-only "$BASE_SHA" "${{ github.sha }}")
+
+          echo "Changed files:"
+          echo "$CHANGED_FILES"
+
+          # Extract user_id from projects/<user_id>/
+          USER_ID=$(echo "$CHANGED_FILES" \
+            | grep '^projects/' \
+            | cut -d/ -f2 \
+            | sort -u \
+            | head -n 1)
+
+          if [ -z "$USER_ID" ]; then
+            echo "❌ No new user found"
+            exit 1
+          fi
 
           echo "✅ Detected user: $USER_ID"
           echo "user_id=$USER_ID" >> $GITHUB_OUTPUT
 
-      - name: Debug user_id
-        run: echo "${{ steps.user.outputs.user_id }}"
-        
+      # 3️⃣ Trigger Terraform repository
       - name: Trigger Terraform Repo
+        if: steps.user.outputs.user_id != ''
         uses: actions/github-script@v6
         with:
           github-token: ${{ secrets.TOKEN }}
           script: |
-            if ("${{ steps.user.outputs.user_id }}" != "") {
-              await github.actions.createWorkflowDispatch({
-                owner: 'zeeshanali3',
-                repo: 'framework-infra',
-                workflow_id: 'deploy-user-terraform.yml',
-                ref: 'main',
-                inputs: {
-                  user_id: '${{ steps.user.outputs.user_id }}'
-                }
-              })
-            }
-
-
+            await github.actions.createWorkflowDispatch({
+              owner: 'zeeshanali3',
+              repo: 'framework-infra',
+              workflow_id: 'deploy-user-terraform.yml',
+              ref: 'main',
+              inputs: {
+                user_id: '${{ steps.user.outputs.user_id }}'
+              }
+            })

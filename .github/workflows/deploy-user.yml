@@ -44,7 +44,7 @@ jobs:
             if ("${{ steps.user.outputs.user_id }}" != "") {
               await github.actions.createWorkflowDispatch({
                 owner: 'zeeshanali3',
-                repo: 'framework-infra ',
+                repo: 'framework-infra',
                 workflow_id: 'deploy-user-terraform.yml',
                 ref: 'main',
                 inputs: {

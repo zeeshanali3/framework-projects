@@ -35,7 +35,9 @@ jobs:
           echo "user_id=$USER_ID" >> $GITHUB_OUTPUT
           echo "Detected new user: $USER_ID"
 
-          
+      - name: Debug user_id
+        run: echo "user_id: ${{ steps.user.outputs.user_id }}"
+        
       - name: Trigger Terraform Repo
         uses: actions/github-script@v6
         with:
@@ -52,3 +54,5 @@ jobs:
                 }
               })
             }
+
+

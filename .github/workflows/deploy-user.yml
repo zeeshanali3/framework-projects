@@ -18,22 +18,26 @@ jobs:
       - name: Detect new user
         id: user
         run: |
-          # Get list of added files/folders
-          NEW_FOLDERS=$(git diff --diff-filter=A --name-only ${{ github.event.before }} ${{ github.sha }} \
-            | grep '^projects/' \
-            | cut -d/ -f2 \
-            | sort -u)
+         echo "Before commit: ${{ github.event.before }}"
+         echo "Current commit: ${{ github.sha }}"
 
-          # Take only the latest added folder
-          USER_ID=$(echo "$NEW_FOLDERS" | tail -n 1)
+         CHANGED_FILES=$(git diff --name-only ${{ github.event.before }} ${{ github.sha }})
+         echo "Changed files:"
+         echo "$CHANGED_FILES"
 
-          if [ -z "$USER_ID" ]; then
-            echo "No new user found, exiting."
-            exit 0
-          fi
+         USER_ID=$(echo "$CHANGED_FILES" \
+          | grep '^projects/' \
+          | cut -d/ -f2 \
+          | sort -u \
+          | head -n 1)
 
+         if [ -z "$USER_ID" ]; then
+         echo "❌ No new user found"
+         exit 1
+         fi
+
+          echo "✅ Detected user: $USER_ID"
           echo "user_id=$USER_ID" >> $GITHUB_OUTPUT
-          echo "Detected new user: $USER_ID"
 
       - name: Debug user_id
         run: echo "${{ steps.user.outputs.user_id }}"

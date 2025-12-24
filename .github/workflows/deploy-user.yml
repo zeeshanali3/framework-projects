@@ -1,0 +1,54 @@
+name: Deploy New User Terraform
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - "projects/**"
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      # 1️⃣ Find all added folders in this commit
+      - name: Detect new user
+        id: user
+        run: |
+          # Get list of added files/folders
+          NEW_FOLDERS=$(git diff --diff-filter=A --name-only ${{ github.event.before }} ${{ github.sha }} \
+            | grep '^projects/' \
+            | cut -d/ -f2 \
+            | sort -u)
+
+          # Take only the latest added folder
+          USER_ID=$(echo "$NEW_FOLDERS" | tail -n 1)
+
+          if [ -z "$USER_ID" ]; then
+            echo "No new user found, exiting."
+            exit 0
+          fi
+
+          echo "user_id=$USER_ID" >> $GITHUB_OUTPUT
+          echo "Detected new user: $USER_ID"
+
+          
+      - name: Trigger Terraform Repo
+        uses: actions/github-script@v6
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          script: |
+            if ("${{ steps.user.outputs.user_id }}" != "") {
+              await github.actions.createWorkflowDispatch({
+                owner: 'zeeshanali3',
+                repo: 'framework-infra ',
+                workflow_id: 'deploy-user-terraform.yml',
+                ref: 'main',
+                inputs: {
+                  user_id: '${{ steps.user.outputs.user_id }}'
+                }
+              })
+            }

@@ -39,7 +39,7 @@ jobs:
       - name: Trigger Terraform Repo
         uses: actions/github-script@v6
         with:
-          github-token: ${{ secrets.GITHUB_TOKEN }}
+          github-token: ${{ secrets.TOKEN }}
           script: |
             if ("${{ steps.user.outputs.user_id }}" != "") {
               await github.actions.createWorkflowDispatch({

@@ -1,7 +1,7 @@
 name: "Generate Performance PDF"
 on:
   schedule:
-    - cron: '0 0 * * 1'
+    - cron: '0 0 * * 1' # Weekly
   workflow_dispatch:
 
 jobs:
@@ -17,20 +17,28 @@ jobs:
         with:
           python-version: '3.10'
 
-      - name: Run Script
+      - name: Run Analysis Script
         id: metadata
         run: |
-          # We pass the filename from Python to GitHub Environment
+          # Captures the date range (e.g., 2025-12-29-to-2026-01-05)
           FNAME=$(python scripts/generate_report.py)
           echo "REPORT_NAME=$FNAME" >> $GITHUB_OUTPUT
 
-      - name: Markdown to PDF
+      - name: Convert Markdown to PDF
         uses: baileyjm02/markdown-to-pdf@v1
         with:
           input_path: report.md
-          output_path: ${{ steps.metadata.outputs.REPORT_NAME }}.pdf
+          # The action expects output_dir, not output_path
+          output_dir: output_pdf
+          build_pdf: true
 
-      - name: Upload
+      - name: Rename and Prepare File
+        run: |
+          # The action creates 'report.pdf' inside the output_dir. 
+          # We rename it to your date-based filename.
+          mv output_pdf/report.pdf ${{ steps.metadata.outputs.REPORT_NAME }}.pdf
+
+      - name: Upload Report
         uses: actions/upload-artifact@v4
         with:
           name: ${{ steps.metadata.outputs.REPORT_NAME }}

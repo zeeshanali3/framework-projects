@@ -28,14 +28,15 @@ jobs:
         uses: baileyjm02/markdown-to-pdf@v1
         with:
           input_path: report.md
-          # The action expects output_dir, not output_path
           output_dir: output_pdf
           build_pdf: true
 
-      - name: Rename and Prepare File
+      - name: Fix Permissions and Rename
         run: |
-          # The action creates 'report.pdf' inside the output_dir. 
-          # We rename it to your date-based filename.
+          # Use sudo to change ownership of the generated files back to the runner user
+          sudo chown -R $USER:$USER output_pdf
+          
+          # Rename the default 'report.pdf' to your dynamic date-range name
           mv output_pdf/report.pdf ${{ steps.metadata.outputs.REPORT_NAME }}.pdf
 
       - name: Upload Report

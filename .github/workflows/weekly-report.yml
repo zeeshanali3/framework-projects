@@ -1,0 +1,39 @@
+name: "Generate Performance PDF"
+on:
+  schedule:
+    - cron: '0 0 * * 1' # Every Monday (Weekly)
+    - cron: '0 0 1 * *' # 1st of every month (Monthly)
+  workflow_dispatch: # Allow manual run
+
+jobs:
+  report:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0 # Get full history for analysis
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.10'
+
+      - name: Generate Markdown Report
+        run: python scripts/generate_report.py > report.md
+
+      - name: Convert Markdown to PDF
+        uses: baileyjm02/markdown-to-pdf@v1
+        with:
+          input_path: report.md
+          output_path: report.pdf
+          # This allows you to add custom CSS to match your sample's look
+          build_html: true 
+
+      - name: Upload Report Artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: Engineering-Report-${{ github.run_id }}
+          path: report.pdf

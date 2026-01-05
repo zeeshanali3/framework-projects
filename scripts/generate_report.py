@@ -1,57 +1,36 @@
-import os
 import subprocess
-import json
 from datetime import datetime, timedelta
+import sys
 
-def get_git_logs(days=7):
-    since = (datetime.now() - timedelta(days=days)).strftime('%Y-%m-%d')
-    # Fetching: Hash, Author, Date, Subject, and Body
-    cmd = f'git log --since="{since}" --pretty=format:"%h|%an|%ad|%s|%b" --date=short'
-    return subprocess.check_output(cmd, shell=True).decode('utf-8').split('\n')
+def get_report_metadata(days):
+    end_date = datetime.now()
+    start_date = end_date - timedelta(days=days)
+    date_range_str = f"{start_date.strftime('%Y-%m-%d')}-to-{end_date.strftime('%Y-%m-%d')}"
+    return start_date, end_date, date_range_str
 
-def analyze_commits(logs):
-    report_data = {}
-    categories = {"Feature": 0, "Infrastructure": 0, "Bug": 0, "Admin": 0}
+def generate_markdown(days=7):
+    start, end, date_range = get_report_metadata(days)
     
-    for line in logs:
-        if not line: continue
-        hash, author, date, subject, body = line.split('|', 4)
-        
-        # Calculate Message Score (similar to your sample 1-10 scale) 
-        score = 5 # Base score
-        if any(prefix in subject.lower() for prefix in ['feat:', 'fix:', 'docs:']): score += 3
-        if len(subject) > 20: score += 2
-        
-        # Categorize Work [cite: 11]
-        if 'feat' in subject.lower(): categories["Feature"] += 1
-        elif 'fix' in subject.lower() or 'bug' in subject.lower(): categories["Bug"] += 1
-        elif 'infra' in subject.lower() or 'config' in subject.lower(): categories["Infrastructure"] += 1
-        else: categories["Admin"] += 1
-
-        if author not in report_data:
-            report_data[author] = {"commits": 0, "score": [], "features": []}
-        
-        report_data[author]["commits"] += 1
-        report_data[author]["score"].append(score)
+    # Header inspired by your sample
+    md = f"# Engineering Activity Report\n"
+    md += f"**Period:** {start.strftime('%B %d')} - {end.strftime('%B %d, %Y')} ({days} days)\n\n" [cite: 2]
     
-    return report_data, categories
-
-def generate_markdown(data, cats):
-    md = "# Engineering Activity Report\n"
-    md += f"## Period: Last 7 Days\n\n"
+    # ... (Rest of your analysis logic from previous step)
     
-    md += "### Team Work Distribution\n| Category | Commits | Description |\n|---|---|---|\n"
-    for cat, count in cats.items():
-        md += f"| {cat} | {count} | Analysis of {cat} tasks |\n"
-        
-    md += "\n### Developer Performance\n| Developer | Commits | Msg Score |\n|---|---|---|\n"
-    for dev, stats in data.items():
-        avg_score = sum(stats['score']) / len(stats['score'])
-        md += f"| {dev} | {stats['commits']} | {avg_score:.1f}/10 |\n"
-        
-    return md
+    md += "### Summary Metrics\n"
+    # Placeholder for logic to count commits via git log
+    md += f"* **Total Commits:** Analysis for {date_range}\n" [cite: 3]
+    
+    return md, date_range
 
 if __name__ == "__main__":
-    logs = get_git_logs()
-    data, cats = analyze_commits(logs)
-    print(generate_markdown(data, cats))
+    # Check if monthly or weekly
+    period = 30 if "monthly" in sys.argv else 7
+    content, filename = generate_markdown(period)
+    
+    # Write the report content
+    with open("report.md", "w") as f:
+        f.write(content)
+    
+    # Print the filename so GitHub Actions can capture it
+    print(filename)

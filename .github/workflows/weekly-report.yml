@@ -1,7 +1,7 @@
-name: "Generate Performance PDF"
+name: "Generate Professional Report"
 on:
   schedule:
-    - cron: '0 0 * * 1' # Weekly
+    - cron: '0 0 * * 1'
   workflow_dispatch:
 
 jobs:
@@ -12,34 +12,34 @@ jobs:
         with:
           fetch-depth: 0
 
-      - name: Set up Python
-        uses: actions/setup-python@v4
-        with:
-          python-version: '3.10'
-
-      - name: Run Analysis Script
+      - name: Run Script
         id: metadata
         run: |
-          # Captures the date range (e.g., 2025-12-29-to-2026-01-05)
           FNAME=$(python scripts/generate_report.py)
           echo "REPORT_NAME=$FNAME" >> $GITHUB_OUTPUT
 
-      - name: Convert Markdown to PDF
+      - name: Create Styling
+        run: |
+          echo "table { width: 100%; border-collapse: collapse; margin-bottom: 20px; } 
+          th, td { border: 1px solid #ddd; padding: 12px; text-align: left; }
+          th { background-color: #f4f4f4; }
+          h1, h2 { color: #2c3e50; border-bottom: 2px solid #eee; }" > style.css
+
+      - name: Markdown to PDF
         uses: baileyjm02/markdown-to-pdf@v1
         with:
           input_path: report.md
           output_dir: output_pdf
           build_pdf: true
+          # Applying the style we just created
+          theme: style.css 
 
-      - name: Fix Permissions and Rename
+      - name: Rename and Upload
         run: |
-          # Use sudo to change ownership of the generated files back to the runner user
           sudo chown -R $USER:$USER output_pdf
-          
-          # Rename the default 'report.pdf' to your dynamic date-range name
           mv output_pdf/report.pdf ${{ steps.metadata.outputs.REPORT_NAME }}.pdf
-
-      - name: Upload Report
+          
+      - name: Upload Artifact
         uses: actions/upload-artifact@v4
         with:
           name: ${{ steps.metadata.outputs.REPORT_NAME }}

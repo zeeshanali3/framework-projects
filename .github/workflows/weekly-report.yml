@@ -1,16 +1,14 @@
 name: "Generate Performance PDF"
 on:
   schedule:
-    - cron: '0 0 * * 1' # Weekly
-    - cron: '0 0 1 * *' # Monthly
+    - cron: '0 0 * * 1'
   workflow_dispatch:
 
 jobs:
   report:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout Code
-        uses: actions/checkout@v4
+      - uses: actions/checkout@v4
         with:
           fetch-depth: 0
 
@@ -19,21 +17,20 @@ jobs:
         with:
           python-version: '3.10'
 
-      - name: Generate Report and Capture Filename
+      - name: Run Script
         id: metadata
         run: |
-          # The script prints the date range (e.g., 2025-12-22-to-2025-12-28)
-          FILENAME=$(python scripts/generate_report.py)
-          echo "REPORT_NAME=$FILENAME" >> $GITHUB_OUTPUT
+          # We pass the filename from Python to GitHub Environment
+          FNAME=$(python scripts/generate_report.py)
+          echo "REPORT_NAME=$FNAME" >> $GITHUB_OUTPUT
 
-      - name: Convert Markdown to PDF
+      - name: Markdown to PDF
         uses: baileyjm02/markdown-to-pdf@v1
         with:
           input_path: report.md
-          # Uses the date range as the filename
-          output_path: ${{ steps.metadata.outputs.REPORT_NAME }}.pdf 
+          output_path: ${{ steps.metadata.outputs.REPORT_NAME }}.pdf
 
-      - name: Upload PDF
+      - name: Upload
         uses: actions/upload-artifact@v4
         with:
           name: ${{ steps.metadata.outputs.REPORT_NAME }}

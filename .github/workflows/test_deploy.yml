@@ -16,7 +16,6 @@ jobs:
         with:
           fetch-depth: 0
 
-
       # 2️⃣ Detect newly added user
       - name: Detect user
         id: user

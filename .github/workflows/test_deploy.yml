@@ -1,0 +1,106 @@
+name: Testing Deploy User Project Terraform
+
+on:
+  push:
+    branches: 
+      - main
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      # 1️⃣ Checkout repo (FULL history is REQUIRED)
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      # 2️⃣ Detect newly added user
+      - name: Detect user
+        id: user
+        run: |
+          USER_ID="frame-user01"
+          if [ -z "$USER_ID" ]; then
+            echo "❌ No new user found"
+            exit 1
+          fi
+
+          echo "✅ Detected user: $USER_ID"
+          echo "user_id=$USER_ID" >> $GITHUB_OUTPUT
+
+      # 3️⃣ Azure Login
+      - name: Azure Login
+        uses: azure/login@v1
+        with:
+          creds: ${{ secrets.AZURE_CREDENTIALS }}
+
+      # 4️⃣ Login to ACR
+      - name: ACR Login
+        run: |
+          az acr login --name ${{ secrets.ACR_NAME }}
+
+      # 5️⃣ Build & Push Frontend Image
+      - name: Build & Push Frontend
+        run: |
+          docker build \
+            -t ${{ secrets.ACR_LOGIN_SERVER }}/frontend:${{ steps.user.outputs.user_id }} \
+            projects/${{ steps.user.outputs.user_id }}/frontend
+
+          docker push ${{ secrets.ACR_LOGIN_SERVER }}/frontend:${{ steps.user.outputs.user_id }}
+
+      # 6️⃣ Build & Push Backend Image
+      - name: Build & Push Backend
+        run: |
+          docker build \
+            -t ${{ secrets.ACR_LOGIN_SERVER }}/backend:${{ steps.user.outputs.user_id }} \
+            projects/${{ steps.user.outputs.user_id }}/backend
+
+          docker push ${{ secrets.ACR_LOGIN_SERVER }}/backend:${{ steps.user.outputs.user_id }}
+
+      # 7️⃣ Create MySQL Database for User
+      - name: Create MySQL Database
+        run: |
+          az mysql flexible-server db create \
+            --resource-group ${{ secrets.RESOURCE_GROUP }} \
+            --server-name ${{ secrets.MYSQL_SERVER_NAME }} \
+            --database-name ${{ steps.user.outputs.user_id }} \
+            --charset utf8mb4 \
+            --collation utf8mb4_unicode_ci || echo "DB already exists"
+
+      # 8️⃣ Import db.sql into User Database
+      - name: Import User Database Schema
+        run: |
+          DB_FILE="projects/${{ steps.user.outputs.user_id }}/projects/db.backup.sql"
+
+          if [ ! -f "$DB_FILE" ]; then
+            echo "❌ db.sql not found for user"
+            exit 1
+          fi
+
+          mysql \
+            -h ${{ secrets.MYSQL_SERVER_NAME }}.mysql.database.azure.com \
+            -u ${{ secrets.MYSQL_ADMIN_USER }} \
+            -p${{ secrets.MYSQL_ADMIN_PASSWORD }} \
+            -D ${{ steps.user.outputs.user_id }} \
+            --ssl-mode=REQUIRED \
+            < "$DB_FILE"
+
+            
+
+      # 98️⃣ Trigger Terraform repository
+      - name: Trigger Terraform Repo
+        if: steps.user.outputs.user_id != ''
+        uses: actions/github-script@v6
+        with:
+          github-token: ${{ secrets.TOKEN }}
+          script: |
+            await github.rest.actions.createWorkflowDispatch({
+              owner: 'zeeshanali3',
+              repo: 'framework-infra',
+              workflow_id: 'deploy-user-terraform.yml',
+              ref: 'main',
+              inputs: {
+                user_id: '${{ steps.user.outputs.user_id }}'
+              }
+            })

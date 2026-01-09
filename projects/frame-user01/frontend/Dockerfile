@@ -1,24 +1,39 @@
 # Stage 1: Build
-FROM node:20-slim AS build
-WORKDIR /app
+FROM node:20-alpine AS builder
 
-# Accept build arguments for VITE variables
-ARG VITE_BASE_URL
-ARG VITE_SECRET_KEY
-# (Add other ARGs as needed)
-
-ENV VITE_BASE_URL=$VITE_BASE_URL
-ENV VITE_SECRET_KEY=$VITE_SECRET_KEY
+# Set memory limit as per your pipeline
 ENV NODE_OPTIONS="--max-old-space-size=4096"
 
+WORKDIR /app
+
+# Copy dependency files first to leverage Docker cache
 COPY package.json yarn.lock ./
-RUN yarn install
+
+# Install yarn and dependencies
+RUN npm install -g yarn && yarn install --frozen-lockfile
+
+# Copy the rest of the source code
 COPY . .
+
+# Pass environment variables needed for Vite build
+ARG VITE_SECRET_KEY
+ARG VITE_PLATFORM_KEY
+ARG VITE_PLATFORM_VERSION
+ARG VITE_PLATFORM_NAME
+ARG VITE_BASE_URL
+ARG VITE_SOCKET_URL
+
+# Build the project (CI=false prevents warnings from being treated as errors)
 RUN CI=false yarn build
 
 # Stage 2: Serve with Nginx
 FROM nginx:stable-alpine
-# Copy the build output from the build stage (adjust 'dist' or 'build' folder)
-COPY --from=build /app/dist /usr/share/nginx/html
+
+# Copy the build output from the builder stage
+# Note: Vite usually builds to 'dist/', while your pipeline used 'build/'
+COPY --from=builder /app/dist /usr/share/nginx/html
+
+# Expose port 80
 EXPOSE 80
+
 CMD ["nginx", "-g", "daemon off;"]

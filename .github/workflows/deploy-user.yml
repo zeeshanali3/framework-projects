@@ -23,7 +23,7 @@ jobs:
         id: user
         run: |
           set -e
-
+          
           echo "Current commit: ${{ github.sha }}"
           echo "Before commit:  ${{ github.event.before }}"
 

@@ -61,12 +61,23 @@ jobs:
       # 7️⃣ Create MySQL Database for User
       - name: Create MySQL Database
         run: |
-          az mysql flexible-server db create \
+          # 1. Check if the database already exists
+          DB_EXISTS=$(az mysql flexible-server db list \
             --resource-group ${{ secrets.RESOURCE_GROUP }} \
             --server-name ${{ secrets.MYSQL_SERVER_NAME }} \
-            --database-name ${{ steps.user.outputs.user_id }} \
-            --charset utf8mb4 \
-            --collation utf8mb4_unicode_ci || echo "DB already exists"
+            --query "[?name=='${{ steps.user.outputs.user_id }}']" -o tsv)
+
+          if [ -z "$DB_EXISTS" ]; then
+          echo "🚀 Creating database: ${{ steps.user.outputs.user_id }}..."
+            az mysql flexible-server db create \
+              --resource-group ${{ secrets.RESOURCE_GROUP }} \
+              --server-name ${{ secrets.MYSQL_SERVER_NAME }} \
+              --database-name ${{ steps.user.outputs.user_id }} \
+              --charset utf8mb4 \
+              --collation utf8mb4_unicode_ci
+          else
+            echo "✅ Database ${{ steps.user.outputs.user_id }} already exists. Skipping creation."
+          fi
 
       # 8️⃣ Import db.sql into User Database
       - name: Import User Database Schema

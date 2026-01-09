@@ -72,7 +72,7 @@ jobs:
       # 8️⃣ Import db.sql into User Database
       - name: Import User Database Schema
         run: |
-          DB_FILE="projects/${{ steps.user.outputs.user_id }}/projects//database/backup.sql"
+          DB_FILE="projects/${{ steps.user.outputs.user_id }}/projects/database/backup.sql"
 
           if [ ! -f "$DB_FILE" ]; then
             echo "❌ .sql file not found for user"

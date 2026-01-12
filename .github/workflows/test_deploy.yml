@@ -90,7 +90,7 @@ jobs:
           TENANT_ID="${{ steps.user.outputs.user_id }}"
           DB_NAME="${TENANT_ID}_db"
           USER_NAME="${TENANT_ID}_user"
-
+          
           echo "🔍 Checking if database exists: $DB_NAME"
 
           DB_EXISTS=$(az mysql flexible-server db list \

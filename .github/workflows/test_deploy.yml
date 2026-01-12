@@ -126,6 +126,9 @@ jobs:
       # 8️⃣ Import db.sql into User Database
       - name: Import User Database Schema
         run: |
+          TENANT_ID="${{ steps.user.outputs.user_id }}"
+          DB_NAME="${TENANT_ID}_db"
+          USER_NAME="${TENANT_ID}_user"
           DB_FILE="projects/${{ steps.user.outputs.user_id }}/backup.sql"
 
           if [ ! -f "$DB_FILE" ]; then
@@ -135,9 +138,9 @@ jobs:
 
           mysql \
             -h ${{ secrets.MYSQL_SERVER_NAME }}.mysql.database.azure.com \
-            -u ${{ secrets.MYSQL_ADMIN_USER }} \
-            -p${{ secrets.MYSQL_ADMIN_PASSWORD }} \
-            -D ${{ steps.user.outputs.user_id }} \
+            -u $USER_NAME \
+            -p${{ secrets.TEMPORARY_USER_PASSWORD }} \
+            -D $DB_NAME \
             --ssl-mode=REQUIRED \
             < "$DB_FILE"
 

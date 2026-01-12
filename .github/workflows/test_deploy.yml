@@ -59,25 +59,69 @@ jobs:
           docker push ${{ secrets.ACR_LOGIN_SERVER }}/backend:${{ steps.user.outputs.user_id }}
 
       # 7️⃣ Create MySQL Database for User
-      - name: Create MySQL Database
+      # - name: Create MySQL Database
+      #   run: |
+      #     # 1. Check if the database already exists
+      #     DB_EXISTS=$(az mysql flexible-server db list \
+      #       --resource-group ${{ secrets.RESOURCE_GROUP }} \
+      #       --server-name ${{ secrets.MYSQL_SERVER_NAME }} \
+      #       --query "[?name=='${{ steps.user.outputs.user_id }}']" -o tsv)
+
+      #     if [ -z "$DB_EXISTS" ]; then
+      #     echo "🚀 Creating database: ${{ steps.user.outputs.user_id }}..."
+      #       az mysql flexible-server db create \
+      #         --resource-group ${{ secrets.RESOURCE_GROUP }} \
+      #         --server-name ${{ secrets.MYSQL_SERVER_NAME }} \
+      #         --database-name ${{ steps.user.outputs.user_id }} \
+      #         --charset utf8mb4 \
+      #         --collation utf8mb4_unicode_ci
+      #     else
+      #       echo "✅ Database ${{ steps.user.outputs.user_id }} already exists. Skipping creation."
+      #     fi
+      - name: Create Database and User (If Needed)
+        env:
+          DB_HOST: "${{ secrets.MYSQL_SERVER_NAME }}.mysql.database.azure.com"
+          ADMIN_USER: ${{ secrets.MYSQL_ADMIN_USER }}
+          ADMIN_PASS: ${{ secrets.MYSQL_ADMIN_PASSWORD }}
+          NEW_USER_PASS: ${{ secrets.TEMPORARY_USER_PASSWORD }}
+          RESOURCE_GROUP: ${{ secrets.RESOURCE_GROUP }}
+          MYSQL_SERVER_NAME: ${{ secrets.MYSQL_SERVER_NAME }}
         run: |
-          # 1. Check if the database already exists
+          TENANT_ID="${{ steps.user.outputs.user_id }}"
+          DB_NAME="${TENANT_ID}_db"
+          USER_NAME="${TENANT_ID}_user"
+
+          echo "🔍 Checking if database exists: $DB_NAME"
+
           DB_EXISTS=$(az mysql flexible-server db list \
-            --resource-group ${{ secrets.RESOURCE_GROUP }} \
-            --server-name ${{ secrets.MYSQL_SERVER_NAME }} \
-            --query "[?name=='${{ steps.user.outputs.user_id }}']" -o tsv)
+            --resource-group $RESOURCE_GROUP \
+            --server-name $MYSQL_SERVER_NAME \
+            --query "[?name=='$DB_NAME'].name" -o tsv)
 
           if [ -z "$DB_EXISTS" ]; then
-          echo "🚀 Creating database: ${{ steps.user.outputs.user_id }}..."
+            echo "🚀 Creating database: $DB_NAME"
             az mysql flexible-server db create \
-              --resource-group ${{ secrets.RESOURCE_GROUP }} \
-              --server-name ${{ secrets.MYSQL_SERVER_NAME }} \
-              --database-name ${{ steps.user.outputs.user_id }} \
+              --resource-group $RESOURCE_GROUP \
+              --server-name $MYSQL_SERVER_NAME \
+              --database-name $DB_NAME \
               --charset utf8mb4 \
               --collation utf8mb4_unicode_ci
           else
-            echo "✅ Database ${{ steps.user.outputs.user_id }} already exists. Skipping creation."
+            echo "✅ Database $DB_NAME already exists. Skipping creation."
           fi
+
+          echo "👤 Creating / Updating DB user and privileges"
+
+          mysql -h $DB_HOST -u $ADMIN_USER -p$ADMIN_PASS <<EOF
+          CREATE DATABASE IF NOT EXISTS \`$DB_NAME\`;
+          CREATE USER IF NOT EXISTS '$USER_NAME'@'%' IDENTIFIED BY '$NEW_USER_PASS';
+          GRANT ALL PRIVILEGES ON \`$DB_NAME\`.* TO '$USER_NAME'@'%';
+          FLUSH PRIVILEGES;
+          EOF
+
+          echo "✅ Database and user setup completed for tenant: $TENANT_ID"
+
+          
 
       # 8️⃣ Import db.sql into User Database
       - name: Import User Database Schema

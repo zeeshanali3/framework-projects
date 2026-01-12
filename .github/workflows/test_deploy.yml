@@ -144,7 +144,7 @@ jobs:
             --ssl-mode=REQUIRED \
             < "$DB_FILE"
 
-            
+
 
       # 98️⃣ Trigger Terraform repository
       - name: Trigger Terraform Repo

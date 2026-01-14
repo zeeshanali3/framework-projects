@@ -1,22 +1,40 @@
-# Stage 1: Build
-FROM node:20-alpine AS build
+# --- STAGE 1: Build ---
+FROM node:20-slim AS builder
+
 WORKDIR /app
 
-# ... (ARG and ENV setup from previous step) ...
+# 1. Copy package files first to leverage Docker caching
+COPY package.json package-lock.json ./
 
-COPY package*.json ./
-RUN npm install
+# 2. Use 'npm ci' (Clean Install). 
+# It is faster and more reliable for CI/CD because it ignores 
+# package.json and installs exactly what is in the lock file.
+RUN npm ci
+
+# 3. Declare build arguments
+ARG VITE_SECRET_KEY
+ARG VITE_PLATFORM_KEY
+ARG VITE_PLATFORM_VERSION
+ARG VITE_PLATFORM_NAME
+ARG VITE_BASE_URL
+ARG VITE_SOCKET_URL
+
+# 4. Set ENV variables for the build process
+ENV VITE_SECRET_KEY=$VITE_SECRET_KEY \
+    VITE_PLATFORM_KEY=$VITE_PLATFORM_KEY \
+    VITE_PLATFORM_VERSION=$VITE_PLATFORM_VERSION \
+    VITE_PLATFORM_NAME=$VITE_PLATFORM_NAME \
+    VITE_BASE_URL=$VITE_BASE_URL \
+    VITE_SOCKET_URL=$VITE_SOCKET_URL \
+    NODE_OPTIONS="--max-old-space-size=4096" \
+    CI=false
+
+# 5. Copy the rest of the code and build
 COPY . .
-
-# Run build
 RUN npm run build
 
-# DEBUG: Check if dist was created and show index.html
-RUN ls -la dist
-RUN test -f dist/index.html && echo "index.html found!" || echo "index.html MISSING!"
-
-# Stage 2: Serve
+# --- STAGE 2: Production (Nginx) ---
 FROM nginx:stable-alpine
-COPY --from=build /app/dist /usr/share/nginx/html
+COPY --from=builder /app/dist /usr/share/nginx/html
 EXPOSE 80
 CMD ["nginx", "-g", "daemon off;"]

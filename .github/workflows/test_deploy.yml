@@ -29,16 +29,22 @@ jobs:
           echo "✅ Detected user: $USER_ID"
           echo "user_id=$USER_ID" >> $GITHUB_OUTPUT
 
+
+
       # 3️⃣ Azure Login
       - name: Azure Login
         uses: azure/login@v1
         with:
           creds: ${{ secrets.AZURE_CREDENTIALS }}
 
+      ###########################################################################
+
       # 4️⃣ Login to ACR
       - name: ACR Login
         run: |
           az acr login --name ${{ secrets.ACR_NAME }}
+
+      ###########################################################################
 
       # 5️⃣ Build & Push Frontend Image
       - name: Build & Push Frontend
@@ -49,35 +55,27 @@ jobs:
 
           docker push ${{ secrets.ACR_LOGIN_SERVER }}/frontend:${{ steps.user.outputs.user_id }}
 
+      ###########################################################################
+
       # 6️⃣ Build & Push Backend Image
       - name: Build & Push Backend
         run: |
           docker build \
             -t ${{ secrets.ACR_LOGIN_SERVER }}/backend:${{ steps.user.outputs.user_id }} \
+            --build-arg VITE_SECRET_KEY="${{ secrets.VITE_SECRET_KEY }}" \
+            --build-arg VITE_PLATFORM_KEY="${{ secrets.VITE_PLATFORM_KEY }}" \
+            --build-arg VITE_PLATFORM_VERSION="${{ secrets.VITE_PLATFORM_VERSION }}" \
+            --build-arg VITE_PLATFORM_NAME="${{ secrets.VITE_PLATFORM_NAME }}" \
+            --build-arg VITE_BASE_URL="http://backend-${{ steps.user.outputs.user_id }}:8080" \
+            --build-arg VITE_SOCKET_URL="http://backend-${{ steps.user.outputs.user_id }}:8080/api" \
             projects/${{ steps.user.outputs.user_id }}/backend
 
           docker push ${{ secrets.ACR_LOGIN_SERVER }}/backend:${{ steps.user.outputs.user_id }}
 
-      # 7️⃣ Create MySQL Database for User
-      # - name: Create MySQL Database
-      #   run: |
-      #     # 1. Check if the database already exists
-      #     DB_EXISTS=$(az mysql flexible-server db list \
-      #       --resource-group ${{ secrets.RESOURCE_GROUP }} \
-      #       --server-name ${{ secrets.MYSQL_SERVER_NAME }} \
-      #       --query "[?name=='${{ steps.user.outputs.user_id }}']" -o tsv)
 
-      #     if [ -z "$DB_EXISTS" ]; then
-      #     echo "🚀 Creating database: ${{ steps.user.outputs.user_id }}..."
-      #       az mysql flexible-server db create \
-      #         --resource-group ${{ secrets.RESOURCE_GROUP }} \
-      #         --server-name ${{ secrets.MYSQL_SERVER_NAME }} \
-      #         --database-name ${{ steps.user.outputs.user_id }} \
-      #         --charset utf8mb4 \
-      #         --collation utf8mb4_unicode_ci
-      #     else
-      #       echo "✅ Database ${{ steps.user.outputs.user_id }} already exists. Skipping creation."
-      #     fi
+      ###########################################################################
+          
+      # 7️⃣ Create MySQL Database for User
       - name: Create Database and User (If Needed)
         env:
           DB_HOST: "${{ secrets.MYSQL_SERVER_NAME }}.mysql.database.azure.com"
@@ -121,7 +119,7 @@ jobs:
 
           echo "✅ Database and user setup completed for tenant: $TENANT_ID"
 
-          
+      ###########################################################################    
 
       # 8️⃣ Import db.sql into User Database
       - name: Import User Database Schema
@@ -144,7 +142,7 @@ jobs:
             --ssl-mode=REQUIRED \
             < "$DB_FILE"
 
-
+      ###########################################################################
 
       # 98️⃣ Trigger Terraform repository
       - name: Trigger Terraform Repo

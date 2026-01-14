@@ -1,0 +1,2 @@
+const GETSEMESTER ="GETSEMESTER";
+export default GETSEMESTER;

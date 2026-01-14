@@ -1,0 +1,2 @@
+const ADMIN_FILTER ='ADMIN_FILTER';
+export default ADMIN_FILTER

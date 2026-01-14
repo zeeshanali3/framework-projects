@@ -1,0 +1,218 @@
+
+        {
+          "steps": [
+              {
+              "title": "prereqs Info",
+              "parameters": {
+                  "fields": [
+                  {
+                      "name": "prereqs",
+                      "type": "section",
+                      "hideInCreateForm": false,
+                      "visible": false,
+                      "required": false,
+                      "disabled": false,
+                      "validations": "",
+                      "dependancyCheck": false,
+                      "isPrefilled": false,
+                      "source": "req.body",
+                      "title": "Prereqs",
+                      "childFields": [ 
+        {
+          "name": "id",
+          "label": "id",
+          "title": "",
+          "type": "textField",
+          "required": false,
+          "hideInCreateForm": true,
+          "hideInViewForm" : true,
+          "visible": true,
+          "disabled": false,
+          "dependancyCheck": false,
+          "isPrefilled": false,
+          "source": "req.query",
+          "min": "",
+          "max": "",
+          "selectServer": false,
+          "dynamicKey": "id"
+        }
+        
+            ,
+            {
+                "name": "plannedCourseId",
+                "label": "Planned Course Id",
+                "title": "",
+                "type": "select",
+                "required": false,
+                "hideInCreateForm": false,
+                "visible": true,
+                "disabled": false,
+                "dependancyCheck": false,
+                "isPrefilled": false,
+                "source": "req.body",
+                "min": "",
+                "max": "",
+                "validations": [],
+                "selectServer": true,
+                "selectServerUrl":"/plannedcourses/dropdown?version=1.0",
+                "dynamicKey": "prereqs_plannedCourseId",
+                "alias" : "prereqs.planned_course_id",
+                "options": []
+
+            }
+            ,
+            {
+                "name": "preReqCourseId",
+                "label": "Pre Req Course Id",
+                "title": "",
+                "type": "select",
+                "required": false,
+                "hideInCreateForm": false,
+                "visible": true,
+                "disabled": false,
+                "dependancyCheck": false,
+                "isPrefilled": false,
+                "source": "req.body",
+                "min": "",
+                "max": "",
+                "validations": [],
+                "selectServer": true,
+                "selectServerUrl":"/plannedcourses/dropdown?version=1.0",
+                "dynamicKey": "prereqs_preReqCourseId",
+                "alias" : "prereqs.pre_req_course_id",
+                "options": []
+
+            }  
+        
+            ,
+            {
+                "name": "courseName",
+                "label": "Course Name",
+                "title": "",
+                "type": "textField",
+                "required": false,
+                "hideInCreateForm": true,
+                "visible": true,
+                "disabled": false,
+                "dependancyCheck": false,
+                "isPrefilled": false,
+                "source": "req.body",
+                "min": "",
+                "max": "",
+                "validations": [],
+                "selectServer": false,
+                "dynamicKey": "plannedcourses_courseName",
+                "alias" : "plannedcourses.course_name",
+                "options": [ ""]
+
+            }
+            ,
+            {
+                "name": "courseName",
+                "label": "Course Name",
+                "title": "",
+                "type": "textField",
+                "required": false,
+                "hideInCreateForm": true,
+                "visible": true,
+                "disabled": false,
+                "dependancyCheck": false,
+                "isPrefilled": false,
+                "source": "req.body",
+                "min": "",
+                "max": "",
+                "validations": [],
+                "selectServer": false,
+                "dynamicKey": "plannedcourses_courseName",
+                "alias" : "plannedcourses.course_name",
+                "options": [ ""]
+
+            }  
+            
+        
+          
+          
+                ,
+                {
+                  "name": "createdAt",
+                  "label": "Created At",
+                  "title": "",
+                  "type": "dateTime",
+                  "required": false,
+                  "hideInCreateForm": true,
+                  "hideInViewForm" : true,
+                  "visible": false,
+                  "disabled": false,
+                  "dependancyCheck": false,
+                  "isPrefilled": false,
+                  "source": "req.body",
+                  "min": "",
+                  "max": "",
+                  "validations": [],
+                  "selectServer": false,
+                  "dynamicKey": "prereqs_createdAt",
+                  "alias" : "prereqs.created_at"
+                }
+                ,
+                {
+                  "name": "updatedAt",
+                  "label": "Updated At",
+                  "title": "",
+                  "type": "dateTime",
+                  "required": false,
+                  "hideInCreateForm": true,
+                  "hideInViewForm" : true,
+                  "visible": false,
+                  "disabled": false,
+                  "dependancyCheck": false,
+                  "isPrefilled": false,
+                  "source": "req.body",
+                  "min": "",
+                  "max": "",
+                  "validations": [],
+                  "selectServer": false,
+                  "dynamicKey": "prereqs_updatedAt",
+                  "alias" : "prereqs.updated_at"
+                }  
+
+          
+            ,
+            {
+                "name": "status",
+                "label": "Status",
+                "title": "",
+                "type": "select",
+                "required": false,
+                "hideInCreateForm": true,
+                "visible": false,
+                "disabled": false,
+                "dependancyCheck": false,
+                "isPrefilled": false,
+                "source": "req.body",
+                "min": "",
+                "max": "",
+                "validations": [],
+                "selectServer": false,
+                "dynamicKey": "prereqs_status",
+                "options":[
+                    {"value":"inactive","label":"inactive"},
+                    {"value":"active","label":"active"}
+                ],
+                "alias" : "prereqs.status"
+            }
+     
+                      ]
+                  }
+                  ]
+              },
+              "buttons": [
+                  {
+                  "type": "submit",
+                  "label": "Submit"
+                  }
+              ]
+              }
+          ],
+          "colMapper": "{prereqs.pre_reqs_id as prereqs_preReqsId,prereqs.planned_course_id as prereqs_plannedCourseId,prereqs.pre_req_course_id as prereqs_preReqCourseId,prereqs.status as prereqs_status,prereqs.created_by as prereqs_createdBy,prereqs.updated_by as prereqs_updatedBy,prereqs.created_at as prereqs_createdAt,prereqs.updated_at as prereqs_updatedAt}"
+          }
+        

@@ -1,0 +1,130 @@
+.login-container {
+    min-height: 100vh;
+    margin: 0;
+    background-image: linear-gradient(rgba(4,9,30,0.7), rgba(2, 5, 17, 0.7)), url(../../assets/images/back_img.jpg);
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+@media (max-width: 768px) {
+    .login-container {
+        background-image: none;
+        background-color: rgba(4,9,30,0.7);
+    }
+}
+
+@keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+  
+  @media (max-width: 768px) {
+    .login-container {
+      background-image: none;
+      background-color: rgba(4,9,30,0.7);
+    }
+  }
+  
+  /* Additional animation for the login form */
+  .card-animation {
+    animation: slideInFromTop 0.5s ease-in-out;
+  }
+  
+  @keyframes slideInFromTop {
+    from {
+      transform: translateY(-50%);
+      opacity: 0;
+    }
+    to {
+      transform: translateY(0);
+      opacity: 1;
+    }
+  }
+
+
+
+  .input-animation {
+    animation: slideInFromLeft 0.5s ease-in-out;
+  }
+  
+  @keyframes slideInFromLeft {
+    from {
+      transform: translateX(-50%);
+      opacity: 0;
+    }
+    to {
+      transform: translateX(0);
+      opacity: 1;
+    }
+  }
+  
+  /* Animate the login button */
+  .button-animation {
+    animation: scaleIn 0.5s ease-in-out;
+  }
+  
+  @keyframes scaleIn {
+    from {
+      transform: scale(0.8);
+      opacity: 0;
+    }
+    to {
+      transform: scale(1);
+      opacity: 1;
+    }
+  }
+  
+  /* Animate the headings */
+  .heading-animation {
+    animation: fadeInUp 0.5s ease-in-out;
+  }
+  
+  @keyframes fadeInUp {
+    from {
+      transform: translateY(-20px);
+      opacity: 0;
+    }
+    to {
+      transform: translateY(0);
+      opacity: 1;
+    }
+  }
+
+  .image-animation {
+    animation: bookOpen 1s ease-in-out;
+  }
+  
+  @keyframes bookOpen {
+    0% {
+      transform: rotateY(0);
+    }
+    50% {
+      transform: rotateY(90deg);
+    }
+    100% {
+      transform: rotateY(0);
+    }
+  }
+
+
+ /* Animate the box shadow with color variation */
+.box-shadow-animation {
+    animation: pulseShadow 2s ease-in-out infinite alternate;
+  }
+  
+  @keyframes pulseShadow {
+    0% {
+      box-shadow: 0 0 0 0 rgba(0, 0, 255, 0.1), 0 0 0 0 rgba(255, 255, 0, 0.1);
+    }
+    100% {
+      box-shadow: 0 0 20px 10px rgba(0, 0, 255, 0.2), 0 0 20px 10px rgba(255, 255, 0, 0.2);
+    }
+  }
+  

@@ -1,0 +1,219 @@
+
+        {
+          "steps": [
+              {
+              "title": "feedbacks Info",
+              "parameters": {
+                  "fields": [
+                  {
+                      "name": "feedbacks",
+                      "type": "section",
+                      "hideInCreateForm": false,
+                      "visible": false,
+                      "required": false,
+                      "disabled": false,
+                      "validations": "",
+                      "dependancyCheck": false,
+                      "isPrefilled": false,
+                      "source": "req.body",
+                      "title": "Feedbacks",
+                      "childFields": [ 
+        {
+          "name": "id",
+          "label": "id",
+          "title": "",
+          "type": "textField",
+          "required": false,
+          "hideInCreateForm": true,
+          "hideInViewForm" : true,
+          "visible": true,
+          "disabled": false,
+          "dependancyCheck": false,
+          "isPrefilled": false,
+          "source": "req.query",
+          "min": "",
+          "max": "",
+          "selectServer": false,
+          "dynamicKey": "id"
+        }
+        
+            ,
+            {
+                "name": "feedbackText",
+                "label": "Feedback Text",
+                "title": "",
+                "type": "textField",
+                "required": false,
+                "hideInCreateForm": false,
+                "visible": true,
+                "disabled": false,
+                "dependancyCheck": false,
+                "isPrefilled": false,
+                "source": "req.body",
+                "min": "",
+                "max": "",
+                "validations": [],
+                "selectServer": false,
+                "selectServerUrl":"/null/dropdown?version=1.0",
+                "dynamicKey": "feedbacks_feedbackText",
+                "alias" : "feedbacks.feedback_text",
+                "options": []
+
+            }  
+        
+            ,
+            {
+                "name": "groupName",
+                "label": "Group Name",
+                "title": "",
+                "type": "textField",
+                "required": false,
+                "hideInCreateForm": true,
+                "visible": true,
+                "disabled": false,
+                "dependancyCheck": false,
+                "isPrefilled": false,
+                "source": "req.body",
+                "min": "",
+                "max": "",
+                "validations": [],
+                "selectServer": false,
+                "dynamicKey": "enrollements_groupName",
+                "alias" : "enrollements.group_name",
+                "options": [ ""]
+
+            }  
+            
+        
+                ,
+                {
+                    "name": "enrollementId",
+                    "label": "Enrollement Id",
+                    "title": "",
+                    "type": "select",
+                    "required": false,
+                    "hideInCreateForm": false,
+                    "hideInViewForm": true,
+                    "visible": false,
+                    "disabled": false,
+                    "dependancyCheck": false,
+                    "isPrefilled": false,
+                    "source": "req.body",
+                    "min": "",
+                    "max": "",
+                    "validations": [],
+                    "selectServer": true,
+                    "dynamicKey": "feedbacks_enrollementId",
+                    "selectServerUrl": "/enrollements/dropdown?version=1.0",
+                    "alias" : "feedbacks.enrollement_id"
+                }
+                
+                ,
+                {
+                    "name": "feedbackQuestionId",
+                    "label": "Feedback Question Id",
+                    "title": "",
+                    "type": "select",
+                    "required": false,
+                    "hideInCreateForm": false,
+                    "hideInViewForm": true,
+                    "visible": false,
+                    "disabled": false,
+                    "dependancyCheck": false,
+                    "isPrefilled": false,
+                    "source": "req.body",
+                    "min": "",
+                    "max": "",
+                    "validations": [],
+                    "selectServer": true,
+                    "dynamicKey": "feedbacks_feedbackQuestionId",
+                    "selectServerUrl": "/feedbackquestions/dropdown?version=1.0",
+                    "alias" : "feedbacks.feedback_question_id"
+                }
+                
+          
+          
+                ,
+                {
+                  "name": "createdAt",
+                  "label": "Created At",
+                  "title": "",
+                  "type": "dateTime",
+                  "required": false,
+                  "hideInCreateForm": true,
+                  "hideInViewForm" : true,
+                  "visible": false,
+                  "disabled": false,
+                  "dependancyCheck": false,
+                  "isPrefilled": false,
+                  "source": "req.body",
+                  "min": "",
+                  "max": "",
+                  "validations": [],
+                  "selectServer": false,
+                  "dynamicKey": "feedbacks_createdAt",
+                  "alias" : "feedbacks.created_at"
+                }
+                ,
+                {
+                  "name": "updatedAt",
+                  "label": "Updated At",
+                  "title": "",
+                  "type": "dateTime",
+                  "required": false,
+                  "hideInCreateForm": true,
+                  "hideInViewForm" : true,
+                  "visible": false,
+                  "disabled": false,
+                  "dependancyCheck": false,
+                  "isPrefilled": false,
+                  "source": "req.body",
+                  "min": "",
+                  "max": "",
+                  "validations": [],
+                  "selectServer": false,
+                  "dynamicKey": "feedbacks_updatedAt",
+                  "alias" : "feedbacks.updated_at"
+                }  
+
+          
+            ,
+            {
+                "name": "status",
+                "label": "Status",
+                "title": "",
+                "type": "select",
+                "required": false,
+                "hideInCreateForm": true,
+                "visible": false,
+                "disabled": false,
+                "dependancyCheck": false,
+                "isPrefilled": false,
+                "source": "req.body",
+                "min": "",
+                "max": "",
+                "validations": [],
+                "selectServer": false,
+                "dynamicKey": "feedbacks_status",
+                "options":[
+                    {"value":"inactive","label":"inactive"},
+                    {"value":"active","label":"active"}
+                ],
+                "alias" : "feedbacks.status"
+            }
+     
+                      ]
+                  }
+                  ]
+              },
+              "buttons": [
+                  {
+                  "type": "submit",
+                  "label": "Submit"
+                  }
+              ]
+              }
+          ],
+          "colMapper": "{feedbacks.feedback_id as feedbacks_feedbackId,feedbacks.enrollement_id as feedbacks_enrollementId,feedbacks.feedback_question_id as feedbacks_feedbackQuestionId,feedbacks.feedback_text as feedbacks_feedbackText,feedbacks.status as feedbacks_status,feedbacks.created_by as feedbacks_createdBy,feedbacks.updated_by as feedbacks_updatedBy,feedbacks.created_at as feedbacks_createdAt,feedbacks.updated_at as feedbacks_updatedAt}"
+          }
+        

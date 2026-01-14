@@ -1,0 +1,174 @@
+
+        {
+          "steps": [
+              {
+              "title": "employeepreferedtimeslots Info",
+              "parameters": {
+                  "fields": [
+                  {
+                      "name": "employeepreferedtimeslots",
+                      "type": "section",
+                      "hideInCreateForm": false,
+                      "visible": false,
+                      "required": false,
+                      "disabled": false,
+                      "validations": "",
+                      "dependancyCheck": false,
+                      "isPrefilled": false,
+                      "source": "req.body",
+                      "title": "Employeepreferedtimeslots",
+                      "childFields": [ 
+        {
+          "name": "id",
+          "label": "id",
+          "title": "",
+          "type": "textField",
+          "required": false,
+          "hideInCreateForm": true,
+          "hideInViewForm" : true,
+          "visible": true,
+          "disabled": false,
+          "dependancyCheck": false,
+          "isPrefilled": false,
+          "source": "req.query",
+          "min": "",
+          "max": "",
+          "selectServer": false,
+          "dynamicKey": "id"
+        }
+        
+            ,
+            {
+                "name": "employeeId",
+                "label": "Employee Id",
+                "title": "",
+                "type": "number",
+                "required": true,
+                "hideInCreateForm": false,
+                "visible": true,
+                "disabled": false,
+                "dependancyCheck": false,
+                "isPrefilled": false,
+                "source": "req.body",
+                "min": "",
+                "max": "",
+                "validations": [],
+                "selectServer": false,
+                "selectServerUrl":"/null/dropdown?version=1.0",
+                "dynamicKey": "employeepreferedtimeslots_employeeId",
+                "alias" : "employeepreferedtimeslots.employee_id",
+                "options": []
+
+            }
+            ,
+            {
+                "name": "timeSlotId",
+                "label": "Time Slot Id",
+                "title": "",
+                "type": "number",
+                "required": true,
+                "hideInCreateForm": false,
+                "visible": true,
+                "disabled": false,
+                "dependancyCheck": false,
+                "isPrefilled": false,
+                "source": "req.body",
+                "min": "",
+                "max": "",
+                "validations": [],
+                "selectServer": false,
+                "selectServerUrl":"/null/dropdown?version=1.0",
+                "dynamicKey": "employeepreferedtimeslots_timeSlotId",
+                "alias" : "employeepreferedtimeslots.time_slot_id",
+                "options": []
+
+            }  
+          
+            
+        
+          
+          
+                ,
+                {
+                  "name": "createdAt",
+                  "label": "Created At",
+                  "title": "",
+                  "type": "dateTime",
+                  "required": false,
+                  "hideInCreateForm": true,
+                  "hideInViewForm" : true,
+                  "visible": false,
+                  "disabled": false,
+                  "dependancyCheck": false,
+                  "isPrefilled": false,
+                  "source": "req.body",
+                  "min": "",
+                  "max": "",
+                  "validations": [],
+                  "selectServer": false,
+                  "dynamicKey": "employeepreferedtimeslots_createdAt",
+                  "alias" : "employeepreferedtimeslots.created_at"
+                }
+                ,
+                {
+                  "name": "updatedAt",
+                  "label": "Updated At",
+                  "title": "",
+                  "type": "dateTime",
+                  "required": false,
+                  "hideInCreateForm": true,
+                  "hideInViewForm" : true,
+                  "visible": false,
+                  "disabled": false,
+                  "dependancyCheck": false,
+                  "isPrefilled": false,
+                  "source": "req.body",
+                  "min": "",
+                  "max": "",
+                  "validations": [],
+                  "selectServer": false,
+                  "dynamicKey": "employeepreferedtimeslots_updatedAt",
+                  "alias" : "employeepreferedtimeslots.updated_at"
+                }  
+
+          
+            ,
+            {
+                "name": "status",
+                "label": "Status",
+                "title": "",
+                "type": "select",
+                "required": false,
+                "hideInCreateForm": true,
+                "visible": false,
+                "disabled": false,
+                "dependancyCheck": false,
+                "isPrefilled": false,
+                "source": "req.body",
+                "min": "",
+                "max": "",
+                "validations": [],
+                "selectServer": false,
+                "dynamicKey": "employeepreferedtimeslots_status",
+                "options":[
+                    {"value":"inactive","label":"inactive"},
+                    {"value":"active","label":"active"}
+                ],
+                "alias" : "employeepreferedtimeslots.status"
+            }
+     
+                      ]
+                  }
+                  ]
+              },
+              "buttons": [
+                  {
+                  "type": "submit",
+                  "label": "Submit"
+                  }
+              ]
+              }
+          ],
+          "colMapper": "{employeepreferedtimeslots.employee_prefered_time_slots_id as employeepreferedtimeslots_employeePreferedTimeSlotsId,employeepreferedtimeslots.employee_id as employeepreferedtimeslots_employeeId,employeepreferedtimeslots.time_slot_id as employeepreferedtimeslots_timeSlotId,employeepreferedtimeslots.status as employeepreferedtimeslots_status,employeepreferedtimeslots.created_by as employeepreferedtimeslots_createdBy,employeepreferedtimeslots.updated_by as employeepreferedtimeslots_updatedBy,employeepreferedtimeslots.created_at as employeepreferedtimeslots_createdAt,employeepreferedtimeslots.updated_at as employeepreferedtimeslots_updatedAt}"
+          }
+        

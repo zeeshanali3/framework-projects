@@ -1,0 +1,174 @@
+
+        {
+          "steps": [
+              {
+              "title": "departments Info",
+              "parameters": {
+                  "fields": [
+                  {
+                      "name": "departments",
+                      "type": "section",
+                      "hideInCreateForm": false,
+                      "visible": false,
+                      "required": false,
+                      "disabled": false,
+                      "validations": "",
+                      "dependancyCheck": false,
+                      "isPrefilled": false,
+                      "source": "req.body",
+                      "title": "Departments",
+                      "childFields": [ 
+        {
+          "name": "id",
+          "label": "id",
+          "title": "",
+          "type": "textField",
+          "required": false,
+          "hideInCreateForm": true,
+          "hideInViewForm" : true,
+          "visible": true,
+          "disabled": false,
+          "dependancyCheck": false,
+          "isPrefilled": false,
+          "source": "req.query",
+          "min": "",
+          "max": "",
+          "selectServer": false,
+          "dynamicKey": "id"
+        }
+        
+            ,
+            {
+                "name": "departmentName",
+                "label": "Department Name",
+                "title": "",
+                "type": "textField",
+                "required": false,
+                "hideInCreateForm": false,
+                "visible": true,
+                "disabled": false,
+                "dependancyCheck": false,
+                "isPrefilled": false,
+                "source": "req.body",
+                "min": "",
+                "max": "",
+                "validations": [],
+                "selectServer": false,
+                "selectServerUrl":"/null/dropdown?version=1.0",
+                "dynamicKey": "departments_departmentName",
+                "alias" : "departments.department_name",
+                "options": []
+
+            }
+            ,
+            {
+                "name": "employeeId",
+                "label": "Employee Id",
+                "title": "",
+                "type": "select",
+                "required": false,
+                "hideInCreateForm": false,
+                "visible": true,
+                "disabled": false,
+                "dependancyCheck": false,
+                "isPrefilled": false,
+                "source": "req.body",
+                "min": "",
+                "max": "",
+                "validations": [],
+                "selectServer": true,
+                "selectServerUrl":"/employees/dropdown?version=1.0",
+                "dynamicKey": "departments_employeeId",
+                "alias" : "departments.employee_id",
+                "options": []
+
+            }  
+          
+            
+        
+          
+          
+                ,
+                {
+                  "name": "createdAt",
+                  "label": "Created At",
+                  "title": "",
+                  "type": "dateTime",
+                  "required": false,
+                  "hideInCreateForm": true,
+                  "hideInViewForm" : true,
+                  "visible": false,
+                  "disabled": false,
+                  "dependancyCheck": false,
+                  "isPrefilled": false,
+                  "source": "req.body",
+                  "min": "",
+                  "max": "",
+                  "validations": [],
+                  "selectServer": false,
+                  "dynamicKey": "departments_createdAt",
+                  "alias" : "departments.created_at"
+                }
+                ,
+                {
+                  "name": "updatedAt",
+                  "label": "Updated At",
+                  "title": "",
+                  "type": "dateTime",
+                  "required": false,
+                  "hideInCreateForm": true,
+                  "hideInViewForm" : true,
+                  "visible": false,
+                  "disabled": false,
+                  "dependancyCheck": false,
+                  "isPrefilled": false,
+                  "source": "req.body",
+                  "min": "",
+                  "max": "",
+                  "validations": [],
+                  "selectServer": false,
+                  "dynamicKey": "departments_updatedAt",
+                  "alias" : "departments.updated_at"
+                }  
+
+          
+            ,
+            {
+                "name": "status",
+                "label": "Status",
+                "title": "",
+                "type": "select",
+                "required": false,
+                "hideInCreateForm": true,
+                "visible": false,
+                "disabled": false,
+                "dependancyCheck": false,
+                "isPrefilled": false,
+                "source": "req.body",
+                "min": "",
+                "max": "",
+                "validations": [],
+                "selectServer": false,
+                "dynamicKey": "departments_status",
+                "options":[
+                    {"value":"inactive","label":"inactive"},
+                    {"value":"active","label":"active"}
+                ],
+                "alias" : "departments.status"
+            }
+     
+                      ]
+                  }
+                  ]
+              },
+              "buttons": [
+                  {
+                  "type": "submit",
+                  "label": "Submit"
+                  }
+              ]
+              }
+          ],
+          "colMapper": "{departments.department_id as departments_departmentId,departments.department_name as departments_departmentName,departments.employee_id as departments_employeeId,departments.status as departments_status,departments.created_by as departments_createdBy,departments.updated_by as departments_updatedBy,departments.created_at as departments_createdAt,departments.updated_at as departments_updatedAt}"
+          }
+        

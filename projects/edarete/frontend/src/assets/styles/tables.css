@@ -1,0 +1,80 @@
+/* General Styling */
+.MuiDataGrid-root {
+  border: 1px solid #ddd;
+  width: 100%;
+  max-width: 100%;
+}
+
+.MuiDataGrid-cell {
+  border-bottom: 1px solid #ddd;
+  border-right: 1px solid #ddd;
+}
+
+.table-container {
+  margin: 15px;
+}
+
+.data-grid-container {
+  margin: 20px 0;
+}
+
+/* Header and Footer Styling */
+.MuiDataGrid-columnHeaders {
+  background-color: #3498db !important;
+  border-bottom: 1px solid #ddd !important;
+  color: white !important;
+  font-size: 14px !important;
+  font-weight: bold !important;
+}
+
+.MuiDataGrid-footerContainer {
+  border-top: 1px solid #ddd;
+  background-color: #ffffff !important;
+}
+
+/* Checkbox Styling */
+.MuiCheckbox-root {
+  color: #27ae60;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .MuiDataGrid-root {
+    overflow: auto;
+  }
+}
+
+/* Buttons Styling */
+.Buttons-text {
+  text-transform: capitalize;
+  border-radius: 8px;
+  font-weight: 500;
+  font-size: 13px;
+  padding: 12px 20px;
+  color: #fff !important;
+  background-color: #27ae60; /* Green Button Color */
+}
+
+/* Additional Styling */
+.secondHeader {
+  display: flex;
+  justify-content: space-between;
+}
+
+.flex {
+  display: flex;
+}
+
+.icon-style {
+  background: #ffffff;
+  color: #333;
+}
+
+.header,
+.footer {
+  background-color: #f5f7fa;
+}
+
+.border {
+  border-radius: 8px;
+}

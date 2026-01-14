@@ -1,0 +1,197 @@
+
+        {
+          "steps": [
+              {
+              "title": "alumni Info",
+              "parameters": {
+                  "fields": [
+                  {
+                      "name": "alumni",
+                      "type": "section",
+                      "hideInCreateForm": false,
+                      "visible": false,
+                      "required": false,
+                      "disabled": false,
+                      "validations": "",
+                      "dependancyCheck": false,
+                      "isPrefilled": false,
+                      "source": "req.body",
+                      "title": "Alumni",
+                      "childFields": [ 
+        {
+          "name": "id",
+          "label": "id",
+          "title": "",
+          "type": "textField",
+          "required": false,
+          "hideInCreateForm": true,
+          "hideInViewForm" : true,
+          "visible": true,
+          "disabled": false,
+          "dependancyCheck": false,
+          "isPrefilled": false,
+          "source": "req.query",
+          "min": "",
+          "max": "",
+          "selectServer": false,
+          "dynamicKey": "id"
+        }
+        
+            ,
+            {
+                "name": "userRoleId",
+                "label": "User Role Id",
+                "title": "",
+                "type": "number",
+                "required": false,
+                "hideInCreateForm": false,
+                "visible": true,
+                "disabled": false,
+                "dependancyCheck": false,
+                "isPrefilled": false,
+                "source": "req.body",
+                "min": "",
+                "max": "",
+                "validations": [],
+                "selectServer": false,
+                "selectServerUrl":"/null/dropdown?version=1.0",
+                "dynamicKey": "alumni_userRoleId",
+                "alias" : "alumni.user_role_id",
+                "options": []
+
+            }
+            ,
+            {
+                "name": "graduatingYear",
+                "label": "Graduating Year",
+                "title": "",
+                "type": "textField",
+                "required": false,
+                "hideInCreateForm": false,
+                "visible": true,
+                "disabled": false,
+                "dependancyCheck": false,
+                "isPrefilled": false,
+                "source": "req.body",
+                "min": "",
+                "max": "",
+                "validations": [],
+                "selectServer": false,
+                "selectServerUrl":"/null/dropdown?version=1.0",
+                "dynamicKey": "alumni_graduatingYear",
+                "alias" : "alumni.graduating_year",
+                "options": []
+
+            }
+            ,
+            {
+                "name": "employementDetail",
+                "label": "Employement Detail",
+                "title": "",
+                "type": "textField",
+                "required": false,
+                "hideInCreateForm": false,
+                "visible": true,
+                "disabled": false,
+                "dependancyCheck": false,
+                "isPrefilled": false,
+                "source": "req.body",
+                "min": "",
+                "max": "",
+                "validations": [],
+                "selectServer": false,
+                "selectServerUrl":"/null/dropdown?version=1.0",
+                "dynamicKey": "alumni_employementDetail",
+                "alias" : "alumni.employement_detail",
+                "options": []
+
+            }  
+          
+            
+        
+          
+          
+                ,
+                {
+                  "name": "createdAt",
+                  "label": "Created At",
+                  "title": "",
+                  "type": "dateTime",
+                  "required": false,
+                  "hideInCreateForm": true,
+                  "hideInViewForm" : true,
+                  "visible": false,
+                  "disabled": false,
+                  "dependancyCheck": false,
+                  "isPrefilled": false,
+                  "source": "req.body",
+                  "min": "",
+                  "max": "",
+                  "validations": [],
+                  "selectServer": false,
+                  "dynamicKey": "alumni_createdAt",
+                  "alias" : "alumni.created_at"
+                }
+                ,
+                {
+                  "name": "updatedAt",
+                  "label": "Updated At",
+                  "title": "",
+                  "type": "dateTime",
+                  "required": false,
+                  "hideInCreateForm": true,
+                  "hideInViewForm" : true,
+                  "visible": false,
+                  "disabled": false,
+                  "dependancyCheck": false,
+                  "isPrefilled": false,
+                  "source": "req.body",
+                  "min": "",
+                  "max": "",
+                  "validations": [],
+                  "selectServer": false,
+                  "dynamicKey": "alumni_updatedAt",
+                  "alias" : "alumni.updated_at"
+                }  
+
+          
+            ,
+            {
+                "name": "status",
+                "label": "Status",
+                "title": "",
+                "type": "select",
+                "required": false,
+                "hideInCreateForm": true,
+                "visible": false,
+                "disabled": false,
+                "dependancyCheck": false,
+                "isPrefilled": false,
+                "source": "req.body",
+                "min": "",
+                "max": "",
+                "validations": [],
+                "selectServer": false,
+                "dynamicKey": "alumni_status",
+                "options":[
+                    {"value":"inactive","label":"inactive"},
+                    {"value":"active","label":"active"}
+                ],
+                "alias" : "alumni.status"
+            }
+     
+                      ]
+                  }
+                  ]
+              },
+              "buttons": [
+                  {
+                  "type": "submit",
+                  "label": "Submit"
+                  }
+              ]
+              }
+          ],
+          "colMapper": "{alumni.alumni_id as alumni_alumniId,alumni.user_role_id as alumni_userRoleId,alumni.graduating_year as alumni_graduatingYear,alumni.employement_detail as alumni_employementDetail,alumni.status as alumni_status,alumni.created_by as alumni_createdBy,alumni.updated_by as alumni_updatedBy,alumni.created_at as alumni_createdAt,alumni.updated_at as alumni_updatedAt}"
+          }
+        

@@ -1,0 +1,24 @@
+.successBadge {
+    color: #00B69B;
+    background-color: #E7F8F5;
+    padding: 4px 8px;
+    border-radius: 4px;
+    display: inline-block;
+  }
+  
+  .dangerBadge {
+    color: #EE358C;
+    background-color:#FDEBF3 ;
+    padding: 4px 8px;
+    border-radius: 4px;
+    display: inline-block;
+  }
+  
+  .primaryBadge {
+    color: #757FEF;
+    background-color: #F1F2FD;
+    padding: 4px 8px;
+    border-radius: 4px;
+    display: inline-block;
+  }
+  

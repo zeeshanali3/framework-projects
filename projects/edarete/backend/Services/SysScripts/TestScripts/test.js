@@ -1,0 +1,3 @@
+const verifyToken = require("../../SysFunctions/auth");
+
+logMessage([verifyToken("eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiIxIiwiZGV2aWNlSWQiOiIxIiwiT1RQIjpudWxsLCJleHAiOjE3NTcwNzg5MTgsInByb3ZpZGVkUGVybWlzc2lvbnMiOlsiZ2V0QWNjZXNzVG9rZW4iXSwiaWF0IjoxNzU3MDcxNzE4fQ.XZF0aiB13bVOkuGJX86dGd4mJxZxytTV8m_tfpVQ0BI")])

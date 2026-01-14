@@ -1,0 +1,108 @@
+
+        {
+          "steps": [
+              {
+              "title": "institutes Info",
+              "parameters": {
+                  "fields": [
+                  {
+                      "name": "institutes",
+                      "type": "section",
+                      "hideInCreateForm": false,
+                      "visible": false,
+                      "required": false,
+                      "disabled": false,
+                      "validations": "",
+                      "dependancyCheck": false,
+                      "isPrefilled": false,
+                      "source": "req.body",
+                      "title": "Institutes",
+                      "childFields": [ 
+        {
+          "name": "id",
+          "label": "id",
+          "title": "",
+          "type": "textField",
+          "required": false,
+          "hideInCreateForm": true,
+          "hideInViewForm" : true,
+          "visible": true,
+          "disabled": false,
+          "dependancyCheck": false,
+          "isPrefilled": false,
+          "source": "req.query",
+          "min": "",
+          "max": "",
+          "selectServer": false,
+          "dynamicKey": "id"
+        }
+        
+            ,
+            {
+                "name": "instituteName",
+                "label": "Institute Name",
+                "title": "",
+                "type": "textField",
+                "required": true,
+                "hideInCreateForm": false,
+                "visible": true,
+                "disabled": false,
+                "dependancyCheck": false,
+                "isPrefilled": false,
+                "source": "req.body",
+                "min": "",
+                "max": "",
+                "validations": [],
+                "selectServer": false,
+                "selectServerUrl":"/null/dropdown?version=1.0",
+                "dynamicKey": "institutes_instituteName",
+                "alias" : "institutes.institute_name",
+                "options": []
+
+            }
+            ,
+            {
+                "name": "instituteEmailDomain",
+                "label": "Institute Email Domain",
+                "title": "",
+                "type": "textField",
+                "required": true,
+                "hideInCreateForm": false,
+                "visible": true,
+                "disabled": false,
+                "dependancyCheck": false,
+                "isPrefilled": false,
+                "source": "req.body",
+                "min": "",
+                "max": "",
+                "validations": [],
+                "selectServer": false,
+                "selectServerUrl":"/null/dropdown?version=1.0",
+                "dynamicKey": "institutes_instituteEmailDomain",
+                "alias" : "institutes.institute_email_domain",
+                "options": []
+
+            }  
+          
+            
+        
+          
+            
+
+          
+     
+                      ]
+                  }
+                  ]
+              },
+              "buttons": [
+                  {
+                  "type": "submit",
+                  "label": "Submit"
+                  }
+              ]
+              }
+          ],
+          "colMapper": "{institutes.institute_id as institutes_instituteId,institutes.institute_name as institutes_instituteName,institutes.institute_email_domain as institutes_instituteEmailDomain}"
+          }
+        

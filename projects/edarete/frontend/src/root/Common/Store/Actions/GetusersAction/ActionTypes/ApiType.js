@@ -1,0 +1,2 @@
+const ADMIN_GET_USERS ="ADMIN_GET_USERS";
+export default ADMIN_GET_USERS;

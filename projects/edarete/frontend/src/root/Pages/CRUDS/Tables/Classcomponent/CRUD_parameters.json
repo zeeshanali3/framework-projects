@@ -1,0 +1,224 @@
+{
+  "steps": [
+    {
+      "title": "classcomponent Info",
+      "parameters": {
+        "fields": [
+          {
+            "name": "classcomponent",
+            "type": "section",
+            "hideInCreateForm": false,
+            "visible": false,
+            "required": false,
+            "disabled": false,
+            "validations": "",
+            "dependancyCheck": false,
+            "isPrefilled": false,
+            "source": "req.body",
+            "title": "Classcomponent",
+            "childFields": [
+              {
+                "name": "id",
+                "label": "id",
+                "title": "",
+                "type": "textField",
+                "required": false,
+                "hideInCreateForm": true,
+                "hideInViewForm": true,
+                "visible": true,
+                "disabled": false,
+                "dependancyCheck": false,
+                "isPrefilled": false,
+                "source": "req.query",
+                "min": "",
+                "max": "",
+                "selectServer": false,
+                "dynamicKey": "id"
+              },
+
+              {
+                "name": "courseId",
+                "label": "Course Id",
+                "title": "",
+                "type": "select",
+                "required": false,
+                "hideInCreateForm": false,
+                "visible": true,
+                "disabled": false,
+                "dependancyCheck": false,
+                "isPrefilled": false,
+                "source": "req.body",
+                "min": "",
+                "max": "",
+                "validations": [],
+                "selectServer": true,
+                "selectServerUrl": "/courses/dropdown?version=1.0",
+                "dynamicKey": "classcomponent_courseId",
+                "alias": "classcomponent.course_id",
+                "options": []
+              },
+              {
+                "name": "componentType",
+                "label": "Component Type",
+                "title": "",
+                "type": "textField",
+                "required": false,
+                "hideInCreateForm": false,
+                "visible": true,
+                "disabled": false,
+                "dependancyCheck": false,
+                "isPrefilled": false,
+                "source": "req.body",
+                "min": "",
+                "max": "",
+                "validations": [],
+                "selectServer": false,
+                "selectServerUrl": "/null/dropdown?version=1.0",
+                "dynamicKey": "classcomponent_componentType",
+                "alias": "classcomponent.component_type",
+                "options": []
+              },
+              {
+                "name": "componentName",
+                "label": "Component Name",
+                "title": "",
+                "type": "textField",
+                "required": false,
+                "hideInCreateForm": false,
+                "visible": true,
+                "disabled": false,
+                "dependancyCheck": false,
+                "isPrefilled": false,
+                "source": "req.body",
+                "min": "",
+                "max": "",
+                "validations": [],
+                "selectServer": false,
+                "selectServerUrl": "/null/dropdown?version=1.0",
+                "dynamicKey": "classcomponent_componentName",
+                "alias": "classcomponent.component_name",
+                "options": []
+              },
+              {
+                "name": "weightage",
+                "label": "Weightage",
+                "title": "",
+                "type": "textField",
+                "required": false,
+                "hideInCreateForm": false,
+                "visible": true,
+                "disabled": false,
+                "dependancyCheck": false,
+                "isPrefilled": false,
+                "source": "req.body",
+                "min": "",
+                "max": "",
+                "validations": [],
+                "selectServer": false,
+                "selectServerUrl": "/null/dropdown?version=1.0",
+                "dynamicKey": "classcomponent_weightage",
+                "alias": "classcomponent.weightage",
+                "options": []
+              },
+              {
+                "name": "componentPolicy",
+                "label": "Component Policy",
+                "title": "",
+                "type": "textField",
+                "required": false,
+                "hideInCreateForm": false,
+                "visible": true,
+                "disabled": false,
+                "dependancyCheck": false,
+                "isPrefilled": false,
+                "source": "req.body",
+                "min": "",
+                "max": "",
+                "validations": [],
+                "selectServer": false,
+                "selectServerUrl": "/null/dropdown?version=1.0",
+                "dynamicKey": "classcomponent_componentPolicy",
+                "alias": "classcomponent.component_policy",
+                "options": []
+              },
+
+         
+
+              {
+                "name": "createdAt",
+                "label": "Created At",
+                "title": "",
+                "type": "dateTime",
+                "required": false,
+                "hideInCreateForm": true,
+                "hideInViewForm": true,
+                "visible": false,
+                "disabled": false,
+                "dependancyCheck": false,
+                "isPrefilled": false,
+                "source": "req.body",
+                "min": "",
+                "max": "",
+                "validations": [],
+                "selectServer": false,
+                "dynamicKey": "classcomponent_createdAt",
+                "alias": "classcomponent.created_at"
+              },
+              {
+                "name": "updatedAt",
+                "label": "Updated At",
+                "title": "",
+                "type": "dateTime",
+                "required": false,
+                "hideInCreateForm": true,
+                "hideInViewForm": true,
+                "visible": false,
+                "disabled": false,
+                "dependancyCheck": false,
+                "isPrefilled": false,
+                "source": "req.body",
+                "min": "",
+                "max": "",
+                "validations": [],
+                "selectServer": false,
+                "dynamicKey": "classcomponent_updatedAt",
+                "alias": "classcomponent.updated_at"
+              },
+
+              {
+                "name": "status",
+                "label": "Status",
+                "title": "",
+                "type": "select",
+                "required": false,
+                "hideInCreateForm": true,
+                "visible": false,
+                "disabled": false,
+                "dependancyCheck": false,
+                "isPrefilled": false,
+                "source": "req.body",
+                "min": "",
+                "max": "",
+                "validations": [],
+                "selectServer": false,
+                "dynamicKey": "classcomponent_status",
+                "options": [
+                  { "value": "inactive", "label": "inactive" },
+                  { "value": "active", "label": "active" }
+                ],
+                "alias": "classcomponent.status"
+              }
+            ]
+          }
+        ]
+      },
+      "buttons": [
+        {
+          "type": "submit",
+          "label": "Submit"
+        }
+      ]
+    }
+  ],
+  "colMapper": "{classcomponent.component_id as classcomponent_componentId,classcomponent.course_id as classcomponent_courseId,classcomponent.component_type as classcomponent_componentType,classcomponent.component_name as classcomponent_componentName,classcomponent.weightage as classcomponent_weightage,classcomponent.component_policy as classcomponent_componentPolicy,classcomponent.status as classcomponent_status,classcomponent.created_by as classcomponent_createdBy,classcomponent.updated_by as classcomponent_updatedBy,classcomponent.created_at as classcomponent_createdAt,classcomponent.updated_at as classcomponent_updatedAt}"
+}

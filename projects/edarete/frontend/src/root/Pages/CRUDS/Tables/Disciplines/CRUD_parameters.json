@@ -1,0 +1,108 @@
+
+        {
+          "steps": [
+              {
+              "title": "disciplines Info",
+              "parameters": {
+                  "fields": [
+                  {
+                      "name": "disciplines",
+                      "type": "section",
+                      "hideInCreateForm": false,
+                      "visible": false,
+                      "required": false,
+                      "disabled": false,
+                      "validations": "",
+                      "dependancyCheck": false,
+                      "isPrefilled": false,
+                      "source": "req.body",
+                      "title": "Disciplines",
+                      "childFields": [ 
+        {
+          "name": "id",
+          "label": "id",
+          "title": "",
+          "type": "textField",
+          "required": false,
+          "hideInCreateForm": true,
+          "hideInViewForm" : true,
+          "visible": true,
+          "disabled": false,
+          "dependancyCheck": false,
+          "isPrefilled": false,
+          "source": "req.query",
+          "min": "",
+          "max": "",
+          "selectServer": false,
+          "dynamicKey": "id"
+        }
+        
+            ,
+            {
+                "name": "disciplineName",
+                "label": "Discipline Name",
+                "title": "",
+                "type": "textField",
+                "required": true,
+                "hideInCreateForm": false,
+                "visible": true,
+                "disabled": false,
+                "dependancyCheck": false,
+                "isPrefilled": false,
+                "source": "req.body",
+                "min": "",
+                "max": "",
+                "validations": [],
+                "selectServer": false,
+                "selectServerUrl":"/null/dropdown?version=1.0",
+                "dynamicKey": "disciplines_disciplineName",
+                "alias" : "disciplines.discipline_name",
+                "options": []
+
+            }
+            ,
+            {
+                "name": "disciplinePrefix",
+                "label": "Discipline Prefix",
+                "title": "",
+                "type": "textField",
+                "required": true,
+                "hideInCreateForm": false,
+                "visible": true,
+                "disabled": false,
+                "dependancyCheck": false,
+                "isPrefilled": false,
+                "source": "req.body",
+                "min": "",
+                "max": "",
+                "validations": [],
+                "selectServer": false,
+                "selectServerUrl":"/null/dropdown?version=1.0",
+                "dynamicKey": "disciplines_disciplinePrefix",
+                "alias" : "disciplines.discipline_prefix",
+                "options": []
+
+            }  
+          
+            
+        
+          
+            
+
+          
+     
+                      ]
+                  }
+                  ]
+              },
+              "buttons": [
+                  {
+                  "type": "submit",
+                  "label": "Submit"
+                  }
+              ]
+              }
+          ],
+          "colMapper": "{disciplines.discipline_id as disciplines_disciplineId,disciplines.discipline_name as disciplines_disciplineName,disciplines.discipline_prefix as disciplines_disciplinePrefix}"
+          }
+        

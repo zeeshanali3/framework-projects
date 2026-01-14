@@ -1,0 +1,342 @@
+
+        {
+          "steps": [
+              {
+              "title": "topicquestions Info",
+              "parameters": {
+                  "fields": [
+                  {
+                      "name": "topicquestions",
+                      "type": "section",
+                      "hideInCreateForm": false,
+                      "visible": false,
+                      "required": false,
+                      "disabled": false,
+                      "validations": "",
+                      "dependancyCheck": false,
+                      "isPrefilled": false,
+                      "source": "req.body",
+                      "title": "Topicquestions",
+                      "childFields": [ 
+        {
+          "name": "id",
+          "label": "id",
+          "title": "",
+          "type": "textField",
+          "required": false,
+          "hideInCreateForm": true,
+          "hideInViewForm" : true,
+          "visible": true,
+          "disabled": false,
+          "dependancyCheck": false,
+          "isPrefilled": false,
+          "source": "req.query",
+          "min": "",
+          "max": "",
+          "selectServer": false,
+          "dynamicKey": "id"
+        }
+        
+            ,
+            {
+                "name": "lectureTopicId",
+                "label": "Lecture Topic Id",
+                "title": "",
+                "type": "number",
+                "required": false,
+                "hideInCreateForm": false,
+                "visible": true,
+                "disabled": false,
+                "dependancyCheck": false,
+                "isPrefilled": false,
+                "source": "req.body",
+                "min": "",
+                "max": "",
+                "validations": [],
+                "selectServer": false,
+                "selectServerUrl":"/null/dropdown?version=1.0",
+                "dynamicKey": "topicquestions_lectureTopicId",
+                "alias" : "topicquestions.lecture_topic_id",
+                "options": []
+
+            }
+            ,
+            {
+                "name": "questionType",
+                "label": "Question Type",
+                "title": "",
+                "type": "textField",
+                "required": false,
+                "hideInCreateForm": false,
+                "visible": true,
+                "disabled": false,
+                "dependancyCheck": false,
+                "isPrefilled": false,
+                "source": "req.body",
+                "min": "",
+                "max": "",
+                "validations": [],
+                "selectServer": false,
+                "selectServerUrl":"/null/dropdown?version=1.0",
+                "dynamicKey": "topicquestions_questionType",
+                "alias" : "topicquestions.question_type",
+                "options": []
+
+            }
+            ,
+            {
+                "name": "question",
+                "label": "Question",
+                "title": "",
+                "type": "textField",
+                "required": false,
+                "hideInCreateForm": false,
+                "visible": true,
+                "disabled": false,
+                "dependancyCheck": false,
+                "isPrefilled": false,
+                "source": "req.body",
+                "min": "",
+                "max": "",
+                "validations": [],
+                "selectServer": false,
+                "selectServerUrl":"/null/dropdown?version=1.0",
+                "dynamicKey": "topicquestions_question",
+                "alias" : "topicquestions.question",
+                "options": []
+
+            }
+            ,
+            {
+                "name": "isDone",
+                "label": "Is Done",
+                "title": "",
+                "type": "checkbox",
+                "required": false,
+                "hideInCreateForm": false,
+                "visible": true,
+                "disabled": false,
+                "dependancyCheck": false,
+                "isPrefilled": false,
+                "source": "req.body",
+                "min": "",
+                "max": "",
+                "validations": [],
+                "selectServer": false,
+                "selectServerUrl":"/null/dropdown?version=1.0",
+                "dynamicKey": "topicquestions_isDone",
+                "alias" : "topicquestions.is_done",
+                "options": []
+
+            }
+            ,
+            {
+                "name": "createdAtTime",
+                "label": "Created At Time",
+                "title": "",
+                "type": "textField",
+                "required": false,
+                "hideInCreateForm": false,
+                "visible": true,
+                "disabled": false,
+                "dependancyCheck": false,
+                "isPrefilled": false,
+                "source": "req.body",
+                "min": "",
+                "max": "",
+                "validations": [],
+                "selectServer": false,
+                "selectServerUrl":"/null/dropdown?version=1.0",
+                "dynamicKey": "topicquestions_createdAtTime",
+                "alias" : "topicquestions.created_at_time",
+                "options": []
+
+            }
+            ,
+            {
+                "name": "updatedAtTime",
+                "label": "Updated At Time",
+                "title": "",
+                "type": "textField",
+                "required": false,
+                "hideInCreateForm": false,
+                "visible": true,
+                "disabled": false,
+                "dependancyCheck": false,
+                "isPrefilled": false,
+                "source": "req.body",
+                "min": "",
+                "max": "",
+                "validations": [],
+                "selectServer": false,
+                "selectServerUrl":"/null/dropdown?version=1.0",
+                "dynamicKey": "topicquestions_updatedAtTime",
+                "alias" : "topicquestions.updated_at_time",
+                "options": []
+
+            }  
+          
+            
+        
+        
+          ,
+          {
+              "name": "createdAtDate",
+              "label": "Created At Date",
+              "title": "",
+              "type": "datetime",
+                "required": false,
+              "hideInCreateForm": false,
+              "visible": true,
+              "disabled": false,
+              "dependancyCheck": false,
+              "isPrefilled": false,
+              "source": "req.body",
+              "min": "",
+              "max": "",
+              "validations": [],
+              "selectServer": false,
+              "dynamicKey": "topicquestions_createdAtDate"
+          }
+          ,
+          {
+              "name": "createdAtTime",
+              "label": "Created At Time",
+              "title": "",
+              "type": "time",
+                "required": false,
+              "hideInCreateForm": false,
+              "visible": true,
+              "disabled": false,
+              "dependancyCheck": false,
+              "isPrefilled": false,
+              "source": "req.body",
+              "min": "",
+              "max": "",
+              "validations": [],
+              "selectServer": false,
+              "dynamicKey": "topicquestions_createdAtTime"
+          }
+          ,
+          {
+              "name": "updatedAtDate",
+              "label": "Updated At Date",
+              "title": "",
+              "type": "datetime",
+                "required": false,
+              "hideInCreateForm": false,
+              "visible": true,
+              "disabled": false,
+              "dependancyCheck": false,
+              "isPrefilled": false,
+              "source": "req.body",
+              "min": "",
+              "max": "",
+              "validations": [],
+              "selectServer": false,
+              "dynamicKey": "topicquestions_updatedAtDate"
+          }
+          ,
+          {
+              "name": "updatedAtTime",
+              "label": "Updated At Time",
+              "title": "",
+              "type": "time",
+                "required": false,
+              "hideInCreateForm": false,
+              "visible": true,
+              "disabled": false,
+              "dependancyCheck": false,
+              "isPrefilled": false,
+              "source": "req.body",
+              "min": "",
+              "max": "",
+              "validations": [],
+              "selectServer": false,
+              "dynamicKey": "topicquestions_updatedAtTime"
+          }  
+          
+                ,
+                {
+                  "name": "createdAt",
+                  "label": "Created At",
+                  "title": "",
+                  "type": "dateTime",
+                  "required": false,
+                  "hideInCreateForm": true,
+                  "hideInViewForm" : true,
+                  "visible": false,
+                  "disabled": false,
+                  "dependancyCheck": false,
+                  "isPrefilled": false,
+                  "source": "req.body",
+                  "min": "",
+                  "max": "",
+                  "validations": [],
+                  "selectServer": false,
+                  "dynamicKey": "topicquestions_createdAt",
+                  "alias" : "topicquestions.created_at"
+                }
+                ,
+                {
+                  "name": "updatedAt",
+                  "label": "Updated At",
+                  "title": "",
+                  "type": "dateTime",
+                  "required": false,
+                  "hideInCreateForm": true,
+                  "hideInViewForm" : true,
+                  "visible": false,
+                  "disabled": false,
+                  "dependancyCheck": false,
+                  "isPrefilled": false,
+                  "source": "req.body",
+                  "min": "",
+                  "max": "",
+                  "validations": [],
+                  "selectServer": false,
+                  "dynamicKey": "topicquestions_updatedAt",
+                  "alias" : "topicquestions.updated_at"
+                }  
+
+          
+            ,
+            {
+                "name": "status",
+                "label": "Status",
+                "title": "",
+                "type": "select",
+                "required": false,
+                "hideInCreateForm": true,
+                "visible": false,
+                "disabled": false,
+                "dependancyCheck": false,
+                "isPrefilled": false,
+                "source": "req.body",
+                "min": "",
+                "max": "",
+                "validations": [],
+                "selectServer": false,
+                "dynamicKey": "topicquestions_status",
+                "options":[
+                    {"value":"inactive","label":"inactive"},
+                    {"value":"active","label":"active"}
+                ],
+                "alias" : "topicquestions.status"
+            }
+     
+                      ]
+                  }
+                  ]
+              },
+              "buttons": [
+                  {
+                  "type": "submit",
+                  "label": "Submit"
+                  }
+              ]
+              }
+          ],
+          "colMapper": "{topicquestions.topic_question_id as topicquestions_topicQuestionId,topicquestions.lecture_topic_id as topicquestions_lectureTopicId,topicquestions.question_type as topicquestions_questionType,topicquestions.question as topicquestions_question,topicquestions.is_done as topicquestions_isDone,topicquestions.created_at_date as topicquestions_createdAtDate,topicquestions.created_at_time as topicquestions_createdAtTime,topicquestions.updated_at_date as topicquestions_updatedAtDate,topicquestions.updated_at_time as topicquestions_updatedAtTime,topicquestions.status as topicquestions_status,topicquestions.created_by as topicquestions_createdBy,topicquestions.updated_by as topicquestions_updatedBy,topicquestions.created_at as topicquestions_createdAt,topicquestions.updated_at as topicquestions_updatedAt}"
+          }
+        

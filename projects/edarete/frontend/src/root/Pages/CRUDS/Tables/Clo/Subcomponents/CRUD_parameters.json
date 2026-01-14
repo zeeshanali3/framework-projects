@@ -1,0 +1,368 @@
+
+        {
+          "steps": [
+              {
+              "title": "subcomponents Info",
+              "parameters": {
+                  "fields": [
+                  {
+                      "name": "subcomponents",
+                      "type": "section",
+                      "hideInCreateForm": false,
+                      "visible": false,
+                      "required": false,
+                      "disabled": false,
+                      "validations": "",
+                      "dependancyCheck": false,
+                      "isPrefilled": false,
+                      "source": "req.body",
+                      "title": "Subcomponents",
+                      "childFields": [ 
+        {
+          "name": "id",
+          "label": "id",
+          "title": "",
+          "type": "textField",
+          "required": false,
+          "hideInCreateForm": true,
+          "hideInViewForm" : true,
+          "visible": true,
+          "disabled": false,
+          "dependancyCheck": false,
+          "isPrefilled": false,
+          "source": "req.query",
+          "min": "",
+          "max": "",
+          "selectServer": false,
+          "dynamicKey": "id"
+        }
+        
+            ,
+            {
+                "name": "subComponentNum",
+                "label": "Sub Component Num",
+                "title": "",
+                "type": "textField",
+                "required": false,
+                "hideInCreateForm": false,
+                "visible": true,
+                "disabled": false,
+                "dependancyCheck": false,
+                "isPrefilled": false,
+                "source": "req.body",
+                "min": "",
+                "max": "",
+                "validations": [],
+                "selectServer": false,
+                "selectServerUrl":"/null/dropdown?version=1.0",
+                "dynamicKey": "subcomponents_subComponentNum",
+                "alias" : "subcomponents.sub_component_num",
+                "options": []
+
+            }
+            ,
+            {
+                "name": "text",
+                "label": "Text",
+                "title": "",
+                "type": "textField",
+                "required": false,
+                "hideInCreateForm": false,
+                "visible": true,
+                "disabled": false,
+                "dependancyCheck": false,
+                "isPrefilled": false,
+                "source": "req.body",
+                "min": "",
+                "max": "",
+                "validations": [],
+                "selectServer": false,
+                "selectServerUrl":"/null/dropdown?version=1.0",
+                "dynamicKey": "subcomponents_text",
+                "alias" : "subcomponents.text",
+                "options": []
+
+            }
+            ,
+            {
+                "name": "totalMarks",
+                "label": "Total Marks",
+                "title": "",
+                "type": "textField",
+                "required": false,
+                "hideInCreateForm": false,
+                "visible": true,
+                "disabled": false,
+                "dependancyCheck": false,
+                "isPrefilled": false,
+                "source": "req.body",
+                "min": "",
+                "max": "",
+                "validations": [],
+                "selectServer": false,
+                "selectServerUrl":"/null/dropdown?version=1.0",
+                "dynamicKey": "subcomponents_totalMarks",
+                "alias" : "subcomponents.total_marks",
+                "options": []
+
+            }
+            ,
+            {
+                "name": "weightage",
+                "label": "Weightage",
+                "title": "",
+                "type": "textField",
+                "required": false,
+                "hideInCreateForm": false,
+                "visible": true,
+                "disabled": false,
+                "dependancyCheck": false,
+                "isPrefilled": false,
+                "source": "req.body",
+                "min": "",
+                "max": "",
+                "validations": [],
+                "selectServer": false,
+                "selectServerUrl":"/null/dropdown?version=1.0",
+                "dynamicKey": "subcomponents_weightage",
+                "alias" : "subcomponents.weightage",
+                "options": []
+
+            }
+            ,
+            {
+                "name": "isPublic",
+                "label": "Is Public",
+                "title": "",
+                "type": "checkbox",
+                "required": false,
+                "hideInCreateForm": false,
+                "visible": true,
+                "disabled": false,
+                "dependancyCheck": false,
+                "isPrefilled": false,
+                "source": "req.body",
+                "min": "",
+                "max": "",
+                "validations": [],
+                "selectServer": false,
+                "selectServerUrl":"/null/dropdown?version=1.0",
+                "dynamicKey": "subcomponents_isPublic",
+                "alias" : "subcomponents.is_public",
+                "options": []
+
+            }  
+        
+            ,
+            {
+                "name": "componentName",
+                "label": "Component Name",
+                "title": "",
+                "type": "textField",
+                "required": false,
+                "hideInCreateForm": true,
+                "visible": true,
+                "disabled": false,
+                "dependancyCheck": false,
+                "isPrefilled": false,
+                "source": "req.body",
+                "min": "",
+                "max": "",
+                "validations": [],
+                "selectServer": false,
+                "dynamicKey": "classcomponent_componentName",
+                "alias" : "classcomponent.component_name",
+                "options": [ ""]
+
+            }  
+            
+        
+                ,
+                {
+                    "name": "componentId",
+                    "label": "Component Id",
+                    "title": "",
+                    "type": "select",
+                    "required": false,
+                    "hideInCreateForm": false,
+                    "hideInViewForm": true,
+                    "visible": false,
+                    "disabled": false,
+                    "dependancyCheck": false,
+                    "isPrefilled": false,
+                    "source": "req.body",
+                    "min": "",
+                    "max": "",
+                    "validations": [],
+                    "selectServer": true,
+                    "dynamicKey": "subcomponents_componentId",
+                    "selectServerUrl": "/classcomponent/dropdown?version=1.0",
+                    "alias" : "subcomponents.component_id"
+                }
+                
+                ,
+                {
+                    "name": "urddId",
+                    "label": "Urdd Id",
+                    "title": "",
+                    "type": "select",
+                    "required": true,
+                    "hideInCreateForm": false,
+                    "hideInViewForm": true,
+                    "visible": false,
+                    "disabled": false,
+                    "dependancyCheck": false,
+                    "isPrefilled": false,
+                    "source": "req.body",
+                    "min": "",
+                    "max": "",
+                    "validations": [],
+                    "selectServer": true,
+                    "dynamicKey": "subcomponents_urddId",
+                    "selectServerUrl": "/user_roles_designations_department/dropdown?version=1.0",
+                    "alias" : "subcomponents.urdd_id"
+                }
+                
+        
+          ,
+          {
+              "name": "date",
+              "label": "Date",
+              "title": "",
+              "type": "datetime",
+                "required": false,
+              "hideInCreateForm": false,
+              "visible": true,
+              "disabled": false,
+              "dependancyCheck": false,
+              "isPrefilled": false,
+              "source": "req.body",
+              "min": "",
+              "max": "",
+              "validations": [],
+              "selectServer": false,
+              "dynamicKey": "subcomponents_date"
+          }
+          ,
+          {
+              "name": "startTime",
+              "label": "Start Time",
+              "title": "",
+              "type": "datetime",
+                "required": false,
+              "hideInCreateForm": false,
+              "visible": true,
+              "disabled": false,
+              "dependancyCheck": false,
+              "isPrefilled": false,
+              "source": "req.body",
+              "min": "",
+              "max": "",
+              "validations": [],
+              "selectServer": false,
+              "dynamicKey": "subcomponents_startTime"
+          }
+          ,
+          {
+              "name": "endTime",
+              "label": "End Time",
+              "title": "",
+              "type": "datetime",
+                "required": false,
+              "hideInCreateForm": false,
+              "visible": true,
+              "disabled": false,
+              "dependancyCheck": false,
+              "isPrefilled": false,
+              "source": "req.body",
+              "min": "",
+              "max": "",
+              "validations": [],
+              "selectServer": false,
+              "dynamicKey": "subcomponents_endTime"
+          }  
+          
+                ,
+                {
+                  "name": "createdAt",
+                  "label": "Created At",
+                  "title": "",
+                  "type": "dateTime",
+                  "required": false,
+                  "hideInCreateForm": true,
+                  "hideInViewForm" : true,
+                  "visible": false,
+                  "disabled": false,
+                  "dependancyCheck": false,
+                  "isPrefilled": false,
+                  "source": "req.body",
+                  "min": "",
+                  "max": "",
+                  "validations": [],
+                  "selectServer": false,
+                  "dynamicKey": "subcomponents_createdAt",
+                  "alias" : "subcomponents.created_at"
+                }
+                ,
+                {
+                  "name": "updatedAt",
+                  "label": "Updated At",
+                  "title": "",
+                  "type": "dateTime",
+                  "required": false,
+                  "hideInCreateForm": true,
+                  "hideInViewForm" : true,
+                  "visible": false,
+                  "disabled": false,
+                  "dependancyCheck": false,
+                  "isPrefilled": false,
+                  "source": "req.body",
+                  "min": "",
+                  "max": "",
+                  "validations": [],
+                  "selectServer": false,
+                  "dynamicKey": "subcomponents_updatedAt",
+                  "alias" : "subcomponents.updated_at"
+                }  
+
+          
+            ,
+            {
+                "name": "status",
+                "label": "Status",
+                "title": "",
+                "type": "select",
+                "required": false,
+                "hideInCreateForm": true,
+                "visible": false,
+                "disabled": false,
+                "dependancyCheck": false,
+                "isPrefilled": false,
+                "source": "req.body",
+                "min": "",
+                "max": "",
+                "validations": [],
+                "selectServer": false,
+                "dynamicKey": "subcomponents_status",
+                "options":[
+                    {"value":"inactive","label":"inactive"},
+                    {"value":"active","label":"active"}
+                ],
+                "alias" : "subcomponents.status"
+            }
+     
+                      ]
+                  }
+                  ]
+              },
+              "buttons": [
+                  {
+                  "type": "submit",
+                  "label": "Submit"
+                  }
+              ]
+              }
+          ],
+          "colMapper": "{subcomponents.sub_component_id as subcomponents_subComponentId,subcomponents.component_id as subcomponents_componentId,subcomponents.sub_component_num as subcomponents_subComponentNum,subcomponents.text as subcomponents_text,subcomponents.urdd_id as subcomponents_urddId,subcomponents.date as subcomponents_date,subcomponents.start_time as subcomponents_startTime,subcomponents.end_time as subcomponents_endTime,subcomponents.total_marks as subcomponents_totalMarks,subcomponents.weightage as subcomponents_weightage,subcomponents.is_public as subcomponents_isPublic,subcomponents.status as subcomponents_status,subcomponents.created_by as subcomponents_createdBy,subcomponents.updated_by as subcomponents_updatedBy,subcomponents.created_at as subcomponents_createdAt,subcomponents.updated_at as subcomponents_updatedAt}"
+          }
+        

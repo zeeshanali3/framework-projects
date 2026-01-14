@@ -1,0 +1,30 @@
+
+/* .dashboardcard{
+    padding :25px 20px;
+    margin-bottom: 15px;
+} */
+.dashboardbox{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 5px;
+    padding :25px 20px;
+    margin-bottom: 15px;
+}
+.dashboardtitle{
+
+    margin-bottom: 5px;
+    margin-top: 5px;
+  
+
+}
+.dashboardimg{
+    width:62px;
+    height: 62px;
+    line-height: 85px;
+    border-radius: 8px;
+    text-align: center;
+    background: transparent;
+    border: none;
+}
+

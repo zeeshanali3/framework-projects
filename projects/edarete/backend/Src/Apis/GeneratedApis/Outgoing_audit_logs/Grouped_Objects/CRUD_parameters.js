@@ -1,0 +1,341 @@
+const parameters = {
+              "steps": [
+                  
+                          {
+                              "title": "Outgoing Audit Logs Grouped CRUD",
+                              "parameters": {
+                                  "fields": [
+                                      {
+                                          "name": "outgoing_audit_logs",
+                                          "type": "section",
+                                          "hideInCreateForm": false,
+                                          "visible": false,
+                                          "required": false,
+                                          "disabled": false,
+                                          "validations": "",
+                                          "dependancyCheck": false,
+                                          "isPrefilled": false,
+                                          "source": "req.body",
+                                          "title": "Outgoing Audit Logs",
+                                          "childFields": [
+                                                  {
+                                                    "name": "outgoingAuditLogs_id",
+                                                    "label": "id",
+                                                    "title": "",
+                                                    "type": "textField",
+                                                    "required": false,
+                                                    "hideInCreateForm": true,
+                                                    "visible": true,
+                                                    "disabled": false,
+                                                    "dependancyCheck": false,
+                                                    "isPrefilled": false,
+                                                    "source": "req.query",
+                                                    "min": "",
+                                                    "max": "",
+                                                    "selectServer": false,
+                                                    "dynamicKey": "outgoingAuditLogs_id"
+                                                  },
+                                                  {
+                                                    "name": "actionPerformerURDD",
+                                                    "label": "actionPerformerURDD",
+                                                    "title": "",
+                                                    "type": "textField",
+                                                    "required": false,
+                                                    "hideInCreateForm": false,
+                                                    "visible": true,
+                                                    "disabled": false,
+                                                    "dependancyCheck": false,
+                                                    "isPrefilled": false,
+                                                    "source": "req.body",
+                                                    "min": "",
+                                                    "max": "",
+                                                    "selectServer": false,
+                                                    "dynamicKey": "actionPerformerURDD",
+                                                    "alias" : "actionPerformerURDD",
+                                                },
+                                              
+                                                      {
+                                                          "name": "requestType",
+                                                          "label": "Request Type",
+                                                          "title": "",
+                                                          "type": "textField",
+                                                          "required": false,
+                                                          "hideInCreateForm": false,
+                                                          "visible": true,
+                                                          "disabled": false,
+                                                          "dependancyCheck": false,
+                                                          "isPrefilled": false,
+                                                          "source": "req.body",
+                                                          "min": "",
+                                                          "max": "",
+                                                          "selectServer": false,
+                                                          "dynamicKey": "outgoingAuditLogs_requestType"
+                                                      },
+                                                      {
+                                                          "name": "targetSystem",
+                                                          "label": "Target System",
+                                                          "title": "",
+                                                          "type": "textField",
+                                                          "required": false,
+                                                          "hideInCreateForm": false,
+                                                          "visible": true,
+                                                          "disabled": false,
+                                                          "dependancyCheck": false,
+                                                          "isPrefilled": false,
+                                                          "source": "req.body",
+                                                          "min": "",
+                                                          "max": "",
+                                                          "selectServer": false,
+                                                          "dynamicKey": "outgoingAuditLogs_targetSystem"
+                                                      },
+                                                      {
+                                                          "name": "aiCreditsUrddId",
+                                                          "label": "Ai Credits Urdd Id",
+                                                          "title": "",
+                                                          "type": "textField",
+                                                          "required": false,
+                                                          "hideInCreateForm": false,
+                                                          "visible": true,
+                                                          "disabled": false,
+                                                          "dependancyCheck": false,
+                                                          "isPrefilled": false,
+                                                          "source": "req.body",
+                                                          "min": "",
+                                                          "max": "",
+                                                          "selectServer": false,
+                                                          "dynamicKey": "outgoingAuditLogs_aiCreditsUrddId"
+                                                      },
+                                                      {
+                                                          "name": "requestData",
+                                                          "label": "Request Data",
+                                                          "title": "",
+                                                          "type": "textField",
+                                                          "required": false,
+                                                          "hideInCreateForm": false,
+                                                          "visible": true,
+                                                          "disabled": false,
+                                                          "dependancyCheck": false,
+                                                          "isPrefilled": false,
+                                                          "source": "req.body",
+                                                          "min": "",
+                                                          "max": "",
+                                                          "selectServer": false,
+                                                          "dynamicKey": "outgoingAuditLogs_requestData"
+                                                      },
+                                                      {
+                                                          "name": "responseData",
+                                                          "label": "Response Data",
+                                                          "title": "",
+                                                          "type": "textField",
+                                                          "required": false,
+                                                          "hideInCreateForm": false,
+                                                          "visible": true,
+                                                          "disabled": false,
+                                                          "dependancyCheck": false,
+                                                          "isPrefilled": false,
+                                                          "source": "req.body",
+                                                          "min": "",
+                                                          "max": "",
+                                                          "selectServer": false,
+                                                          "dynamicKey": "outgoingAuditLogs_responseData"
+                                                      },
+                                                      {
+                                                          "name": "errorMessage",
+                                                          "label": "Error Message",
+                                                          "title": "",
+                                                          "type": "textField",
+                                                          "required": false,
+                                                          "hideInCreateForm": false,
+                                                          "visible": true,
+                                                          "disabled": false,
+                                                          "dependancyCheck": false,
+                                                          "isPrefilled": false,
+                                                          "source": "req.body",
+                                                          "min": "",
+                                                          "max": "",
+                                                          "selectServer": false,
+                                                          "dynamicKey": "outgoingAuditLogs_errorMessage"
+                                                      }
+                                          ]
+                                      }
+                                  ]
+                              },
+                              "buttons": [
+                                  {
+                                      "type": "submit",
+                                      "label": "Submit"
+                                  }
+                              ],
+                              "permission": "outgoing_audit_logs_view"
+                          },
+                          {
+                              "title": "User Roles Designations Department Grouped CRUD",
+                              "parameters": {
+                                  "fields": [
+                                      {
+                                          "name": "user_roles_designations_department",
+                                          "type": "section",
+                                          "hideInCreateForm": false,
+                                          "visible": false,
+                                          "required": false,
+                                          "disabled": false,
+                                          "validations": "",
+                                          "dependancyCheck": false,
+                                          "isPrefilled": false,
+                                          "source": "req.body",
+                                          "title": "Outgoing Audit Logs",
+                                          "childFields": [
+                                                  {
+                                                    "name": "userRolesDesignationsDepartment_id",
+                                                    "label": "id",
+                                                    "title": "",
+                                                    "type": "textField",
+                                                    "required": false,
+                                                    "hideInCreateForm": true,
+                                                    "visible": true,
+                                                    "disabled": false,
+                                                    "dependancyCheck": false,
+                                                    "isPrefilled": false,
+                                                    "source": "req.query",
+                                                    "min": "",
+                                                    "max": "",
+                                                    "selectServer": false,
+                                                    "dynamicKey": "userRolesDesignationsDepartment_id"
+                                                  },
+                                                  {
+                                                    "name": "actionPerformerURDD",
+                                                    "label": "actionPerformerURDD",
+                                                    "title": "",
+                                                    "type": "textField",
+                                                    "required": false,
+                                                    "hideInCreateForm": false,
+                                                    "visible": true,
+                                                    "disabled": false,
+                                                    "dependancyCheck": false,
+                                                    "isPrefilled": false,
+                                                    "source": "req.body",
+                                                    "min": "",
+                                                    "max": "",
+                                                    "selectServer": false,
+                                                    "dynamicKey": "actionPerformerURDD",
+                                                    "alias" : "actionPerformerURDD",
+                                                },
+                                              
+                                                      {
+                                                          "name": "roleDesignationDepartmentId",
+                                                          "label": "Role Designation Department Id",
+                                                          "title": "",
+                                                          "type": "textField",
+                                                          "required": false,
+                                                          "hideInCreateForm": false,
+                                                          "visible": true,
+                                                          "disabled": false,
+                                                          "dependancyCheck": false,
+                                                          "isPrefilled": false,
+                                                          "source": "req.body",
+                                                          "min": "",
+                                                          "max": "",
+                                                          "selectServer": false,
+                                                          "dynamicKey": "userRolesDesignationsDepartment_roleDesignationDepartmentId"
+                                                      },
+                                                      {
+                                                          "name": "userId",
+                                                          "label": "User Id",
+                                                          "title": "",
+                                                          "type": "textField",
+                                                          "required": false,
+                                                          "hideInCreateForm": false,
+                                                          "visible": true,
+                                                          "disabled": false,
+                                                          "dependancyCheck": false,
+                                                          "isPrefilled": false,
+                                                          "source": "req.body",
+                                                          "min": "",
+                                                          "max": "",
+                                                          "selectServer": false,
+                                                          "dynamicKey": "userRolesDesignationsDepartment_userId"
+                                                      },
+                                                      {
+                                                          "name": "specAttributes",
+                                                          "label": "Spec Attributes",
+                                                          "title": "",
+                                                          "type": "textField",
+                                                          "required": false,
+                                                          "hideInCreateForm": false,
+                                                          "visible": true,
+                                                          "disabled": false,
+                                                          "dependancyCheck": false,
+                                                          "isPrefilled": false,
+                                                          "source": "req.body",
+                                                          "min": "",
+                                                          "max": "",
+                                                          "selectServer": false,
+                                                          "dynamicKey": "userRolesDesignationsDepartment_specAttributes"
+                                                      },
+                                                      {
+                                                          "name": "startDate",
+                                                          "label": "Start Date",
+                                                          "title": "",
+                                                          "type": "textField",
+                                                          "required": false,
+                                                          "hideInCreateForm": false,
+                                                          "visible": true,
+                                                          "disabled": false,
+                                                          "dependancyCheck": false,
+                                                          "isPrefilled": false,
+                                                          "source": "req.body",
+                                                          "min": "",
+                                                          "max": "",
+                                                          "selectServer": false,
+                                                          "dynamicKey": "userRolesDesignationsDepartment_startDate"
+                                                      },
+                                                      {
+                                                          "name": "endDate",
+                                                          "label": "End Date",
+                                                          "title": "",
+                                                          "type": "textField",
+                                                          "required": false,
+                                                          "hideInCreateForm": false,
+                                                          "visible": true,
+                                                          "disabled": false,
+                                                          "dependancyCheck": false,
+                                                          "isPrefilled": false,
+                                                          "source": "req.body",
+                                                          "min": "",
+                                                          "max": "",
+                                                          "selectServer": false,
+                                                          "dynamicKey": "userRolesDesignationsDepartment_endDate"
+                                                      },
+                                                      {
+                                                          "name": "specificAttributes",
+                                                          "label": "Specific Attributes",
+                                                          "title": "",
+                                                          "type": "textField",
+                                                          "required": false,
+                                                          "hideInCreateForm": false,
+                                                          "visible": true,
+                                                          "disabled": false,
+                                                          "dependancyCheck": false,
+                                                          "isPrefilled": false,
+                                                          "source": "req.body",
+                                                          "min": "",
+                                                          "max": "",
+                                                          "selectServer": false,
+                                                          "dynamicKey": "userRolesDesignationsDepartment_specificAttributes"
+                                                      }
+                                          ]
+                                      }
+                                  ]
+                              },
+                              "buttons": [
+                                  {
+                                      "type": "submit",
+                                      "label": "Submit"
+                                  }
+                              ],
+                              "permission": "user_roles_designations_department_view"
+                          }
+              ],
+              "colMapper": "{ 'outgoingAuditLogs_id' : 'id',  'outgoingAuditLogs_requestType' : 'request_type',  'outgoingAuditLogs_targetSystem' : 'target_system',  'outgoingAuditLogs_aiCreditsUrddId' : 'ai_credits_urdd_id',  'outgoingAuditLogs_requestData' : 'request_data',  'outgoingAuditLogs_responseData' : 'response_data',  'outgoingAuditLogs_errorMessage' : 'error_message',  'outgoingAuditLogs_createdBy' : 'created_by',  'outgoingAuditLogs_updatedBy' : 'updated_by',  'outgoingAuditLogs_status' : 'status',  'outgoingAuditLogs_createdAt' : 'created_at',  'outgoingAuditLogs_updatedAt' : 'updated_at',  'userRolesDesignationsDepartment_userRoleDesignationDepartmentId' : 'user_role_designation_department_id',  'userRolesDesignationsDepartment_roleDesignationDepartmentId' : 'role_designation_department_id',  'userRolesDesignationsDepartment_userId' : 'user_id',  'userRolesDesignationsDepartment_specAttributes' : 'spec_attributes',  'userRolesDesignationsDepartment_startDate' : 'start_date',  'userRolesDesignationsDepartment_endDate' : 'end_date',  'userRolesDesignationsDepartment_specificAttributes' : 'specific_attributes',  'userRolesDesignationsDepartment_status' : 'status',  'userRolesDesignationsDepartment_createdBy' : 'created_by',  'userRolesDesignationsDepartment_updatedBy' : 'updated_by',  'userRolesDesignationsDepartment_createdAt' : 'created_at',  'userRolesDesignationsDepartment_updatedAt' : 'updated_at'}"
+          };
+          module.exports = parameters;

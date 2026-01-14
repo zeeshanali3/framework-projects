@@ -1,0 +1,249 @@
+{
+            "data": {
+            "features": {
+                "tabs": {"permission":"filter_${table.toLowerCase()}_by_tabs","name":"status","label":"Status","alias":"studentsemesters.status","serverCommunication":{"parameters":"parameters","apiUrl":"","apiActionType":"","requestType":"","reduxActionType":""},"onAction":"(e) => console.log('Tab Action', e)","options":[{"value":"inactive","label":"inactive"},{"value":"active","label":"active"}]},
+                "parameters": "parameters",
+                "rowActions": {
+                "actions": [
+                    {
+                      "name": "Edit",
+                      "color": "blue",
+                      "permission": "update_studentsemesters",
+                      "form": {
+                        "parameters":"parameters",
+                         
+                          "apiUrl": "/crud/studentsemesters?version=1.0",
+                        "requestType": "PUT",
+                        "mode":"edit"
+                      }
+                    },
+                    {
+                      "name": "Delete",
+                      "color": "red",
+                      "permission": "delete_studentsemesters",
+                      "serverCommunication": {
+                        "parameters":"parameters",
+                        "apiUrl":"/crud/studentsemesters?version=1.0",
+                        "requestType": "DELETE"
+                      }
+                    },
+                    {
+                      "name": "View",
+                      "color": "grey",
+                      "permission": "view_studentsemesters",
+                      "form": {
+                        "parameters":"parameters",
+                        "apiUrl": "/crud/studentsemesters?version=1.0",
+                        "requestType": "GET",
+                        "mode":"view"
+                      }
+                    }
+                  ]
+                },
+                "bulkAction": {
+                  "add": {
+                    "permission":"add_studentsemesters",
+                    "form": {
+                      "parameters":"parameters",
+                      
+                      "apiUrl": "/crud/studentsemesters?version=1.0",
+                      "requestType": "POST",
+                      "mode":"create"
+                    }
+                  }
+                },
+                "columnVisibility": {
+                    "permission": "column_visibility_users"
+                },
+                "userStatusUpdation": {
+                  "permission": "status_updation_users",
+                  "serverCommunication": {
+                    "parameters": "parameters",
+                    "apiUrl": "/crud/users",
+                    "apiActionType": "Update",
+                    "requestType": "PUT",
+                    "reduxActionType": ""
+                  }
+                },
+                "export": {
+                  "permission": "export_studentsemesters",
+                      "serverCommunication": {
+                      "parameters":"parameters",
+                      "apiUrl": "",
+                      "apiActionType": "",
+                      "requestType": "",
+                      "reduxActionType": ""
+                    },
+                  "options": {
+                      "formats": ["CSV", "PDF"],
+                      "includeHeaders": true,
+                      "icon": ""
+                  }
+                },
+                "filter": {
+                  "permission": "filter_studentsemesters",
+                      "serverCommunication": {
+                      "parameters":"parameters",
+                      "apiUrl": "",
+                      "apiActionType": "",
+                      "requestType": "",
+                      "reduxActionType": ""
+                    },
+                  "options": {
+                      "filterBy": [
+                          "studentsemesters_studentSemesterId", "studentsemesters_studentUserId", "studentsemesters_semesterId", "studentsemesters_status", "studentsemesters_createdBy", "studentsemesters_updatedBy", "studentsemesters_createdAt", "studentsemesters_updatedAt"
+                      ],
+                      "statusOptions": ["active", "inactive"]
+                  },
+                  "excludeFilter": []
+                },
+                "sort": {
+                  "permission": "sort_studentsemesters",
+                      "serverCommunication": {
+                      "parameters":"parameters",
+                      "apiUrl": "",
+                      "apiActionType": "",
+                      "requestType": "",
+                      "reduxActionType": ""
+                    },
+                  "options": {
+                      "defaultSortField": "id",
+                      "defaultSortOrder": "asc",
+                      "multiColumnSort": true
+                  },
+                  "excludeSort": []
+                },
+                "list": {
+                  "permission":"list_studentsemesters",
+                      "serverCommunication": {
+                      "parameters":"parameters",
+                      "apiUrl":  "/crud/studentsemesters?version=1.0",
+                      "apiActionType": "",
+                      "requestType": "GET",
+                      "reduxActionType": ""
+                    }
+                  },
+                  "search": {
+                  "permission": "search_studentsemesters",
+                  "excludeSearch": ["image"],
+                      "serverCommunication": {
+                      "parameters":"parameters",
+                      "apiUrl": "",
+                      "apiActionType": "",
+                      "requestType": "",
+                      "reduxActionType": ""
+                  }
+                },
+                "grid": {
+                  "entitiesPerRow": 2,
+                  "buttonEnable": true,
+                  "checkBoxEnable": true,
+                  "actionButtonEnable": true
+                },
+                "pagination": {
+                  "parameters": null,
+                  "permission": true,
+                    "serverCommunication": {
+                      "parameters":"parameters",
+                      "apiUrl": "/crud/studentsemesters?version=1.0",
+                      "apiActionType": "studentsemesters_view",
+                      "requestType": "GET",
+                      "reduxActionType": "studentsemesters_view"
+                    },
+                  "options": {
+                      "pageSize": 10,
+                      "pageSizeOptions": [4, 5, 10, 20, { "label": "All", "value": -1 }]
+                  }
+                }
+              }
+            },
+          "config": {
+            "viewMode": {
+                "presentation": ["Table", "Grid"]
+            },
+            "features": {
+                "export": { "enable": true, "operationalMode": "server","permission":true },
+                "filter": { "enable": true, "operationalMode": "server" ,"permission":true},
+                "sort": { "enable": true, "operationalMode": "server" ,"permission":true},
+                "search": { "enable": true, "operationalMode": "server" ,"permission":true},
+                "pagination": { "enable": true, "operationalMode": "server" },
+                "bulkAction": { "enable": false, "operationalMode": "server" ,"permission":true},
+                "viewModes": { "enable": true, "operationalMode": "server" },
+                "grid": { "enable": true, "operationalMode": "server" },
+                "colaborator": { "enable": false, "operationalMode": "server" },
+                "rowActions": { "enable": true, "operationalMode": "server" ,"permission":true},
+                "list": { "enable": true, "operationalMode": "server" ,"permission":true},
+                "parameters": { "enable": true, "operationalMode": "local" },
+                "tabs": { "enable": false, "operationalMode": "server", "permission": false },
+                "dragAndDrop": { "enable": true },
+                "expandableRow": { "enable": true },
+                "speedDial": { "enable": true },
+                "columnVisibility": {
+                  "enable": true,
+                  "operationalMode": "local",
+                  "permission": true
+                },
+                "userStatusUpdation": {
+                  "enable": true,
+                  "operationalMode": "server",
+                  "permission": true
+                }
+            }
+          },
+          "appearance": {
+            "light": {
+              "grid": {
+                "image": {
+                  "borderColor": "#7479ed"
+                },
+                "actionButtons": {
+                  "color": "#7b7a8c"
+                },
+                "button": {
+                  "buttonColor": "#818093",
+                  "buttonVarient": "contained",
+                  "buttonTextColor": "#ffffff"
+                },
+                "header": {
+                  "headColor": "#e5e5e5",
+                  "headTextColor": "#260143"
+                },
+                "cardFont": {
+                  "headingSize": 15,
+                  "headingWeight": 650,
+                  "textSize": 13,
+                  "textWeight": 500,
+                  "heading": "#260143",
+                  "color": "#5a5897"
+                }
+              }
+            },
+            "dark": {
+              "grid": {
+                "image": {
+                  "borderColor": "#6C63FF"
+                },
+                "actionButtons": {
+                  "color": "#a5a4c4"
+                },
+                "button": {
+                  "buttonColor": "#6C63FF",
+                  "buttonVarient": "contained",
+                  "buttonTextColor": "#ffffff"
+                },
+                "header": {
+                  "headColor": "#2d2d3d",
+                  "headTextColor": "#c7c6ff"
+                },
+                "cardFont": {
+                  "headingSize": 15,
+                  "headingWeight": 650,
+                  "textSize": 13,
+                  "textWeight": 500,
+                  "heading": "#ffffff",
+                  "color": "#c7c6ff"
+                }
+              }
+            }
+          }
+        }

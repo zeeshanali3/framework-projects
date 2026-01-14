@@ -1,0 +1,2 @@
+const ADMIN_GET_ROOM ="ADMIN_GET_ROOM";
+export default ADMIN_GET_ROOM;

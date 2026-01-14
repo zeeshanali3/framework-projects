@@ -1,0 +1,219 @@
+
+        {
+          "steps": [
+              {
+              "title": "platformVersions Info",
+              "parameters": {
+                  "fields": [
+                  {
+                      "name": "platformVersions",
+                      "type": "section",
+                      "hideInCreateForm": false,
+                      "visible": false,
+                      "required": false,
+                      "disabled": false,
+                      "validations": "",
+                      "dependancyCheck": false,
+                      "isPrefilled": false,
+                      "source": "req.body",
+                      "title": "Platform Versions",
+                      "childFields": [ 
+        {
+          "name": "id",
+          "label": "id",
+          "title": "",
+          "type": "textField",
+          "required": false,
+          "hideInCreateForm": true,
+          "hideInViewForm" : true,
+          "visible": true,
+          "disabled": false,
+          "dependancyCheck": false,
+          "isPrefilled": false,
+          "source": "req.query",
+          "min": "",
+          "max": "",
+          "selectServer": false,
+          "dynamicKey": "id"
+        }
+        
+            ,
+            {
+                "name": "versionId",
+                "label": "Version Id",
+                "title": "",
+                "type": "select",
+                "required": false,
+                "hideInCreateForm": false,
+                "visible": true,
+                "disabled": false,
+                "dependancyCheck": false,
+                "isPrefilled": false,
+                "source": "req.body",
+                "min": "",
+                "max": "",
+                "validations": [],
+                "selectServer": true,
+                "selectServerUrl":"/versions/dropdown?version=1.0",
+                "dynamicKey": "platformVersions_versionId",
+                "alias" : "platform_versions.version_id",
+                "options": []
+
+            }
+            ,
+            {
+                "name": "platformId",
+                "label": "Platform Id",
+                "title": "",
+                "type": "select",
+                "required": false,
+                "hideInCreateForm": false,
+                "visible": true,
+                "disabled": false,
+                "dependancyCheck": false,
+                "isPrefilled": false,
+                "source": "req.body",
+                "min": "",
+                "max": "",
+                "validations": [],
+                "selectServer": true,
+                "selectServerUrl":"/platforms/dropdown?version=1.0",
+                "dynamicKey": "platformVersions_platformId",
+                "alias" : "platform_versions.platform_id",
+                "options": []
+
+            }
+            ,
+            {
+                "name": "encryptionKey",
+                "label": "Encryption Key",
+                "title": "",
+                "type": "textField",
+                "required": false,
+                "hideInCreateForm": false,
+                "visible": true,
+                "disabled": false,
+                "dependancyCheck": false,
+                "isPrefilled": false,
+                "source": "req.body",
+                "min": "",
+                "max": "",
+                "validations": [],
+                "selectServer": false,
+                "selectServerUrl":"/null/dropdown?version=1.0",
+                "dynamicKey": "platformVersions_encryptionKey",
+                "alias" : "platform_versions.encryption_key",
+                "options": []
+
+            }  
+        
+            ,
+            {
+                "name": "platformName",
+                "label": "Platform Name",
+                "title": "",
+                "type": "textField",
+                "required": false,
+                "hideInCreateForm": true,
+                "visible": true,
+                "disabled": false,
+                "dependancyCheck": false,
+                "isPrefilled": false,
+                "source": "req.body",
+                "min": "",
+                "max": "",
+                "validations": [],
+                "selectServer": false,
+                "dynamicKey": "platforms_platformName",
+                "alias" : "platforms.platform_name",
+                "options": [ ""]
+
+            }  
+            
+        
+          
+          
+                ,
+                {
+                  "name": "createdAt",
+                  "label": "Created At",
+                  "title": "",
+                  "type": "dateTime",
+                  "required": false,
+                  "hideInCreateForm": true,
+                  "hideInViewForm" : true,
+                  "visible": false,
+                  "disabled": false,
+                  "dependancyCheck": false,
+                  "isPrefilled": false,
+                  "source": "req.body",
+                  "min": "",
+                  "max": "",
+                  "validations": [],
+                  "selectServer": false,
+                  "dynamicKey": "platformVersions_createdAt",
+                  "alias" : "platform_versions.created_at"
+                }
+                ,
+                {
+                  "name": "updatedAt",
+                  "label": "Updated At",
+                  "title": "",
+                  "type": "dateTime",
+                  "required": false,
+                  "hideInCreateForm": true,
+                  "hideInViewForm" : true,
+                  "visible": false,
+                  "disabled": false,
+                  "dependancyCheck": false,
+                  "isPrefilled": false,
+                  "source": "req.body",
+                  "min": "",
+                  "max": "",
+                  "validations": [],
+                  "selectServer": false,
+                  "dynamicKey": "platformVersions_updatedAt",
+                  "alias" : "platform_versions.updated_at"
+                }  
+
+          
+            ,
+            {
+                "name": "status",
+                "label": "Status",
+                "title": "",
+                "type": "select",
+                "required": false,
+                "hideInCreateForm": true,
+                "visible": false,
+                "disabled": false,
+                "dependancyCheck": false,
+                "isPrefilled": false,
+                "source": "req.body",
+                "min": "",
+                "max": "",
+                "validations": [],
+                "selectServer": false,
+                "dynamicKey": "platformVersions_status",
+                "options":[
+                    {"value":"inactive","label":"inactive"},
+                    {"value":"active","label":"active"}
+                ],
+                "alias" : "platform_versions.status"
+            }
+     
+                      ]
+                  }
+                  ]
+              },
+              "buttons": [
+                  {
+                  "type": "submit",
+                  "label": "Submit"
+                  }
+              ]
+              }
+          ],
+          "colMapper": "{platform_versions.platform_version_id as platformVersions_platformVersionId,platform_versions.version_id as platformVersions_versionId,platform_versions.platform_id as platformVersions_platformId,platform_versions.encryption_key as platformVersions_encryptionKey,platform_versions.created_by as platformVersions_createdBy,platform_versions.updated_by as platformVersions_updatedBy,platform_versions.status as platformVersions_status,platform_versions.created_at as platformVersions_createdAt,platform_versions.updated_at as platformVersions_updatedAt}"
+          }
+        

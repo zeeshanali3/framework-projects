@@ -1,0 +1,263 @@
+
+        {
+          "steps": [
+              {
+              "title": "rolesDesignationsDepartment Info",
+              "parameters": {
+                  "fields": [
+                  {
+                      "name": "rolesDesignationsDepartment",
+                      "type": "section",
+                      "hideInCreateForm": false,
+                      "visible": false,
+                      "required": false,
+                      "disabled": false,
+                      "validations": "",
+                      "dependancyCheck": false,
+                      "isPrefilled": false,
+                      "source": "req.body",
+                      "title": "Roles Designations Department",
+                      "childFields": [ 
+        {
+          "name": "id",
+          "label": "id",
+          "title": "",
+          "type": "textField",
+          "required": false,
+          "hideInCreateForm": true,
+          "hideInViewForm" : true,
+          "visible": true,
+          "disabled": false,
+          "dependancyCheck": false,
+          "isPrefilled": false,
+          "source": "req.query",
+          "min": "",
+          "max": "",
+          "selectServer": false,
+          "dynamicKey": "id"
+        }
+        
+            ,
+            {
+                "name": "designationId",
+                "label": "Designation Id",
+                "title": "",
+                "type": "select",
+                "required": false,
+                "hideInCreateForm": false,
+                "visible": true,
+                "disabled": false,
+                "dependancyCheck": false,
+                "isPrefilled": false,
+                "source": "req.body",
+                "min": "",
+                "max": "",
+                "validations": [],
+                "selectServer": true,
+                "selectServerUrl":"/designations/dropdown?version=1.0",
+                "dynamicKey": "rolesDesignationsDepartment_designationId",
+                "alias" : "roles_designations_department.designation_id",
+                "options": []
+
+            }
+            ,
+            {
+                "name": "roleId",
+                "label": "Role Id",
+                "title": "",
+                "type": "select",
+                "required": false,
+                "hideInCreateForm": false,
+                "visible": true,
+                "disabled": false,
+                "dependancyCheck": false,
+                "isPrefilled": false,
+                "source": "req.body",
+                "min": "",
+                "max": "",
+                "validations": [],
+                "selectServer": true,
+                "selectServerUrl":"/roles/dropdown?version=1.0",
+                "dynamicKey": "rolesDesignationsDepartment_roleId",
+                "alias" : "roles_designations_department.role_id",
+                "options": []
+
+            }
+            ,
+            {
+                "name": "departmentId",
+                "label": "Department Id",
+                "title": "",
+                "type": "select",
+                "required": false,
+                "hideInCreateForm": false,
+                "visible": true,
+                "disabled": false,
+                "dependancyCheck": false,
+                "isPrefilled": false,
+                "source": "req.body",
+                "min": "",
+                "max": "",
+                "validations": [],
+                "selectServer": true,
+                "selectServerUrl":"/departments/dropdown?version=1.0",
+                "dynamicKey": "rolesDesignationsDepartment_departmentId",
+                "alias" : "roles_designations_department.department_id",
+                "options": []
+
+            }  
+        
+            ,
+            {
+                "name": "designationName",
+                "label": "Designation Name",
+                "title": "",
+                "type": "textField",
+                "required": false,
+                "hideInCreateForm": true,
+                "visible": true,
+                "disabled": false,
+                "dependancyCheck": false,
+                "isPrefilled": false,
+                "source": "req.body",
+                "min": "",
+                "max": "",
+                "validations": [],
+                "selectServer": false,
+                "dynamicKey": "designations_designationName",
+                "alias" : "designations.designation_name",
+                "options": [ ""]
+
+            }
+            ,
+            {
+                "name": "roleName",
+                "label": "Role Name",
+                "title": "",
+                "type": "textField",
+                "required": false,
+                "hideInCreateForm": true,
+                "visible": true,
+                "disabled": false,
+                "dependancyCheck": false,
+                "isPrefilled": false,
+                "source": "req.body",
+                "min": "",
+                "max": "",
+                "validations": [],
+                "selectServer": false,
+                "dynamicKey": "roles_roleName",
+                "alias" : "roles.role_name",
+                "options": [ ""]
+
+            }
+            ,
+            {
+                "name": "departmentName",
+                "label": "Department Name",
+                "title": "",
+                "type": "textField",
+                "required": false,
+                "hideInCreateForm": true,
+                "visible": true,
+                "disabled": false,
+                "dependancyCheck": false,
+                "isPrefilled": false,
+                "source": "req.body",
+                "min": "",
+                "max": "",
+                "validations": [],
+                "selectServer": false,
+                "dynamicKey": "departments_departmentName",
+                "alias" : "departments.department_name",
+                "options": [ ""]
+
+            }  
+            
+        
+          
+          
+                ,
+                {
+                  "name": "createdAt",
+                  "label": "Created At",
+                  "title": "",
+                  "type": "dateTime",
+                  "required": false,
+                  "hideInCreateForm": true,
+                  "hideInViewForm" : true,
+                  "visible": false,
+                  "disabled": false,
+                  "dependancyCheck": false,
+                  "isPrefilled": false,
+                  "source": "req.body",
+                  "min": "",
+                  "max": "",
+                  "validations": [],
+                  "selectServer": false,
+                  "dynamicKey": "rolesDesignationsDepartment_createdAt",
+                  "alias" : "roles_designations_department.created_at"
+                }
+                ,
+                {
+                  "name": "updatedAt",
+                  "label": "Updated At",
+                  "title": "",
+                  "type": "dateTime",
+                  "required": false,
+                  "hideInCreateForm": true,
+                  "hideInViewForm" : true,
+                  "visible": false,
+                  "disabled": false,
+                  "dependancyCheck": false,
+                  "isPrefilled": false,
+                  "source": "req.body",
+                  "min": "",
+                  "max": "",
+                  "validations": [],
+                  "selectServer": false,
+                  "dynamicKey": "rolesDesignationsDepartment_updatedAt",
+                  "alias" : "roles_designations_department.updated_at"
+                }  
+
+          
+            ,
+            {
+                "name": "status",
+                "label": "Status",
+                "title": "",
+                "type": "select",
+                "required": false,
+                "hideInCreateForm": true,
+                "visible": false,
+                "disabled": false,
+                "dependancyCheck": false,
+                "isPrefilled": false,
+                "source": "req.body",
+                "min": "",
+                "max": "",
+                "validations": [],
+                "selectServer": false,
+                "dynamicKey": "rolesDesignationsDepartment_status",
+                "options":[
+                    {"value":"inactive","label":"inactive"},
+                    {"value":"active","label":"active"}
+                ],
+                "alias" : "roles_designations_department.status"
+            }
+     
+                      ]
+                  }
+                  ]
+              },
+              "buttons": [
+                  {
+                  "type": "submit",
+                  "label": "Submit"
+                  }
+              ]
+              }
+          ],
+          "colMapper": "{roles_designations_department.role_designation_department_id as rolesDesignationsDepartment_roleDesignationDepartmentId,roles_designations_department.designation_id as rolesDesignationsDepartment_designationId,roles_designations_department.role_id as rolesDesignationsDepartment_roleId,roles_designations_department.department_id as rolesDesignationsDepartment_departmentId,roles_designations_department.created_by as rolesDesignationsDepartment_createdBy,roles_designations_department.updated_by as rolesDesignationsDepartment_updatedBy,roles_designations_department.status as rolesDesignationsDepartment_status,roles_designations_department.created_at as rolesDesignationsDepartment_createdAt,roles_designations_department.updated_at as rolesDesignationsDepartment_updatedAt}"
+          }
+        

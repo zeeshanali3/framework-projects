@@ -1,0 +1,154 @@
+
+        {
+          "steps": [
+              {
+              "title": "questionsSolutionOptions Info",
+              "parameters": {
+                  "fields": [
+                  {
+                      "name": "questionsSolutionOptions",
+                      "type": "section",
+                      "hideInCreateForm": false,
+                      "visible": false,
+                      "required": false,
+                      "disabled": false,
+                      "validations": "",
+                      "dependancyCheck": false,
+                      "isPrefilled": false,
+                      "source": "req.body",
+                      "title": "Questions Solution Options",
+                      "childFields": [ 
+        {
+          "name": "id",
+          "label": "id",
+          "title": "",
+          "type": "textField",
+          "required": false,
+          "hideInCreateForm": true,
+          "hideInViewForm" : true,
+          "visible": true,
+          "disabled": false,
+          "dependancyCheck": false,
+          "isPrefilled": false,
+          "source": "req.query",
+          "min": "",
+          "max": "",
+          "selectServer": false,
+          "dynamicKey": "id"
+        }
+        
+            ,
+            {
+                "name": "description",
+                "label": "Description",
+                "title": "",
+                "type": "textField",
+                "required": false,
+                "hideInCreateForm": false,
+                "visible": true,
+                "disabled": false,
+                "dependancyCheck": false,
+                "isPrefilled": false,
+                "source": "req.body",
+                "min": "",
+                "max": "",
+                "validations": [],
+                "selectServer": false,
+                "selectServerUrl":"/null/dropdown?version=1.0",
+                "dynamicKey": "questionsSolutionOptions_description",
+                "alias" : "questions_solution_options.description",
+                "options": []
+
+            }
+            ,
+            {
+                "name": "optionNumber",
+                "label": "Option Number",
+                "title": "",
+                "type": "number",
+                "required": false,
+                "hideInCreateForm": false,
+                "visible": true,
+                "disabled": false,
+                "dependancyCheck": false,
+                "isPrefilled": false,
+                "source": "req.body",
+                "min": "",
+                "max": "",
+                "validations": [],
+                "selectServer": false,
+                "selectServerUrl":"/null/dropdown?version=1.0",
+                "dynamicKey": "questionsSolutionOptions_optionNumber",
+                "alias" : "questions_solution_options.option_number",
+                "options": []
+
+            }
+            ,
+            {
+                "name": "correctOption",
+                "label": "Correct Option",
+                "title": "",
+                "type": "textField",
+                "required": false,
+                "hideInCreateForm": false,
+                "visible": true,
+                "disabled": false,
+                "dependancyCheck": false,
+                "isPrefilled": false,
+                "source": "req.body",
+                "min": "",
+                "max": "",
+                "validations": [],
+                "selectServer": false,
+                "selectServerUrl":"/null/dropdown?version=1.0",
+                "dynamicKey": "questionsSolutionOptions_correctOption",
+                "alias" : "questions_solution_options.correct_option",
+                "options": []
+
+            }  
+          
+            
+        
+                ,
+                {
+                    "name": "questionId",
+                    "label": "Question Id",
+                    "title": "",
+                    "type": "select",
+                    "required": false,
+                    "hideInCreateForm": false,
+                    "hideInViewForm": true,
+                    "visible": false,
+                    "disabled": false,
+                    "dependancyCheck": false,
+                    "isPrefilled": false,
+                    "source": "req.body",
+                    "min": "",
+                    "max": "",
+                    "validations": [],
+                    "selectServer": true,
+                    "dynamicKey": "questionsSolutionOptions_questionId",
+                    "selectServerUrl": "/questions/dropdown?version=1.0",
+                    "alias" : "questions_solution_options.question_id"
+                }
+                
+          
+            
+
+          
+     
+                      ]
+                  }
+                  ]
+              },
+              "buttons": [
+                  {
+                  "type": "submit",
+                  "label": "Submit"
+                  }
+              ]
+              }
+          ],
+          "colMapper": "{questions_solution_options.questions_solution_options_id as questionsSolutionOptions_questionsSolutionOptionsId,questions_solution_options.question_id as questionsSolutionOptions_questionId,questions_solution_options.description as questionsSolutionOptions_description,questions_solution_options.option_number as questionsSolutionOptions_optionNumber,questions_solution_options.correct_option as questionsSolutionOptions_correctOption}"
+          }
+        

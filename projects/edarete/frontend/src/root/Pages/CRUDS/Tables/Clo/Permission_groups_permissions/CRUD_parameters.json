@@ -1,0 +1,218 @@
+
+        {
+          "steps": [
+              {
+              "title": "permissionGroupsPermissions Info",
+              "parameters": {
+                  "fields": [
+                  {
+                      "name": "permissionGroupsPermissions",
+                      "type": "section",
+                      "hideInCreateForm": false,
+                      "visible": false,
+                      "required": false,
+                      "disabled": false,
+                      "validations": "",
+                      "dependancyCheck": false,
+                      "isPrefilled": false,
+                      "source": "req.body",
+                      "title": "Permission Groups Permissions",
+                      "childFields": [ 
+        {
+          "name": "id",
+          "label": "id",
+          "title": "",
+          "type": "textField",
+          "required": false,
+          "hideInCreateForm": true,
+          "hideInViewForm" : true,
+          "visible": true,
+          "disabled": false,
+          "dependancyCheck": false,
+          "isPrefilled": false,
+          "source": "req.query",
+          "min": "",
+          "max": "",
+          "selectServer": false,
+          "dynamicKey": "id"
+        }
+          
+        
+            ,
+            {
+                "name": "groupName",
+                "label": "Group Name",
+                "title": "",
+                "type": "textField",
+                "required": false,
+                "hideInCreateForm": true,
+                "visible": true,
+                "disabled": false,
+                "dependancyCheck": false,
+                "isPrefilled": false,
+                "source": "req.body",
+                "min": "",
+                "max": "",
+                "validations": [],
+                "selectServer": false,
+                "dynamicKey": "permissionGroups_groupName",
+                "alias" : "permission_groups.group_name",
+                "options": [ ""]
+
+            }
+            ,
+            {
+                "name": "permissionName",
+                "label": "Permission Name",
+                "title": "",
+                "type": "textField",
+                "required": false,
+                "hideInCreateForm": true,
+                "visible": true,
+                "disabled": false,
+                "dependancyCheck": false,
+                "isPrefilled": false,
+                "source": "req.body",
+                "min": "",
+                "max": "",
+                "validations": [],
+                "selectServer": false,
+                "dynamicKey": "permissions_permissionName",
+                "alias" : "permissions.permission_name",
+                "options": [ ""]
+
+            }  
+            
+        
+                ,
+                {
+                    "name": "groupId",
+                    "label": "Group Id",
+                    "title": "",
+                    "type": "select",
+                    "required": false,
+                    "hideInCreateForm": false,
+                    "hideInViewForm": true,
+                    "visible": false,
+                    "disabled": false,
+                    "dependancyCheck": false,
+                    "isPrefilled": false,
+                    "source": "req.body",
+                    "min": "",
+                    "max": "",
+                    "validations": [],
+                    "selectServer": true,
+                    "dynamicKey": "permissionGroupsPermissions_groupId",
+                    "selectServerUrl": "/permission_groups/dropdown?version=1.0",
+                    "alias" : "permission_groups_permissions.group_id"
+                }
+                
+                ,
+                {
+                    "name": "permissionId",
+                    "label": "Permission Id",
+                    "title": "",
+                    "type": "select",
+                    "required": false,
+                    "hideInCreateForm": false,
+                    "hideInViewForm": true,
+                    "visible": false,
+                    "disabled": false,
+                    "dependancyCheck": false,
+                    "isPrefilled": false,
+                    "source": "req.body",
+                    "min": "",
+                    "max": "",
+                    "validations": [],
+                    "selectServer": true,
+                    "dynamicKey": "permissionGroupsPermissions_permissionId",
+                    "selectServerUrl": "/permissions/dropdown?version=1.0",
+                    "alias" : "permission_groups_permissions.permission_id"
+                }
+                
+          
+          
+                ,
+                {
+                  "name": "createdAt",
+                  "label": "Created At",
+                  "title": "",
+                  "type": "dateTime",
+                  "required": false,
+                  "hideInCreateForm": true,
+                  "hideInViewForm" : true,
+                  "visible": false,
+                  "disabled": false,
+                  "dependancyCheck": false,
+                  "isPrefilled": false,
+                  "source": "req.body",
+                  "min": "",
+                  "max": "",
+                  "validations": [],
+                  "selectServer": false,
+                  "dynamicKey": "permissionGroupsPermissions_createdAt",
+                  "alias" : "permission_groups_permissions.created_at"
+                }
+                ,
+                {
+                  "name": "updatedAt",
+                  "label": "Updated At",
+                  "title": "",
+                  "type": "dateTime",
+                  "required": false,
+                  "hideInCreateForm": true,
+                  "hideInViewForm" : true,
+                  "visible": false,
+                  "disabled": false,
+                  "dependancyCheck": false,
+                  "isPrefilled": false,
+                  "source": "req.body",
+                  "min": "",
+                  "max": "",
+                  "validations": [],
+                  "selectServer": false,
+                  "dynamicKey": "permissionGroupsPermissions_updatedAt",
+                  "alias" : "permission_groups_permissions.updated_at"
+                }  
+
+          
+            ,
+            {
+                "name": "status",
+                "label": "Status",
+                "title": "",
+                "type": "select",
+                "required": false,
+                "hideInCreateForm": true,
+                "visible": false,
+                "disabled": false,
+                "dependancyCheck": false,
+                "isPrefilled": false,
+                "source": "req.body",
+                "min": "",
+                "max": "",
+                "validations": [],
+                "selectServer": false,
+                "dynamicKey": "permissionGroupsPermissions_status",
+                "options":[
+                    {"value":"inactive","label":"inactive"},
+                    {"value":"active","label":"active"}
+                ],
+                "alias" : "permission_groups_permissions.status"
+            }
+     
+                      ]
+                  }
+                  ]
+              },
+              "buttons": [
+                  {
+                  "type": "submit",
+                  "label": "Submit"
+                  }
+              ]
+              }
+          ],
+          "colMapper": "{permission_groups_permissions.permission_group_permission_id as permissionGroupsPermissions_permissionGroupPermissionId,permission_groups_permissions.group_id as permissionGroupsPermissions_groupId,permission_groups_permissions.permission_id as permissionGroupsPermissions_permissionId,permission_groups_permissions.created_by as permissionGroupsPermissions_createdBy,permission_groups_permissions.updated_by as permissionGroupsPermissions_updatedBy,permission_groups_permissions.status as permissionGroupsPermissions_status,permission_groups_permissions.created_at as permissionGroupsPermissions_createdAt,permission_groups_permissions.updated_at as permissionGroupsPermissions_updatedAt}"
+          }
+        

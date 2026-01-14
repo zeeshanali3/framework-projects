@@ -1,0 +1,31 @@
+export default function serverCommunicationHelper({
+  apiActionType = "",
+  permission = false,
+  requestType = "GET",
+  apiUrl,
+  isEncrypted = true,
+  metaData = true,
+  useBaseURL = true,
+  formData = false,
+  body = {},
+  reduxActionType = "",
+  isFile = false,
+  onSuccess = (res) => console.log("Success:", res),
+  onFailure = (err) => console.log("Error:", err.message),
+}) {
+  return {
+    apiActionType,
+    permission,
+    requestType,
+    apiUrl,
+    metaData,
+    body,
+    formData,
+    useBaseURL,
+    isEncrypted,
+    reduxActionType,
+    isFile,
+    onSuccess,
+    onFailure,
+  };
+}

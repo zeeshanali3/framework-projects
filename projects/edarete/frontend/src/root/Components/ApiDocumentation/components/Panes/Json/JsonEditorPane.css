@@ -1,0 +1,151 @@
+.json-editor-container {
+  position: relative;
+  height: 100%;
+  border: 1px solid #e1e4e8;
+  border-radius: 6px;
+  background: white;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+}
+
+.json-toolbar {
+  padding: 8px 12px;
+  background: linear-gradient(to bottom, #f8f9fa, #e9ecef);
+  border-bottom: 1px solid #e1e4e8;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.view-toggle {
+  background: #ffffff;
+  border: 1px solid #d1d5da;
+  border-radius: 4px;
+  padding: 4px 12px;
+  font-size: 13px;
+  font-weight: 500;
+  cursor: pointer;
+  color: #24292e;
+  transition: all 0.2s ease;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+}
+
+.view-toggle:hover {
+  background: #f3f4f6;
+  border-color: #959da5;
+}
+
+.view-toggle:active {
+  background: #ebecf0;
+  box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+.view-toggle.disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  background: #f6f8fa;
+}
+
+.json-textarea {
+  width: 100%;
+  height: calc(100% - 45px);
+  padding: 12px;
+  font-family: 'Fira Code', 'Courier New', monospace;
+  font-size: 14px;
+  line-height: 1.5;
+  border: none;
+  resize: none;
+  outline: none;
+  white-space: pre;
+  overflow: auto;
+  background-color: #fafbfc;
+  color: #24292e;
+}
+
+.json-textarea.invalid {
+  background-color: #fff8f8;
+  border-left: 3px solid #ff6b6b;
+}
+
+.json-pretty {
+  width: 100%;
+  height: calc(100% - 45px);
+  padding: 12px;
+  margin: 0;
+  overflow: auto;
+  font-family: 'Fira Code', 'Courier New', monospace;
+  font-size: 14px;
+  line-height: 1.6;
+  white-space: pre-wrap;
+  background-color: #fafbfc;
+}
+
+.json-key {
+  color: #d73a49;
+  font-weight: 500;
+}
+
+.json-value {
+  color: #005cc5;
+}
+
+.json-string {
+  color: #032f62;
+  background-color: rgba(3, 102, 214, 0.05);
+  padding: 0 2px;
+  border-radius: 2px;
+}
+
+.json-number {
+  color: #e36209;
+  font-weight: 500;
+}
+
+.json-boolean {
+  color: #6f42c1;
+  font-weight: 500;
+}
+
+.json-null {
+  color: #6a737d;
+  font-style: italic;
+}
+
+.json-error {
+  color: #cb2431;
+  font-size: 13px;
+  font-weight: 500;
+  padding: 4px 8px;
+  background-color: #ffebef;
+  border-radius: 4px;
+  margin-left: 10px;
+}
+
+/* Syntax highlighting for brackets and punctuation */
+.json-punctuation {
+  color: #6a737d;
+  font-weight: bold;
+}
+
+.json-bracket {
+  color: #d1d5da;
+  font-weight: bold;
+}
+
+/* Line number styling */
+.json-line {
+  display: flex;
+  min-height: 20px;
+}
+
+.json-line-number {
+  color: #959da5;
+  min-width: 40px;
+  padding-right: 12px;
+  text-align: right;
+  user-select: none;
+}
+
+.json-line-content {
+  flex: 1;
+}

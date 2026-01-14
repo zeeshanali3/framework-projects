@@ -1,0 +1,2 @@
+const ADMINFILTER ='ADMINFILTER';
+export default ADMINFILTER;

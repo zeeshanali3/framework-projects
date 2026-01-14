@@ -1,0 +1,36 @@
+
+.toolbarColor{
+    color: white;
+}
+.CardStyle{
+
+    box-shadow: none;
+    padding: 25px;
+    margin-bottom: 15px;
+    margin-top: 15px;
+  
+
+}
+.btnbox{
+    display:flex;
+    justify-content:space-between;
+}
+.CardHeader{
+
+
+    padding:10px 20px;
+    
+   font-family: Georgia, serif;;
+}
+
+.tablecell{
+    /* color: #141414 !important; */
+}
+
+.filtericon{
+    color: black;
+}
+
+addbtn{
+    padding:10px 20px;
+}

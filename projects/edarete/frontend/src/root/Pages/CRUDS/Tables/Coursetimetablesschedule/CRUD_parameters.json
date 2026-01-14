@@ -1,0 +1,220 @@
+
+        {
+          "steps": [
+              {
+              "title": "coursetimetablesschedule Info",
+              "parameters": {
+                  "fields": [
+                  {
+                      "name": "coursetimetablesschedule",
+                      "type": "section",
+                      "hideInCreateForm": false,
+                      "visible": false,
+                      "required": false,
+                      "disabled": false,
+                      "validations": "",
+                      "dependancyCheck": false,
+                      "isPrefilled": false,
+                      "source": "req.body",
+                      "title": "Coursetimetablesschedule",
+                      "childFields": [ 
+        {
+          "name": "id",
+          "label": "id",
+          "title": "",
+          "type": "textField",
+          "required": false,
+          "hideInCreateForm": true,
+          "hideInViewForm" : true,
+          "visible": true,
+          "disabled": false,
+          "dependancyCheck": false,
+          "isPrefilled": false,
+          "source": "req.query",
+          "min": "",
+          "max": "",
+          "selectServer": false,
+          "dynamicKey": "id"
+        }
+        
+            ,
+            {
+                "name": "courseId",
+                "label": "Course Id",
+                "title": "",
+                "type": "number",
+                "required": true,
+                "hideInCreateForm": false,
+                "visible": true,
+                "disabled": false,
+                "dependancyCheck": false,
+                "isPrefilled": false,
+                "source": "req.body",
+                "min": "",
+                "max": "",
+                "validations": [],
+                "selectServer": false,
+                "selectServerUrl":"/null/dropdown?version=1.0",
+                "dynamicKey": "coursetimetablesschedule_courseId",
+                "alias" : "coursetimetablesschedule.course_id",
+                "options": []
+
+            }
+            ,
+            {
+                "name": "employeePreferedTimeSlotsId",
+                "label": "Employee Prefered Time Slots Id",
+                "title": "",
+                "type": "number",
+                "required": false,
+                "hideInCreateForm": false,
+                "visible": true,
+                "disabled": false,
+                "dependancyCheck": false,
+                "isPrefilled": false,
+                "source": "req.body",
+                "min": "",
+                "max": "",
+                "validations": [],
+                "selectServer": false,
+                "selectServerUrl":"/null/dropdown?version=1.0",
+                "dynamicKey": "coursetimetablesschedule_employeePreferedTimeSlotsId",
+                "alias" : "coursetimetablesschedule.employee_prefered_time_slots_id",
+                "options": []
+
+            }
+            ,
+            {
+                "name": "timeSlotId",
+                "label": "Time Slot Id",
+                "title": "",
+                "type": "number",
+                "required": true,
+                "hideInCreateForm": false,
+                "visible": true,
+                "disabled": false,
+                "dependancyCheck": false,
+                "isPrefilled": false,
+                "source": "req.body",
+                "min": "",
+                "max": "",
+                "validations": [],
+                "selectServer": false,
+                "selectServerUrl":"/null/dropdown?version=1.0",
+                "dynamicKey": "coursetimetablesschedule_timeSlotId",
+                "alias" : "coursetimetablesschedule.time_slot_id",
+                "options": []
+
+            }
+            ,
+            {
+                "name": "roomId",
+                "label": "Room Id",
+                "title": "",
+                "type": "number",
+                "required": true,
+                "hideInCreateForm": false,
+                "visible": true,
+                "disabled": false,
+                "dependancyCheck": false,
+                "isPrefilled": false,
+                "source": "req.body",
+                "min": "",
+                "max": "",
+                "validations": [],
+                "selectServer": false,
+                "selectServerUrl":"/null/dropdown?version=1.0",
+                "dynamicKey": "coursetimetablesschedule_roomId",
+                "alias" : "coursetimetablesschedule.room_id",
+                "options": []
+
+            }  
+          
+            
+        
+          
+          
+                ,
+                {
+                  "name": "createdAt",
+                  "label": "Created At",
+                  "title": "",
+                  "type": "dateTime",
+                  "required": false,
+                  "hideInCreateForm": true,
+                  "hideInViewForm" : true,
+                  "visible": false,
+                  "disabled": false,
+                  "dependancyCheck": false,
+                  "isPrefilled": false,
+                  "source": "req.body",
+                  "min": "",
+                  "max": "",
+                  "validations": [],
+                  "selectServer": false,
+                  "dynamicKey": "coursetimetablesschedule_createdAt",
+                  "alias" : "coursetimetablesschedule.created_at"
+                }
+                ,
+                {
+                  "name": "updatedAt",
+                  "label": "Updated At",
+                  "title": "",
+                  "type": "dateTime",
+                  "required": false,
+                  "hideInCreateForm": true,
+                  "hideInViewForm" : true,
+                  "visible": false,
+                  "disabled": false,
+                  "dependancyCheck": false,
+                  "isPrefilled": false,
+                  "source": "req.body",
+                  "min": "",
+                  "max": "",
+                  "validations": [],
+                  "selectServer": false,
+                  "dynamicKey": "coursetimetablesschedule_updatedAt",
+                  "alias" : "coursetimetablesschedule.updated_at"
+                }  
+
+          
+            ,
+            {
+                "name": "status",
+                "label": "Status",
+                "title": "",
+                "type": "select",
+                "required": false,
+                "hideInCreateForm": true,
+                "visible": false,
+                "disabled": false,
+                "dependancyCheck": false,
+                "isPrefilled": false,
+                "source": "req.body",
+                "min": "",
+                "max": "",
+                "validations": [],
+                "selectServer": false,
+                "dynamicKey": "coursetimetablesschedule_status",
+                "options":[
+                    {"value":"inactive","label":"inactive"},
+                    {"value":"active","label":"active"}
+                ],
+                "alias" : "coursetimetablesschedule.status"
+            }
+     
+                      ]
+                  }
+                  ]
+              },
+              "buttons": [
+                  {
+                  "type": "submit",
+                  "label": "Submit"
+                  }
+              ]
+              }
+          ],
+          "colMapper": "{coursetimetablesschedule.course_lschedule_id as coursetimetablesschedule_courseLscheduleId,coursetimetablesschedule.course_id as coursetimetablesschedule_courseId,coursetimetablesschedule.employee_prefered_time_slots_id as coursetimetablesschedule_employeePreferedTimeSlotsId,coursetimetablesschedule.time_slot_id as coursetimetablesschedule_timeSlotId,coursetimetablesschedule.room_id as coursetimetablesschedule_roomId,coursetimetablesschedule.status as coursetimetablesschedule_status,coursetimetablesschedule.created_by as coursetimetablesschedule_createdBy,coursetimetablesschedule.updated_by as coursetimetablesschedule_updatedBy,coursetimetablesschedule.created_at as coursetimetablesschedule_createdAt,coursetimetablesschedule.updated_at as coursetimetablesschedule_updatedAt}"
+          }
+        

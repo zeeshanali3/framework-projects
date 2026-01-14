@@ -1,0 +1,25 @@
+{
+  "short_name": "React App",
+  "name": "Create React App Sample",
+  "icons": [
+    {
+      "src": "%PUBLIC_URL%/ITU_Logos/LOGO6.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    },
+    {
+      "src": "/ITU_Logos/LOGO6.png",
+      "type": "image/png",
+      "sizes": "192x192"
+    },
+    {
+      "src": "/ITU_Logos/LOGO6.png",
+      "type": "image/png",
+      "sizes": "512x512"
+    }
+  ],
+  "start_url": ".",
+  "display": "standalone",
+  "theme_color": "#000000",
+  "background_color": "#ffffff"
+}

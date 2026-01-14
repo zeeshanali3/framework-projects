@@ -1,0 +1,223 @@
+{
+    "steps": [
+        {
+            "title": "Quiz Results",
+            "parameters": {
+                "fields": [
+                    {
+                        "name": "subcomponentmarks",
+                        "type": "section",
+                        "hideInCreateForm": false,
+                        "visible": false,
+                        "required": false,
+                        "disabled": false,
+                        "validations": "",
+                        "dependancyCheck": false,
+                        "isPrefilled": false,
+                        "source": "req.body",
+                        "title": "Quiz",
+                        "childFields": [
+                            {
+                                "name": "id",
+                                "label": "id",
+                                "title": "",
+                                "type": "textField",
+                                "required": false,
+                                "hideInCreateForm": true,
+                                "hideInViewForm": true,
+                                "visible": true,
+                                "disabled": false,
+                                "dependancyCheck": false,
+                                "isPrefilled": false,
+                                "source": "req.query",
+                                "min": "",
+                                "max": "",
+                                "selectServer": false,
+                                "dynamicKey": "id"
+                            },
+                            {
+                                "name": "quizTitle",
+                                "label": "Quiz Title",
+                                "title": "",
+                                "type": "textField",
+                                "required": false,
+                                "hideInCreateForm": false,
+                                "visible": true,
+                                "disabled": false,
+                                "dependancyCheck": false,
+                                "isPrefilled": false,
+                                "source": "req.body",
+                                "min": "",
+                                "max": "",
+                                "validations": [],
+                                "selectServer": false,
+                                "selectServerUrl": "/null/dropdown?version=1.0",
+                                "dynamicKey": "subcomponentmarks_quizTitle",
+                                "alias": "quiz.quiz_title",
+                                "options": []
+                            },
+                            {
+                                "name": "outOfMarks",
+                                "label": "Total Marks",
+                                "title": "",
+                                "type": "number",
+                                "required": false,
+                                "hideInCreateForm": false,
+                                "visible": true,
+                                "disabled": false,
+                                "dependancyCheck": false,
+                                "isPrefilled": false,
+                                "source": "req.body",
+                                "min": "",
+                                "max": "",
+                                "validations": [],
+                                "selectServer": false,
+                                "selectServerUrl": "/null/dropdown?version=1.0",
+                                "dynamicKey": "subcomponentmarks_outOfMarks",
+                                "alias": "quiz.total_marks",
+                                "options": []
+                            },
+                            {
+                                "name": "obtainedMarks",
+                                "label": "Obtained Marks",
+                                "title": "",
+                                "type": "number",
+                                "required": false,
+                                "hideInCreateForm": false,
+                                "visible": true,
+                                "disabled": false,
+                                "dependancyCheck": false,
+                                "isPrefilled": false,
+                                "source": "req.body",
+                                "min": "",
+                                "max": "",
+                                "validations": [],
+                                "selectServer": false,
+                                "selectServerUrl": "/null/dropdown?version=1.0",
+                                "dynamicKey": "subcomponentmarks_obtainedMarks",
+                                "alias": "quiz.obtained_marks",
+                                "options": []
+                            },
+                            {
+                                "name": "createdAt",
+                                "label": "Created At",
+                                "title": "",
+                                "type": "dateTime",
+                                "required": false,
+                                "hideInCreateForm": true,
+                                "hideInViewForm": true,
+                                "visible": false,
+                                "disabled": false,
+                                "dependancyCheck": false,
+                                "isPrefilled": false,
+                                "source": "req.body",
+                                "min": "",
+                                "max": "",
+                                "validations": [],
+                                "selectServer": false,
+                                "dynamicKey": "quiz_createdAt",
+                                "alias": "quiz.created_at"
+                            },
+                            {
+                                "name": "updatedAt",
+                                "label": "Updated At",
+                                "title": "",
+                                "type": "dateTime",
+                                "required": false,
+                                "hideInCreateForm": true,
+                                "hideInViewForm": true,
+                                "visible": false,
+                                "disabled": false,
+                                "dependancyCheck": false,
+                                "isPrefilled": false,
+                                "source": "req.body",
+                                "min": "",
+                                "max": "",
+                                "validations": [],
+                                "selectServer": false,
+                                "dynamicKey": "quiz_updatedAt",
+                                "alias": "quiz.updated_at"
+                            },
+                            {
+                                "name": "createdBy",
+                                "label": "Created By",
+                                "title": "",
+                                "type": "number",
+                                "required": false,
+                                "hideInCreateForm": true,
+                                "hideInViewForm": true,
+                                "visible": false,
+                                "disabled": false,
+                                "dependancyCheck": false,
+                                "isPrefilled": false,
+                                "source": "req.body",
+                                "min": "",
+                                "max": "",
+                                "validations": [],
+                                "selectServer": false,
+                                "dynamicKey": "quiz_createdBy",
+                                "alias": "quiz.created_by"
+                            },
+                            {
+                                "name": "updatedBy",
+                                "label": "Updated By",
+                                "title": "",
+                                "type": "number",
+                                "required": false,
+                                "hideInCreateForm": true,
+                                "hideInViewForm": true,
+                                "visible": false,
+                                "disabled": false,
+                                "dependancyCheck": false,
+                                "isPrefilled": false,
+                                "source": "req.body",
+                                "min": "",
+                                "max": "",
+                                "validations": [],
+                                "selectServer": false,
+                                "dynamicKey": "quiz_updatedBy",
+                                "alias": "quiz.updated_by"
+                            },
+                            {
+                                "name": "status",
+                                "label": "Status",
+                                "title": "",
+                                "type": "select",
+                                "required": false,
+                                "hideInCreateForm": true,
+                                "visible": false,
+                                "disabled": false,
+                                "dependancyCheck": false,
+                                "isPrefilled": false,
+                                "source": "req.body",
+                                "min": "",
+                                "max": "",
+                                "validations": [],
+                                "selectServer": false,
+                                "dynamicKey": "quiz_status",
+                                "options": [
+                                    {
+                                        "value": "inactive",
+                                        "label": "inactive"
+                                    },
+                                    {
+                                        "value": "active",
+                                        "label": "active"
+                                    }
+                                ],
+                                "alias": "quiz.status"
+                            }
+                        ]
+                    }
+                ]
+            },
+            "buttons": [
+                {
+                    "type": "submit",
+                    "label": "Submit"
+                }
+            ]
+        }
+    ],
+    "colMapper": "{quiz.id as quiz_id, quiz.quiz_title as quiz_quizTitle, quiz.total_marks as quiz_totalMarks, quiz.obtained_marks as quiz_obtainedMarks, quiz.created_at as quiz_createdAt, quiz.updated_at as quiz_updatedAt, quiz.created_by as quiz_createdBy, quiz.updated_by as quiz_updatedBy, quiz.status as quiz_status}"
+}

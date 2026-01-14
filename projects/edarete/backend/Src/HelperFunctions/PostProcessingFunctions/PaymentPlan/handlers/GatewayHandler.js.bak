@@ -1,0 +1,160 @@
+const logMessage = require("../../../../LogFunctions/consoleLog.js");
+const { executeQuery } = require("../../../../Database/queryExecution.js");
+const StripeHandler = require('./StripeHandler.js');
+
+class GatewayHandler {
+  // Entry point for auto-renewal
+  static async process(decryptedPayload, paymentMethod) {
+    logMessage([`Gateway auto-renewal for ${paymentMethod.name}`]);
+    
+    // Route to specific gateway handler
+    switch (paymentMethod.name.toLowerCase()) {
+      case 'stripe':
+        logMessage([`Routing to Stripe Handler`]);
+        return await StripeHandler.process(decryptedPayload, paymentMethod);
+        
+      case 'paypal':
+        logMessage([`Routing to PayPal Handler`]);
+        throw new Error('PayPal handler not implemented yet');
+        
+      default:
+        logMessage([`Routing to Generic Gateway Handler`]);
+        return await this.processGenericGateway(decryptedPayload, paymentMethod);
+    }
+  }
+
+  // Entry point for both auto-renewal and regular payments
+  static async processPayment(decryptedPayload, paymentMethod, isAutoRenewal = false) {
+    if (isAutoRenewal) {
+      logMessage([`Processing gateway auto-renewal for ${paymentMethod.name}`]);
+      return await this.process(decryptedPayload, paymentMethod);
+    } else {
+      logMessage([`Processing regular gateway payment for ${paymentMethod.name}`]);
+      return await this.processRegularPayment(decryptedPayload, paymentMethod);
+    }
+  }
+
+  // Handle regular (first-time) payments
+  static async processRegularPayment(decryptedPayload, paymentMethod) {
+    const { urdd_id, plan_id, payment_method_id } = decryptedPayload;
+    
+    try {
+      logMessage([`Regular gateway payment processing for ${paymentMethod.name}`]);
+      
+      // Route to specific gateway handler for regular payment
+      switch (paymentMethod.name.toLowerCase()) {
+        case 'stripe':
+          logMessage([`Routing to Stripe Handler for regular payment`]);
+          return await StripeHandler.processRegularPayment(decryptedPayload, paymentMethod);
+          
+        case 'paypal':
+          logMessage([`Routing to PayPal Handler for regular payment`]);
+          throw new Error('PayPal handler not implemented yet');
+          
+        default:
+          logMessage([`Processing generic gateway regular payment`]);
+          return await this.processGenericRegularPayment(decryptedPayload, paymentMethod);
+      }
+
+    } catch (error) {
+      console.error(`Gateway regular payment failed for ${paymentMethod.name}:`, error);
+      return {
+        payment_response: 'failure',
+        transaction_id: `gateway_regular_failed_${Date.now()}`,
+        gateway_response: {
+          gateway: paymentMethod.name,
+          status: 'failed',
+          message: error.message
+        },
+        is_auto_renewal: false,
+        renewal_method: 'regular_payment'
+      };
+    }
+  }
+
+  // Generic gateway regular payment processing
+  static async processGenericRegularPayment(decryptedPayload, paymentMethod) {
+    logMessage([`Generic gateway regular payment for ${paymentMethod.name}`]);
+    
+    // Simulate gateway processing
+    const isSuccess = Math.random() > 0.1; // 90% success rate for testing
+    
+    if (isSuccess) {
+      return {
+        payment_response: 'success',
+        transaction_id: `generic_regular_${Date.now()}`,
+        gateway_response: {
+          gateway: paymentMethod.name,
+          status: 'completed',
+          message: `Regular payment successful via ${paymentMethod.name}`,
+          amount: decryptedPayload.amount || 0,
+          currency: decryptedPayload.currency || 'USD'
+        },
+        is_auto_renewal: false,
+        renewal_method: 'regular_payment'
+      };
+    } else {
+      return {
+        payment_response: 'failure',
+        transaction_id: `generic_regular_failed_${Date.now()}`,
+        gateway_response: {
+          gateway: paymentMethod.name,
+          status: 'failed',
+          message: `Regular payment failed via ${paymentMethod.name}`,
+          amount: decryptedPayload.amount || 0,
+          currency: decryptedPayload.currency || 'USD'
+        },
+        is_auto_renewal: false,
+        renewal_method: 'regular_payment'
+      };
+    }
+  }
+
+  // Generic gateway auto-renewal processing
+  static async processGenericGateway(decryptedPayload, paymentMethod) {
+    return {
+      payment_response: 'success',
+      transaction_id: `generic_gateway_${Date.now()}`,
+      gateway_response: {
+        gateway: paymentMethod.name,
+        status: 'gateway_managed',
+        message: `${paymentMethod.name} will handle renewal automatically`
+      },
+      is_auto_renewal: true,
+      renewal_method: 'gateway_managed'
+    };
+  }
+
+  // Common methods
+  static async logGatewayRenewal(subscriptionId, status, details) {
+    const query = `
+      INSERT INTO subscription_renewal 
+      (subscription_id, transaction_id, status, renewal_type, gateway_details, created_at)
+      VALUES (?, ?, ?, 'gateway_managed', ?, NOW())
+    `;
+    
+    const connection = require("../../../../Database/projectDb.js")();
+    try {
+      await executeQuery(query, [subscriptionId, 0, status, JSON.stringify(details)], connection, false);
+    } finally {
+      connection.end();
+    }
+  }
+
+  static async updateSubscriptionStatus(subscriptionId, status, gatewayData) {
+    const query = `
+      UPDATE application_subscriptions 
+      SET status = ?
+      WHERE id = ?
+    `;
+    
+    const connection = require("../../../../Database/projectDb.js")();
+    try {
+      await executeQuery(query, [status, subscriptionId], connection, false);
+    } finally {
+      connection.end();
+    }
+  }
+}
+
+module.exports = GatewayHandler;

@@ -1,0 +1,185 @@
+const logMessage = require("../../../LogFunctions/consoleLog.js");
+const { executeQuery } = require("../../../Database/queryExecution.js");
+const {projectDB} = require("../../../Database/projectDb.js");
+
+const ManualAutoRenewalHandler = require("../../PostProcessingFunctions/PaymentPlan/handlers/ManualAutoRenewalHandler.js");
+const GatewayHandler = require("../../PostProcessingFunctions/PaymentPlan/handlers/GatewayHandler.js");
+
+async function paymentMethodRouter(req, decryptedPayload) {
+  let connection;
+  try {
+
+    const { payment_method_id, plan_id, urdd_id, is_auto_renewal, subscription_id } = decryptedPayload;
+    
+    if (!payment_method_id) {
+      throw new Error("Payment method ID is required");
+    }
+    
+    logMessage(["Payment Method Router - Processing:", { 
+      payment_method_id, 
+      plan_id, 
+
+      urdd_id,
+      is_auto_renewal: is_auto_renewal || false,
+      subscription_id: subscription_id || 'none'
+    }]);
+    
+    connection = await projectDB();
+    
+    try {
+
+      // Get payment method details with auto_renewal_type
+      const paymentMethodQuery = `
+
+        SELECT 
+          spm.id, 
+          spm.name, 
+          spm.provider_details, 
+          spm.auto_renewal_type,
+          spm.supported_currencies,
+          upm.is_default,
+          upm.is_active,
+          upm.is_verified
+        FROM supported_payment_methods spm
+        INNER JOIN user_payment_methods upm ON spm.id = upm.supported_payment_method_id
+        WHERE spm.id = ? 
+          AND upm.urdd_id = ?
+          AND upm.is_default = 1
+          AND upm.is_active = 1
+          AND upm.is_verified = 1
+          AND spm.is_active = 1
+      `;
+      
+      const paymentMethod = await executeQuery(paymentMethodQuery, [payment_method_id, urdd_id], connection, false);
+      
+      if (!paymentMethod || paymentMethod.length === 0) {
+        throw new Error(`Payment method with ID ${payment_method_id} not found or inactive`);
+      }
+      
+      const selectedMethod = paymentMethod[0];
+      logMessage(["Selected payment method:", selectedMethod]);
+
+      
+      // Validate region compatibility using supported_currencies
+      await validatePaymentMethodForRegion(payment_method_id, urdd_id, plan_id);
+      
+      
+      // Differentiate between new subscription vs auto-renewal attempt
+      const isActualAutoRenewal = is_auto_renewal && subscription_id;
+      
+      if (isActualAutoRenewal) {
+        logMessage([`Processing AUTO-RENEWAL for existing subscription ${subscription_id}`]);
+      } else {
+        logMessage([`Processing NEW SUBSCRIPTION payment (even if auto_renew will be enabled)`]);
+      }
+      
+      // Route based on payment method type and whether it's actual auto-renewal
+      let paymentResult;
+      
+      if (selectedMethod.auto_renewal_type === 'manual') {
+        logMessage([`Routing to Manual Handler for ${selectedMethod.name}`]);
+        paymentResult = await ManualAutoRenewalHandler.processPayment(
+          decryptedPayload, 
+          selectedMethod, 
+          isActualAutoRenewal
+        );
+        
+      } else if (selectedMethod.auto_renewal_type === 'gateway') {
+        logMessage([`Routing to Gateway Handler for ${selectedMethod.name}`]);
+        paymentResult = await GatewayHandler.processPayment(
+          decryptedPayload, 
+          selectedMethod, 
+          isActualAutoRenewal
+        );
+        
+      } else {
+        throw new Error(`Unknown auto_renewal_type: ${selectedMethod.auto_renewal_type}`);
+      }
+      
+      // Set the payment_response in decryptedPayload for the postProcessFunction
+      if (paymentResult && paymentResult.payment_response) {
+        decryptedPayload.payment_response = paymentResult.payment_response;
+        decryptedPayload.gateway_response = paymentResult.gateway_response;
+        decryptedPayload.payment_method = selectedMethod.name;
+        logMessage([`Payment result set in decryptedPayload:`, {
+          payment_response: decryptedPayload.payment_response,
+          payment_method: decryptedPayload.payment_method
+        }]);
+      }
+      
+      // Return the payment result for the API response
+      return paymentResult;
+      
+    } catch (error) {
+      throw error;
+    }
+    
+  } catch (error) {
+    console.error("Payment Method Router Error:", error);
+    throw new Error(`Payment routing failed: ${error.message}`);
+  } finally {
+    if (connection) {
+      connection.end();
+    }
+  }
+}
+
+
+// Region validation function using supported_currencies
+async function validatePaymentMethodForRegion(paymentMethodId, urdd_id, plan_id) {
+  const connection = await projectDB();
+  
+  try {
+    // Get plan region and payment method supported currencies (which represent regions)
+    const query = `
+      SELECT 
+        p.region as plan_region,
+        spm.supported_currencies,
+        spm.name as payment_method_name
+      FROM plans p
+      CROSS JOIN supported_payment_methods spm
+      WHERE p.id = ? AND spm.id = ?
+    `;
+    
+    const result = await executeQuery(query, [plan_id, paymentMethodId], connection, false);
+    
+    if (!result || result.length === 0) {
+      throw new Error('Plan or payment method not found');
+    }
+    
+    const { plan_region, supported_currencies, payment_method_name } = result[0];
+    
+    // Parse regions and currencies (handle both JSON and string formats)
+    let planRegions = [];
+    let supportedRegions = [];
+    
+    try {
+      planRegions = JSON.parse(plan_region || '[]');
+      supportedRegions = JSON.parse(supported_currencies || '[]');
+    } catch (e) {
+      // If parsing fails, treat as single region
+      planRegions = plan_region ? [plan_region] : [];
+      supportedRegions = supported_currencies ? [supported_currencies] : [];
+    }
+    
+    // Check if payment method supports plan region via currency mapping
+    const hasRegionSupport = planRegions.some(region => 
+      supportedRegions.includes(region)
+    );
+    
+    if (!hasRegionSupport) {
+      throw new Error(
+        `Payment method ${payment_method_name} does not support regions: ${planRegions.join(', ')}. ` +
+        `Supported regions/currencies: ${supportedRegions.join(', ')}`
+      );
+    }
+    
+    logMessage([`Region compatibility validated for payment method ${payment_method_name}`]);
+    
+  } finally {
+    connection.end();
+  }
+}
+
+module.exports = paymentMethodRouter;
+

@@ -1,0 +1,228 @@
+{
+  "data": {
+    "features": {
+     
+      "parameters": "parameters",
+      
+      "rowActions": {
+        "actions": [
+         
+          {
+            "name": "View",
+            "color": "grey",
+            "permission": "view_users",
+            "form": {
+              "parameters": "parameters",
+              "apiUrl": "/crud/subcomponentmarks?version=1.0",
+              "requestType": "GET",
+              "mode": "view"
+            }
+          }
+        ]
+      },
+      "bulkAction": {
+        "add": {
+          "permission": "add_quizResult",
+          "form": {
+            "parameters": "parameters",
+            "apiUrl": "/crud/users?version=1.0",
+            "requestType": "POST",
+            "mode": "create"
+          }
+        }
+      },
+      "columnVisibility": {
+        "permission": "column_visibility_users"
+      },
+      "userStatusUpdation": {
+        "permission": "status_updation_users",
+        "serverCommunication": {
+          "parameters": "parameters",
+          "apiUrl": "/crud/users",
+          "apiActionType": "Update",
+          "requestType": "PUT",
+          "reduxActionType": ""
+        }
+      },
+      "export": {
+        "permission": "export_users",
+        "serverCommunication": {
+          "parameters": "parameters",
+          "apiUrl": "",
+          "apiActionType": "",
+          "requestType": "",
+          "reduxActionType": ""
+        },
+        "options": {
+          "formats": ["CSV", "PDF"],
+          "includeHeaders": true,
+          "icon": ""
+        }
+      },
+      "filter": {
+        "permission": "filter_users",
+        "serverCommunication": {
+          "parameters": "parameters",
+          "apiUrl": "",
+          "apiActionType": "",
+          "requestType": "",
+          "reduxActionType": ""
+        },
+        "options": {
+          "filterBy": [
+            "users_userId", "users_email", "users_username", "users_firstName", "users_lastName", "users_phoneNo", "users_password", "users_cnic", "users_gender", "users_fatherName", "users_imageAttachmentId", "users_address", "users_dateOfBirth", "users_bloodGroup", "users_religion", "users_lastLogin", "users_status", "users_createdBy", "users_updatedBy", "users_createdAt", "users_updatedAt"
+          ],
+          "statusOptions": ["active", "inactive"]
+        },
+        "excludeFilter": []
+      },
+      "sort": {
+        "permission": "sort_users",
+        "serverCommunication": {
+          "parameters": "parameters",
+          "apiUrl": "",
+          "apiActionType": "",
+          "requestType": "",
+          "reduxActionType": ""
+        },
+        "options": {
+          "defaultSortField": "id",
+          "defaultSortOrder": "asc",
+          "multiColumnSort": true
+        },
+        "excludeSort": []
+      },
+      "list": {
+        "permission": "list_users",
+        "serverCommunication": {
+          "parameters": "parameters",
+          "apiUrl": "/subcomponent/results?version=1.0",
+          "apiActionType": "",
+          "requestType": "GET",
+          "reduxActionType": ""
+        }
+      },
+      "search": {
+        "permission": "search_users",
+        "excludeSearch": ["image"],
+        "serverCommunication": {
+          "parameters": "parameters",
+          "apiUrl": "",
+          "apiActionType": "",
+          "requestType": "",
+          "reduxActionType": ""
+        }
+      },
+      "grid": {
+        "entitiesPerRow": 2,
+        "buttonEnable": true,
+        "checkBoxEnable": true,
+        "actionButtonEnable": true
+      },
+      "pagination": {
+        "parameters": null,
+        "permission": true,
+        "serverCommunication": {
+          "parameters": "parameters",
+          "apiUrl": "/crud/users?version=1.0",
+          "apiActionType": "users_view",
+          "requestType": "GET",
+          "reduxActionType": "users_view"
+        },
+        "options": {
+          "pageSize": 10,
+          "pageSizeOptions": [4, 5, 10, 20, { "label": "All", "value": -1 }]
+        }
+      }
+    }
+  },
+  "config": {
+    "viewMode": {
+      "presentation": ["Table", "Grid"]
+    },
+    "features": {
+      "export": { "enable": false, "operationalMode": "server", "permission": true },
+      "filter": { "enable": true, "operationalMode": "server", "permission": false },
+      "sort": { "enable": false, "operationalMode": "server", "permission": true },
+      "search": { "enable": true, "operationalMode": "server", "permission": false },
+      "pagination": { "enable": true, "operationalMode": "server" },
+      "bulkAction": { "enable": false, "operationalMode": "server", "permission": true },
+      "viewModes": { "enable": true, "operationalMode": "server" },
+      "grid": { "enable": true, "operationalMode": "server" },
+      "colaborator": { "enable": false, "operationalMode": "server" },
+      "rowActions": { "enable": false, "operationalMode": "server", "permission": false },
+      "list": { "enable": true, "operationalMode": "server", "permission": false },
+      "parameters": { "enable": true, "operationalMode": "local" },
+      "tabs": { "enable": true, "operationalMode": "server", "permission": false },
+      "dragAndDrop": { "enable": true },
+      "expandableRow": { "enable": true },
+      "speedDial": { "enable": true },
+      "columnVisibility": {
+        "enable": true,
+        "operationalMode": "local",
+        "permission": true
+      },
+      "userStatusUpdation": {
+        "enable": true,
+        "operationalMode": "server",
+        "permission": true
+      }
+    }
+  },
+  "appearance": {
+    "light": {
+      "grid": {
+        "image": {
+          "borderColor": "#7479ed"
+        },
+        "actionButtons": {
+          "color": "#7b7a8c"
+        },
+        "button": {
+          "buttonColor": "#818093",
+          "buttonVarient": "contained",
+          "buttonTextColor": "#ffffff"
+        },
+        "header": {
+          "headColor": "#e5e5e5",
+          "headTextColor": "#260143"
+        },
+        "cardFont": {
+          "headingSize": 15,
+          "headingWeight": 650,
+          "textSize": 13,
+          "textWeight": 500,
+          "heading": "#260143",
+          "color": "#5a5897"
+        }
+      }
+    },
+    "dark": {
+      "grid": {
+        "image": {
+          "borderColor": "#6C63FF"
+        },
+        "actionButtons": {
+          "color": "#a5a4c4"
+        },
+        "button": {
+          "buttonColor": "#6C63FF",
+          "buttonVarient": "contained",
+          "buttonTextColor": "#ffffff"
+        },
+        "header": {
+          "headColor": "#2d2d3d",
+          "headTextColor": "#c7c6ff"
+        },
+        "cardFont": {
+          "headingSize": 15,
+          "headingWeight": 650,
+          "textSize": 13,
+          "textWeight": 500,
+          "heading": "#ffffff",
+          "color": "#c7c6ff"
+        }
+      }
+    }
+  }
+}

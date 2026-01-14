@@ -1,0 +1,2 @@
+const ADDTIMETABLE ='ADDTIMETABLE';
+export default ADDTIMETABLE

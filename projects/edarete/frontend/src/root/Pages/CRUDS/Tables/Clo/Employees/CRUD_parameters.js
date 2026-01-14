@@ -1,0 +1,304 @@
+/* Frontend Parameters for table: employees */
+        
+            export const parameters = {
+                "steps": [
+                    {
+                    "title": "employees Info",
+                    "parameters": {
+                        "fields": [
+                        {
+                            "name": "employees",
+                            "type": "section",
+                            "hideInCreateForm": false,
+                            "visible": false,
+                            "required": false,
+                            "disabled": false,
+                            "validations": "",
+                            "dependancyCheck": false,
+                            "isPrefilled": false,
+                            "source": "req.body",
+                            "title": "Employees",
+                            "childFields": [
+                                  
+        {
+          "name": "id",
+          "label": "id",
+          "title": "",
+          "type": "textField",
+          "required": false,
+          "hideInCreateForm": true,
+          "hideInViewForm" : true,
+          "visible": true,
+          "disabled": false,
+          "dependancyCheck": false,
+          "isPrefilled": false,
+          "source": "req.query",
+          "min": "",
+          "max": "",
+          "selectServer": false,
+          "dynamicKey": "id"
+        }
+        
+            ,
+            {
+                "name": "personalDomainUrl",
+                "label": "Personal Domain Url",
+                "title": "",
+                "type": "textField",
+                "required": false,
+                "hideInCreateForm": false,
+                "visible": true,
+                "disabled": false,
+                "dependancyCheck": false,
+                "isPrefilled": false,
+                "source": "req.body",
+                "min": "",
+                "max": "",
+                "validations": [],
+                "selectServer": false,
+                "selectServerUrl":"/null/dropdown?version=1.0",
+                "dynamicKey": "employees_personalDomainUrl",
+                "alias" : "employees.personal_domain_url",
+                "options": []
+
+            }
+            ,
+            {
+                "name": "qualification",
+                "label": "Qualification",
+                "title": "",
+                "type": "textField",
+                "required": false,
+                "hideInCreateForm": false,
+                "visible": true,
+                "disabled": false,
+                "dependancyCheck": false,
+                "isPrefilled": false,
+                "source": "req.body",
+                "min": "",
+                "max": "",
+                "validations": [],
+                "selectServer": false,
+                "selectServerUrl":"/null/dropdown?version=1.0",
+                "dynamicKey": "employees_qualification",
+                "alias" : "employees.qualification",
+                "options": []
+
+            }
+            ,
+            {
+                "name": "salary",
+                "label": "Salary",
+                "title": "",
+                "type": "textField",
+                "required": false,
+                "hideInCreateForm": false,
+                "visible": true,
+                "disabled": false,
+                "dependancyCheck": false,
+                "isPrefilled": false,
+                "source": "req.body",
+                "min": "",
+                "max": "",
+                "validations": [],
+                "selectServer": false,
+                "selectServerUrl":"/null/dropdown?version=1.0",
+                "dynamicKey": "employees_salary",
+                "alias" : "employees.salary",
+                "options": []
+
+            }  
+        
+            ,
+            {
+                "name": "departmentName",
+                "label": "Department Name",
+                "title": "",
+                "type": "textField",
+                "required": false,
+                "hideInCreateForm": true,
+                "visible": true,
+                "disabled": false,
+                "dependancyCheck": false,
+                "isPrefilled": false,
+                "source": "req.body",
+                "min": "",
+                "max": "",
+                "validations": [],
+                "selectServer": false,
+                "dynamicKey": "departments_departmentName",
+                "alias" : "departments.department_name",
+                "options": [ ""]
+
+            }  
+            
+        
+                ,
+                {
+                    "name": "departmentId",
+                    "label": "Department Id",
+                    "title": "",
+                    "type": "select",
+                    "required": false,
+                    "hideInCreateForm": false,
+                    "hideInViewForm": true,
+                    "visible": false,
+                    "disabled": false,
+                    "dependancyCheck": false,
+                    "isPrefilled": false,
+                    "source": "req.body",
+                    "min": "",
+                    "max": "",
+                    "validations": [],
+                    "selectServer": true,
+                    "dynamicKey": "employees_departmentId",
+                    "selectServerUrl": "/departments/dropdown?version=1.0",
+                    "alias" : "employees.department_id"
+                }
+                
+                ,
+                {
+                    "name": "urddId",
+                    "label": "Urdd Id",
+                    "title": "",
+                    "type": "select",
+                    "required": true,
+                    "hideInCreateForm": false,
+                    "hideInViewForm": true,
+                    "visible": false,
+                    "disabled": false,
+                    "dependancyCheck": false,
+                    "isPrefilled": false,
+                    "source": "req.body",
+                    "min": "",
+                    "max": "",
+                    "validations": [],
+                    "selectServer": true,
+                    "dynamicKey": "employees_urddId",
+                    "selectServerUrl": "/user_roles_designations_department/dropdown?version=1.0",
+                    "alias" : "employees.urdd_id"
+                }
+                
+        
+          ,
+          {
+              "name": "startDate",
+              "label": "Start Date",
+              "title": "",
+              "type": "datetime",
+                "required": false,
+              "hideInCreateForm": false,
+              "visible": true,
+              "disabled": false,
+              "dependancyCheck": false,
+              "isPrefilled": false,
+              "source": "req.body",
+              "min": "",
+              "max": "",
+              "validations": [],
+              "selectServer": false,
+              "dynamicKey": "employees_startDate"
+          }
+          ,
+          {
+              "name": "endDate",
+              "label": "End Date",
+              "title": "",
+              "type": "datetime",
+                "required": false,
+              "hideInCreateForm": false,
+              "visible": true,
+              "disabled": false,
+              "dependancyCheck": false,
+              "isPrefilled": false,
+              "source": "req.body",
+              "min": "",
+              "max": "",
+              "validations": [],
+              "selectServer": false,
+              "dynamicKey": "employees_endDate"
+          }  
+          
+                ,
+                {
+                  "name": "createdAt",
+                  "label": "Created At",
+                  "title": "",
+                  "type": "dateTime",
+                  "required": false,
+                  "hideInCreateForm": true,
+                  "hideInViewForm" : true,
+                  "visible": false,
+                  "disabled": false,
+                  "dependancyCheck": false,
+                  "isPrefilled": false,
+                  "source": "req.body",
+                  "min": "",
+                  "max": "",
+                  "validations": [],
+                  "selectServer": false,
+                  "dynamicKey": "employees_createdAt",
+                  "alias" : "employees.created_at"
+                }
+                ,
+                {
+                  "name": "updatedAt",
+                  "label": "Updated At",
+                  "title": "",
+                  "type": "dateTime",
+                  "required": false,
+                  "hideInCreateForm": true,
+                  "hideInViewForm" : true,
+                  "visible": false,
+                  "disabled": false,
+                  "dependancyCheck": false,
+                  "isPrefilled": false,
+                  "source": "req.body",
+                  "min": "",
+                  "max": "",
+                  "validations": [],
+                  "selectServer": false,
+                  "dynamicKey": "employees_updatedAt",
+                  "alias" : "employees.updated_at"
+                }  
+
+          
+            ,
+            {
+                "name": "status",
+                "label": "Status",
+                "title": "",
+                "type": "select",
+                "required": false,
+                "hideInCreateForm": true,
+                "visible": false,
+                "disabled": false,
+                "dependancyCheck": false,
+                "isPrefilled": false,
+                "source": "req.body",
+                "min": "",
+                "max": "",
+                "validations": [],
+                "selectServer": false,
+                "dynamicKey": "employees_status",
+                "options":[
+                    {"value":"inactive","label":"inactive"},
+                    {"value":"active","label":"active"}
+                ],
+                "alias" : "employees.status"
+            }
+    
+                            ]
+                        }
+                        ]
+                    },
+                    "buttons": [
+                        {
+                        "type": "submit",
+                        "label": "Submit"
+                        }
+                    ]
+                    }
+                ],
+                "colMapper": "{ 'employees_employeeId' : 'employee_id',  'employees_departmentId' : 'department_id',  'employees_personalDomainUrl' : 'personal_domain_url',  'employees_urddId' : 'urdd_id',  'employees_qualification' : 'qualification',  'employees_salary' : 'salary',  'employees_startDate' : 'start_date',  'employees_endDate' : 'end_date',  'employees_status' : 'status',  'employees_createdBy' : 'created_by',  'employees_updatedBy' : 'updated_by',  'employees_createdAt' : 'created_at',  'employees_updatedAt' : 'updated_at',  'employees_departmentName' : 'department_name'}"
+                };

@@ -1,0 +1,590 @@
+const parameters = {
+              "steps": [
+                  
+                          {
+                              "title": "Departments Grouped CRUD",
+                              "parameters": {
+                                  "fields": [
+                                      {
+                                          "name": "departments",
+                                          "type": "section",
+                                          "hideInCreateForm": false,
+                                          "visible": false,
+                                          "required": false,
+                                          "disabled": false,
+                                          "validations": "",
+                                          "dependancyCheck": false,
+                                          "isPrefilled": false,
+                                          "source": "req.body",
+                                          "title": "Departments",
+                                          "childFields": [
+                                                  {
+                                                    "name": "departments_id",
+                                                    "label": "id",
+                                                    "title": "",
+                                                    "type": "textField",
+                                                    "required": false,
+                                                    "hideInCreateForm": true,
+                                                    "visible": true,
+                                                    "disabled": false,
+                                                    "dependancyCheck": false,
+                                                    "isPrefilled": false,
+                                                    "source": "req.query",
+                                                    "min": "",
+                                                    "max": "",
+                                                    "selectServer": false,
+                                                    "dynamicKey": "departments_id"
+                                                  },
+                                                  {
+                                                    "name": "actionPerformerURDD",
+                                                    "label": "actionPerformerURDD",
+                                                    "title": "",
+                                                    "type": "textField",
+                                                    "required": false,
+                                                    "hideInCreateForm": false,
+                                                    "visible": true,
+                                                    "disabled": false,
+                                                    "dependancyCheck": false,
+                                                    "isPrefilled": false,
+                                                    "source": "req.body",
+                                                    "min": "",
+                                                    "max": "",
+                                                    "selectServer": false,
+                                                    "dynamicKey": "actionPerformerURDD",
+                                                    "alias" : "actionPerformerURDD",
+                                                },
+                                              
+                                                      {
+                                                          "name": "departmentName",
+                                                          "label": "Department Name",
+                                                          "title": "",
+                                                          "type": "textField",
+                                                          "required": false,
+                                                          "hideInCreateForm": false,
+                                                          "visible": true,
+                                                          "disabled": false,
+                                                          "dependancyCheck": false,
+                                                          "isPrefilled": false,
+                                                          "source": "req.body",
+                                                          "min": "",
+                                                          "max": "",
+                                                          "selectServer": false,
+                                                          "dynamicKey": "departments_departmentName"
+                                                      },
+                                                      {
+                                                          "name": "employeeId",
+                                                          "label": "Employee Id",
+                                                          "title": "",
+                                                          "type": "textField",
+                                                          "required": false,
+                                                          "hideInCreateForm": false,
+                                                          "visible": true,
+                                                          "disabled": false,
+                                                          "dependancyCheck": false,
+                                                          "isPrefilled": false,
+                                                          "source": "req.body",
+                                                          "min": "",
+                                                          "max": "",
+                                                          "selectServer": false,
+                                                          "dynamicKey": "departments_employeeId"
+                                                      }
+                                          ]
+                                      }
+                                  ]
+                              },
+                              "buttons": [
+                                  {
+                                      "type": "submit",
+                                      "label": "Submit"
+                                  }
+                              ],
+                              "permission": "departments_view"
+                          },
+                          {
+                              "title": "Employees Grouped CRUD",
+                              "parameters": {
+                                  "fields": [
+                                      {
+                                          "name": "employees",
+                                          "type": "section",
+                                          "hideInCreateForm": false,
+                                          "visible": false,
+                                          "required": false,
+                                          "disabled": false,
+                                          "validations": "",
+                                          "dependancyCheck": false,
+                                          "isPrefilled": false,
+                                          "source": "req.body",
+                                          "title": "Departments",
+                                          "childFields": [
+                                                  {
+                                                    "name": "employees_id",
+                                                    "label": "id",
+                                                    "title": "",
+                                                    "type": "textField",
+                                                    "required": false,
+                                                    "hideInCreateForm": true,
+                                                    "visible": true,
+                                                    "disabled": false,
+                                                    "dependancyCheck": false,
+                                                    "isPrefilled": false,
+                                                    "source": "req.query",
+                                                    "min": "",
+                                                    "max": "",
+                                                    "selectServer": false,
+                                                    "dynamicKey": "employees_id"
+                                                  },
+                                                  {
+                                                    "name": "actionPerformerURDD",
+                                                    "label": "actionPerformerURDD",
+                                                    "title": "",
+                                                    "type": "textField",
+                                                    "required": false,
+                                                    "hideInCreateForm": false,
+                                                    "visible": true,
+                                                    "disabled": false,
+                                                    "dependancyCheck": false,
+                                                    "isPrefilled": false,
+                                                    "source": "req.body",
+                                                    "min": "",
+                                                    "max": "",
+                                                    "selectServer": false,
+                                                    "dynamicKey": "actionPerformerURDD",
+                                                    "alias" : "actionPerformerURDD",
+                                                },
+                                              
+                                                      {
+                                                          "name": "departmentId",
+                                                          "label": "Department Id",
+                                                          "title": "",
+                                                          "type": "textField",
+                                                          "required": false,
+                                                          "hideInCreateForm": false,
+                                                          "visible": true,
+                                                          "disabled": false,
+                                                          "dependancyCheck": false,
+                                                          "isPrefilled": false,
+                                                          "source": "req.body",
+                                                          "min": "",
+                                                          "max": "",
+                                                          "selectServer": false,
+                                                          "dynamicKey": "employees_departmentId"
+                                                      },
+                                                      {
+                                                          "name": "personalDomainUrl",
+                                                          "label": "Personal Domain Url",
+                                                          "title": "",
+                                                          "type": "textField",
+                                                          "required": false,
+                                                          "hideInCreateForm": false,
+                                                          "visible": true,
+                                                          "disabled": false,
+                                                          "dependancyCheck": false,
+                                                          "isPrefilled": false,
+                                                          "source": "req.body",
+                                                          "min": "",
+                                                          "max": "",
+                                                          "selectServer": false,
+                                                          "dynamicKey": "employees_personalDomainUrl"
+                                                      },
+                                                      {
+                                                          "name": "urddId",
+                                                          "label": "Urdd Id",
+                                                          "title": "",
+                                                          "type": "textField",
+                                                          "required": false,
+                                                          "hideInCreateForm": false,
+                                                          "visible": true,
+                                                          "disabled": false,
+                                                          "dependancyCheck": false,
+                                                          "isPrefilled": false,
+                                                          "source": "req.body",
+                                                          "min": "",
+                                                          "max": "",
+                                                          "selectServer": false,
+                                                          "dynamicKey": "employees_urddId"
+                                                      },
+                                                      {
+                                                          "name": "qualification",
+                                                          "label": "Qualification",
+                                                          "title": "",
+                                                          "type": "textField",
+                                                          "required": false,
+                                                          "hideInCreateForm": false,
+                                                          "visible": true,
+                                                          "disabled": false,
+                                                          "dependancyCheck": false,
+                                                          "isPrefilled": false,
+                                                          "source": "req.body",
+                                                          "min": "",
+                                                          "max": "",
+                                                          "selectServer": false,
+                                                          "dynamicKey": "employees_qualification"
+                                                      },
+                                                      {
+                                                          "name": "salary",
+                                                          "label": "Salary",
+                                                          "title": "",
+                                                          "type": "textField",
+                                                          "required": false,
+                                                          "hideInCreateForm": false,
+                                                          "visible": true,
+                                                          "disabled": false,
+                                                          "dependancyCheck": false,
+                                                          "isPrefilled": false,
+                                                          "source": "req.body",
+                                                          "min": "",
+                                                          "max": "",
+                                                          "selectServer": false,
+                                                          "dynamicKey": "employees_salary"
+                                                      },
+                                                      {
+                                                          "name": "startDate",
+                                                          "label": "Start Date",
+                                                          "title": "",
+                                                          "type": "textField",
+                                                          "required": false,
+                                                          "hideInCreateForm": false,
+                                                          "visible": true,
+                                                          "disabled": false,
+                                                          "dependancyCheck": false,
+                                                          "isPrefilled": false,
+                                                          "source": "req.body",
+                                                          "min": "",
+                                                          "max": "",
+                                                          "selectServer": false,
+                                                          "dynamicKey": "employees_startDate"
+                                                      },
+                                                      {
+                                                          "name": "endDate",
+                                                          "label": "End Date",
+                                                          "title": "",
+                                                          "type": "textField",
+                                                          "required": false,
+                                                          "hideInCreateForm": false,
+                                                          "visible": true,
+                                                          "disabled": false,
+                                                          "dependancyCheck": false,
+                                                          "isPrefilled": false,
+                                                          "source": "req.body",
+                                                          "min": "",
+                                                          "max": "",
+                                                          "selectServer": false,
+                                                          "dynamicKey": "employees_endDate"
+                                                      }
+                                          ]
+                                      }
+                                  ]
+                              },
+                              "buttons": [
+                                  {
+                                      "type": "submit",
+                                      "label": "Submit"
+                                  }
+                              ],
+                              "permission": "employees_view"
+                          },
+                          {
+                              "title": "Programs Grouped CRUD",
+                              "parameters": {
+                                  "fields": [
+                                      {
+                                          "name": "programs",
+                                          "type": "section",
+                                          "hideInCreateForm": false,
+                                          "visible": false,
+                                          "required": false,
+                                          "disabled": false,
+                                          "validations": "",
+                                          "dependancyCheck": false,
+                                          "isPrefilled": false,
+                                          "source": "req.body",
+                                          "title": "Departments",
+                                          "childFields": [
+                                                  {
+                                                    "name": "programs_id",
+                                                    "label": "id",
+                                                    "title": "",
+                                                    "type": "textField",
+                                                    "required": false,
+                                                    "hideInCreateForm": true,
+                                                    "visible": true,
+                                                    "disabled": false,
+                                                    "dependancyCheck": false,
+                                                    "isPrefilled": false,
+                                                    "source": "req.query",
+                                                    "min": "",
+                                                    "max": "",
+                                                    "selectServer": false,
+                                                    "dynamicKey": "programs_id"
+                                                  },
+                                                  {
+                                                    "name": "actionPerformerURDD",
+                                                    "label": "actionPerformerURDD",
+                                                    "title": "",
+                                                    "type": "textField",
+                                                    "required": false,
+                                                    "hideInCreateForm": false,
+                                                    "visible": true,
+                                                    "disabled": false,
+                                                    "dependancyCheck": false,
+                                                    "isPrefilled": false,
+                                                    "source": "req.body",
+                                                    "min": "",
+                                                    "max": "",
+                                                    "selectServer": false,
+                                                    "dynamicKey": "actionPerformerURDD",
+                                                    "alias" : "actionPerformerURDD",
+                                                },
+                                              
+                                                      {
+                                                          "name": "departmentId",
+                                                          "label": "Department Id",
+                                                          "title": "",
+                                                          "type": "textField",
+                                                          "required": false,
+                                                          "hideInCreateForm": false,
+                                                          "visible": true,
+                                                          "disabled": false,
+                                                          "dependancyCheck": false,
+                                                          "isPrefilled": false,
+                                                          "source": "req.body",
+                                                          "min": "",
+                                                          "max": "",
+                                                          "selectServer": false,
+                                                          "dynamicKey": "programs_departmentId"
+                                                      },
+                                                      {
+                                                          "name": "domainId",
+                                                          "label": "Domain Id",
+                                                          "title": "",
+                                                          "type": "textField",
+                                                          "required": false,
+                                                          "hideInCreateForm": false,
+                                                          "visible": true,
+                                                          "disabled": false,
+                                                          "dependancyCheck": false,
+                                                          "isPrefilled": false,
+                                                          "source": "req.body",
+                                                          "min": "",
+                                                          "max": "",
+                                                          "selectServer": false,
+                                                          "dynamicKey": "programs_domainId"
+                                                      },
+                                                      {
+                                                          "name": "programName",
+                                                          "label": "Program Name",
+                                                          "title": "",
+                                                          "type": "textField",
+                                                          "required": false,
+                                                          "hideInCreateForm": false,
+                                                          "visible": true,
+                                                          "disabled": false,
+                                                          "dependancyCheck": false,
+                                                          "isPrefilled": false,
+                                                          "source": "req.body",
+                                                          "min": "",
+                                                          "max": "",
+                                                          "selectServer": false,
+                                                          "dynamicKey": "programs_programName"
+                                                      },
+                                                      {
+                                                          "name": "programYear",
+                                                          "label": "Program Year",
+                                                          "title": "",
+                                                          "type": "textField",
+                                                          "required": false,
+                                                          "hideInCreateForm": false,
+                                                          "visible": true,
+                                                          "disabled": false,
+                                                          "dependancyCheck": false,
+                                                          "isPrefilled": false,
+                                                          "source": "req.body",
+                                                          "min": "",
+                                                          "max": "",
+                                                          "selectServer": false,
+                                                          "dynamicKey": "programs_programYear"
+                                                      }
+                                          ]
+                                      }
+                                  ]
+                              },
+                              "buttons": [
+                                  {
+                                      "type": "submit",
+                                      "label": "Submit"
+                                  }
+                              ],
+                              "permission": "programs_view"
+                          },
+                          {
+                              "title": "Roles Designations Department Grouped CRUD",
+                              "parameters": {
+                                  "fields": [
+                                      {
+                                          "name": "roles_designations_department",
+                                          "type": "section",
+                                          "hideInCreateForm": false,
+                                          "visible": false,
+                                          "required": false,
+                                          "disabled": false,
+                                          "validations": "",
+                                          "dependancyCheck": false,
+                                          "isPrefilled": false,
+                                          "source": "req.body",
+                                          "title": "Departments",
+                                          "childFields": [
+                                                  {
+                                                    "name": "rolesDesignationsDepartment_id",
+                                                    "label": "id",
+                                                    "title": "",
+                                                    "type": "textField",
+                                                    "required": false,
+                                                    "hideInCreateForm": true,
+                                                    "visible": true,
+                                                    "disabled": false,
+                                                    "dependancyCheck": false,
+                                                    "isPrefilled": false,
+                                                    "source": "req.query",
+                                                    "min": "",
+                                                    "max": "",
+                                                    "selectServer": false,
+                                                    "dynamicKey": "rolesDesignationsDepartment_id"
+                                                  },
+                                                  {
+                                                    "name": "actionPerformerURDD",
+                                                    "label": "actionPerformerURDD",
+                                                    "title": "",
+                                                    "type": "textField",
+                                                    "required": false,
+                                                    "hideInCreateForm": false,
+                                                    "visible": true,
+                                                    "disabled": false,
+                                                    "dependancyCheck": false,
+                                                    "isPrefilled": false,
+                                                    "source": "req.body",
+                                                    "min": "",
+                                                    "max": "",
+                                                    "selectServer": false,
+                                                    "dynamicKey": "actionPerformerURDD",
+                                                    "alias" : "actionPerformerURDD",
+                                                },
+                                              
+                                                      {
+                                                          "name": "designationId",
+                                                          "label": "Designation Id",
+                                                          "title": "",
+                                                          "type": "textField",
+                                                          "required": false,
+                                                          "hideInCreateForm": false,
+                                                          "visible": true,
+                                                          "disabled": false,
+                                                          "dependancyCheck": false,
+                                                          "isPrefilled": false,
+                                                          "source": "req.body",
+                                                          "min": "",
+                                                          "max": "",
+                                                          "selectServer": false,
+                                                          "dynamicKey": "rolesDesignationsDepartment_designationId"
+                                                      },
+                                                      {
+                                                          "name": "designationId",
+                                                          "label": "Designation Id",
+                                                          "title": "",
+                                                          "type": "textField",
+                                                          "required": false,
+                                                          "hideInCreateForm": false,
+                                                          "visible": true,
+                                                          "disabled": false,
+                                                          "dependancyCheck": false,
+                                                          "isPrefilled": false,
+                                                          "source": "req.body",
+                                                          "min": "",
+                                                          "max": "",
+                                                          "selectServer": false,
+                                                          "dynamicKey": "rolesDesignationsDepartment_designationId"
+                                                      },
+                                                      {
+                                                          "name": "roleId",
+                                                          "label": "Role Id",
+                                                          "title": "",
+                                                          "type": "textField",
+                                                          "required": false,
+                                                          "hideInCreateForm": false,
+                                                          "visible": true,
+                                                          "disabled": false,
+                                                          "dependancyCheck": false,
+                                                          "isPrefilled": false,
+                                                          "source": "req.body",
+                                                          "min": "",
+                                                          "max": "",
+                                                          "selectServer": false,
+                                                          "dynamicKey": "rolesDesignationsDepartment_roleId"
+                                                      },
+                                                      {
+                                                          "name": "roleId",
+                                                          "label": "Role Id",
+                                                          "title": "",
+                                                          "type": "textField",
+                                                          "required": false,
+                                                          "hideInCreateForm": false,
+                                                          "visible": true,
+                                                          "disabled": false,
+                                                          "dependancyCheck": false,
+                                                          "isPrefilled": false,
+                                                          "source": "req.body",
+                                                          "min": "",
+                                                          "max": "",
+                                                          "selectServer": false,
+                                                          "dynamicKey": "rolesDesignationsDepartment_roleId"
+                                                      },
+                                                      {
+                                                          "name": "departmentId",
+                                                          "label": "Department Id",
+                                                          "title": "",
+                                                          "type": "textField",
+                                                          "required": false,
+                                                          "hideInCreateForm": false,
+                                                          "visible": true,
+                                                          "disabled": false,
+                                                          "dependancyCheck": false,
+                                                          "isPrefilled": false,
+                                                          "source": "req.body",
+                                                          "min": "",
+                                                          "max": "",
+                                                          "selectServer": false,
+                                                          "dynamicKey": "rolesDesignationsDepartment_departmentId"
+                                                      },
+                                                      {
+                                                          "name": "departmentId",
+                                                          "label": "Department Id",
+                                                          "title": "",
+                                                          "type": "textField",
+                                                          "required": false,
+                                                          "hideInCreateForm": false,
+                                                          "visible": true,
+                                                          "disabled": false,
+                                                          "dependancyCheck": false,
+                                                          "isPrefilled": false,
+                                                          "source": "req.body",
+                                                          "min": "",
+                                                          "max": "",
+                                                          "selectServer": false,
+                                                          "dynamicKey": "rolesDesignationsDepartment_departmentId"
+                                                      }
+                                          ]
+                                      }
+                                  ]
+                              },
+                              "buttons": [
+                                  {
+                                      "type": "submit",
+                                      "label": "Submit"
+                                  }
+                              ],
+                              "permission": "roles_designations_department_view"
+                          }
+              ],
+              "colMapper": "{ 'departments_departmentId' : 'department_id',  'departments_departmentName' : 'department_name',  'departments_employeeId' : 'employee_id',  'employees_employeeId' : 'employee_id',  'employees_departmentId' : 'department_id',  'employees_personalDomainUrl' : 'personal_domain_url',  'employees_urddId' : 'urdd_id',  'employees_qualification' : 'qualification',  'employees_salary' : 'salary',  'employees_startDate' : 'start_date',  'employees_endDate' : 'end_date',  'programs_programId' : 'program_id',  'programs_departmentId' : 'department_id',  'programs_domainId' : 'domain_id',  'programs_programName' : 'program_name',  'programs_programYear' : 'program_year',  'rolesDesignationsDepartment_roleDesignationDepartmentId' : 'role_designation_department_id',  'rolesDesignationsDepartment_designationId' : 'designation_id',  'rolesDesignationsDepartment_designationId' : 'designation_id',  'rolesDesignationsDepartment_roleId' : 'role_id',  'rolesDesignationsDepartment_roleId' : 'role_id',  'rolesDesignationsDepartment_departmentId' : 'department_id',  'rolesDesignationsDepartment_departmentId' : 'department_id',  'rolesDesignationsDepartment_status' : 'status',  'rolesDesignationsDepartment_createdBy' : 'created_by',  'rolesDesignationsDepartment_updatedBy' : 'updated_by',  'rolesDesignationsDepartment_createdAt' : 'created_at',  'rolesDesignationsDepartment_updatedAt' : 'updated_at'}"
+          };
+          module.exports = parameters;

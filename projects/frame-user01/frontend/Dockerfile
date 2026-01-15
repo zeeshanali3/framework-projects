@@ -9,7 +9,7 @@ COPY package.json package-lock.json ./
 # 2. Use 'npm ci' (Clean Install). 
 # It is faster and more reliable for CI/CD because it ignores 
 # package.json and installs exactly what is in the lock file.
-RUN npm ci
+RUN npm ci --legacy-peer-deps
 
 # 3. Declare build arguments
 ARG VITE_SECRET_KEY

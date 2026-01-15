@@ -20,7 +20,7 @@ jobs:
       - name: Detect user
         id: user
         run: |
-          USER_ID="edarete"
+          USER_ID="frame-user01"
           if [ -z "$USER_ID" ]; then
             echo "❌ No new user found"
             exit 1

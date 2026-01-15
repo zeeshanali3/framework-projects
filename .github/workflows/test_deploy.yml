@@ -20,7 +20,7 @@ jobs:
       - name: Detect user
         id: user
         run: |
-          USER_ID="frame-user01"
+          USER_ID="edarete"
           if [ -z "$USER_ID" ]; then
             echo "❌ No new user found"
             exit 1
@@ -86,7 +86,8 @@ jobs:
           MYSQL_SERVER_NAME: ${{ secrets.MYSQL_SERVER_NAME }}
         run: |
           TENANT_ID="${{ steps.user.outputs.user_id }}"
-          DB_NAME="${TENANT_ID}_db"
+          #DB_NAME="${TENANT_ID}_db"
+          DB_NAME="edarete_staging"
           USER_NAME="${TENANT_ID}_user"
           
           echo "🔍 Checking if database exists: $DB_NAME"

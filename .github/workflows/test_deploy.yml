@@ -51,12 +51,12 @@ jobs:
         run: |
           docker build \
             -t ${{ secrets.ACR_LOGIN_SERVER }}/frontend:${{ steps.user.outputs.user_id }} \
-            --build-arg VITE_SECRET_KEY="${{ secrets.VITE_SECRET_KEY }}" \
-            --build-arg VITE_PLATFORM_KEY="${{ secrets.VITE_PLATFORM_KEY }}" \
-            --build-arg VITE_PLATFORM_VERSION="${{ secrets.VITE_PLATFORM_VERSION }}" \
-            --build-arg VITE_PLATFORM_NAME="${{ secrets.VITE_PLATFORM_NAME }}" \
-            --build-arg VITE_BASE_URL="http://backend-${{ steps.user.outputs.user_id }}:8080" \
-            --build-arg VITE_SOCKET_URL="http://backend-${{ steps.user.outputs.user_id }}:8080/api" \
+            # --build-arg VITE_SECRET_KEY="${{ secrets.VITE_SECRET_KEY }}" \
+            # --build-arg VITE_PLATFORM_KEY="${{ secrets.VITE_PLATFORM_KEY }}" \
+            # --build-arg VITE_PLATFORM_VERSION="${{ secrets.VITE_PLATFORM_VERSION }}" \
+            # --build-arg VITE_PLATFORM_NAME="${{ secrets.VITE_PLATFORM_NAME }}" \
+            # --build-arg VITE_BASE_URL="http://backend-${{ steps.user.outputs.user_id }}:8080" \
+            # --build-arg VITE_SOCKET_URL="http://backend-${{ steps.user.outputs.user_id }}:8080/api" \
             projects/${{ steps.user.outputs.user_id }}/frontend
 
           docker push ${{ secrets.ACR_LOGIN_SERVER }}/frontend:${{ steps.user.outputs.user_id }}

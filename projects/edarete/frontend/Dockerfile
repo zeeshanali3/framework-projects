@@ -33,6 +33,6 @@ RUN npm run build
 # --- STAGE 2: Production (Nginx) ---
 FROM nginx:stable-alpine
 # Verify if your folder is 'dist' or 'build' - Vite usually uses 'dist'
-COPY --from=builder /app/dist /usr/share/nginx/html
+COPY --from=builder /app/build /usr/share/nginx/html
 EXPOSE 80
 CMD ["nginx", "-g", "daemon off;"]

@@ -121,7 +121,9 @@ jobs:
           #temp DB creating
           mysql -h $DB_HOST -u $ADMIN_USER -p$ADMIN_PASS <<EOF
           CREATE DATABASE IF NOT EXISTS \`edarete_staging\`;
+          GRANT ALL PRIVILEGES ON \`edarete_staging\`.* TO '$ADMIN_USER'@'%';
           CREATE DATABASE IF NOT EXISTS \`securitydb\`;
+          GRANT ALL PRIVILEGES ON \`securitydb\`.* TO '$ADMIN_USER'@'%';
           EOF
 
           echo "✅ Database and user setup completed for tenant: $TENANT_ID"

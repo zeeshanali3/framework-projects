@@ -30,7 +30,6 @@ jobs:
           echo "user_id=$USER_ID" >> $GITHUB_OUTPUT
 
 
-
       # 3️⃣ Azure Login
       - name: Azure Login
         uses: azure/login@v1

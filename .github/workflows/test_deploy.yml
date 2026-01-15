@@ -20,7 +20,7 @@ jobs:
       - name: Detect user
         id: user
         run: |
-          USER_ID="frame-user01"
+          USER_ID="edarete"
           if [ -z "$USER_ID" ]; then
             echo "❌ No new user found"
             exit 1
@@ -51,6 +51,12 @@ jobs:
         run: |
           docker build \
             -t ${{ secrets.ACR_LOGIN_SERVER }}/frontend:${{ steps.user.outputs.user_id }} \
+            --build-arg VITE_SECRET_KEY="${{ secrets.VITE_SECRET_KEY }}" \
+            --build-arg VITE_PLATFORM_KEY="${{ secrets.VITE_PLATFORM_KEY }}" \
+            --build-arg VITE_PLATFORM_VERSION="${{ secrets.VITE_PLATFORM_VERSION }}" \
+            --build-arg VITE_PLATFORM_NAME="${{ secrets.VITE_PLATFORM_NAME }}" \
+            --build-arg VITE_BASE_URL="http://backend-${{ steps.user.outputs.user_id }}:8080" \
+            --build-arg VITE_SOCKET_URL="http://backend-${{ steps.user.outputs.user_id }}:8080/api" \
             projects/${{ steps.user.outputs.user_id }}/frontend
 
           docker push ${{ secrets.ACR_LOGIN_SERVER }}/frontend:${{ steps.user.outputs.user_id }}
@@ -62,12 +68,6 @@ jobs:
         run: |
           docker build \
             -t ${{ secrets.ACR_LOGIN_SERVER }}/backend:${{ steps.user.outputs.user_id }} \
-            --build-arg VITE_SECRET_KEY="${{ secrets.VITE_SECRET_KEY }}" \
-            --build-arg VITE_PLATFORM_KEY="${{ secrets.VITE_PLATFORM_KEY }}" \
-            --build-arg VITE_PLATFORM_VERSION="${{ secrets.VITE_PLATFORM_VERSION }}" \
-            --build-arg VITE_PLATFORM_NAME="${{ secrets.VITE_PLATFORM_NAME }}" \
-            --build-arg VITE_BASE_URL="http://backend-${{ steps.user.outputs.user_id }}:8080" \
-            --build-arg VITE_SOCKET_URL="http://backend-${{ steps.user.outputs.user_id }}:8080/api" \
             projects/${{ steps.user.outputs.user_id }}/backend
 
           docker push ${{ secrets.ACR_LOGIN_SERVER }}/backend:${{ steps.user.outputs.user_id }}
@@ -110,11 +110,17 @@ jobs:
 
           echo "👤 Creating / Updating DB user and privileges"
 
+          # mysql -h $DB_HOST -u $ADMIN_USER -p$ADMIN_PASS <<EOF
+          # CREATE DATABASE IF NOT EXISTS \`$DB_NAME\`;
+          # CREATE USER IF NOT EXISTS '$USER_NAME'@'%' IDENTIFIED BY '$NEW_USER_PASS';
+          # GRANT ALL PRIVILEGES ON \`$DB_NAME\`.* TO '$USER_NAME'@'%';
+          # FLUSH PRIVILEGES;
+          # EOF
+
+          #temp DB creating
           mysql -h $DB_HOST -u $ADMIN_USER -p$ADMIN_PASS <<EOF
-          CREATE DATABASE IF NOT EXISTS \`$DB_NAME\`;
-          CREATE USER IF NOT EXISTS '$USER_NAME'@'%' IDENTIFIED BY '$NEW_USER_PASS';
-          GRANT ALL PRIVILEGES ON \`$DB_NAME\`.* TO '$USER_NAME'@'%';
-          FLUSH PRIVILEGES;
+          CREATE DATABASE IF NOT EXISTS \`edarete_staging\`;
+          CREATE DATABASE IF NOT EXISTS \`securitydb\`;
           EOF
 
           echo "✅ Database and user setup completed for tenant: $TENANT_ID"
@@ -127,20 +133,48 @@ jobs:
           TENANT_ID="${{ steps.user.outputs.user_id }}"
           DB_NAME="${TENANT_ID}_db"
           USER_NAME="${TENANT_ID}_user"
-          DB_FILE="projects/${{ steps.user.outputs.user_id }}/backup.sql"
+          # DB_FILE="projects/${{ steps.user.outputs.user_id }}/database/backup.sql"
 
-          if [ ! -f "$DB_FILE" ]; then
+          # if [ ! -f "$DB_FILE" ]; then
+          #   echo "❌ .sql file not found for user"
+          #   exit 1
+          # fi
+
+          # mysql \
+          #   -h ${{ secrets.MYSQL_SERVER_NAME }}.mysql.database.azure.com \
+          #   -u $USER_NAME \
+          #   -p${{ secrets.TEMPORARY_USER_PASSWORD }} \
+          #   -D $DB_NAME \
+          #   --ssl-mode=REQUIRED \
+          #   < "$DB_FILE"
+
+          #temp DB creating
+
+          DB_FILE1="projects/${{ steps.user.outputs.user_id }}/database/securitydb.sql"
+          DB_FILE2="projects/${{ steps.user.outputs.user_id }}/database/staging.sql"
+
+          if [ ! -f "$DB_FILE1" ]; then
             echo "❌ .sql file not found for user"
             exit 1
           fi
 
           mysql \
             -h ${{ secrets.MYSQL_SERVER_NAME }}.mysql.database.azure.com \
-            -u $USER_NAME \
-            -p${{ secrets.TEMPORARY_USER_PASSWORD }} \
-            -D $DB_NAME \
+            -u ${{ secrets.MYSQL_ADMIN_USER }} \
+            -p$${{ secrets.MYSQL_ADMIN_PASSWORD }} \
+            -D $edarete_staging \
             --ssl-mode=REQUIRED \
-            < "$DB_FILE"
+            < "$DB_FILE1"
+            
+          mysql \
+            -h ${{ secrets.MYSQL_SERVER_NAME }}.mysql.database.azure.com \
+            -u ${{ secrets.MYSQL_ADMIN_USER }} \
+            -p$${{ secrets.MYSQL_ADMIN_PASSWORD }} \
+            -D securitydb \
+            --ssl-mode=REQUIRED \
+            < "$DB_FILE2"
+        
+          
 
       ###########################################################################
 
